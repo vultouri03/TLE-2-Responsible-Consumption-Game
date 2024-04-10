@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://dnrb6tatd06p1"]
+[gd_scene load_steps=2 format=3 uid="uid://dnrb6tatd06p1"]
+
+[ext_resource type="Script" path="res://demoGetImageController.gd" id="1_14uy5"]
 
 [node name="base_node" type="Node2D"]
+script = ExtResource("1_14uy5")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 92.0
+offset_top = 401.0
+offset_right = 427.0
+offset_bottom = 498.0
+text = "Take Picture"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 157.0
+offset_top = 61.0
+offset_right = 428.0
+offset_bottom = 319.0
+
+[connection signal="button_up" from="Button" to="." method="_get_gallery_selection"]
