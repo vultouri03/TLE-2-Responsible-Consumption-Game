@@ -14,4 +14,8 @@ after that go to the tab at the site where the inspector is there should be a ne
 
 to push to here you need to create a new remote using the plus at the bottom.
 
-call it origin and put this link in the bottom field: 
+call it origin and put this link in the bottom field: https://github.com/vultouri03/TLE-2-Responsible-Consumption-Game.git
+
+after this you can push and pull from this repo
+
+i'll add images later to make all this more clear
