@@ -29,9 +29,9 @@ func _sendToServer():
 	var response = json.parse($HTTPRequest.get_response_data())
 
 	if $HTTPRequest.get_response_code() == 200:
-		_handleResponse(response)
+		_handleResponse('SUCCESS ' + response)
 	else:
-		print('Failed')
+		_handleResponse('FAILED ' + response)
 
 
 func _handleResponse(response):
