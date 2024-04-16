@@ -16,7 +16,7 @@ func _sendToServer():
 
 	var image = Image.new()
 	image.load(file_path)
-	var image_data = image.get_data()
+	var image_data = image.save_jpg_to_buffer()
 
 	print(image)
 
