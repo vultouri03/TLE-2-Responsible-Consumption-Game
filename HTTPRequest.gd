@@ -1,30 +1,37 @@
 extends HTTPRequest
 
-var file = ''
+var file_path = './Images/Banana.jpg'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_sendToServer()
-	
-	pass # Replace with function body.
+	print('Ready')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	print('Processing')
 
 func _sendToServer():
+
+	var image = Image.new()
+	image.load(file_path)
+	var image_data = image.get_data()
+
+	print(image)
 
 	var headers = {
 		"Content-Type": "application/json",
 	}
 	
-	var _base_64_data = Marshalls.raw_to_base64(file.get_buffer(file.get_len()))
+	var _base_64_data = Marshalls.raw_to_base64(image_data)
 	var json = JSON.stringify(_base_64_data)
 
-	var url = ''
+	print(json)
 
-	$HTTPRequest.request(url, headers, HTTPClient.METHOD_POST, json)
+	var url = 'http://localhost:8000/classify'
+
+	self.request(url, headers, HTTPClient.METHOD_POST, json)
 
 	var response = json.parse($HTTPRequest.get_response_data())
 
