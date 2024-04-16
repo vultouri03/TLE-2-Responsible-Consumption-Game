@@ -18,7 +18,7 @@ func _sendToServer():
 	image.load(file_path)
 	var image_data = image.save_jpg_to_buffer()
 
-	print(image)
+	print(image_data)
 
 	var headers = {
 		"Content-Type": "application/json",
