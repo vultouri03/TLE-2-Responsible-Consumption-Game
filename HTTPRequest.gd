@@ -20,9 +20,7 @@ func _sendToServer():
 
 	print(image_data)
 
-	var headers = {
-		"Content-Type": "application/json",
-	}
+	var headers = PackedStringArray(["Content-Type", "application/json"])
 	
 	var _base_64_data = Marshalls.raw_to_base64(image_data)
 	var json = JSON.stringify(_base_64_data)
@@ -44,4 +42,5 @@ func _sendToServer():
 func _handleResponse(response):
 	print(response)
 	
+
 	
