@@ -1,9 +1,10 @@
 extends Node
 enum STATUS{SUCCESS,CLIENT_ERR, SERVER_ERR,NONE,FUNC_ERR}
 var requestStatus = STATUS.NONE
+var webserver = Globalvars.webserver
+var active_receipt = {"id":1000,"image":""} #the reciept object that aligns with the server
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_get_reciept_status()
 	pass # Replace with function body.
 
 
@@ -11,14 +12,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func _get_reciept_status(): 
-	
-	$HTTPRequest.request_completed.connect(_on_request_completed)
-	var error = $HTTPRequest.request("http://127.0.0.1:8000/classify")
-	if error != OK:
-			print(_get_request_status(STATUS.FUNC_ERR))
-	else:
-		pass
+
 func _get_request_status(status):
 	match status:
 		STATUS.NONE:
@@ -40,8 +34,39 @@ func _on_request_completed(result, response_code, headers, body):
 			requestStatus = STATUS.CLIENT_ERR
 		500:
 			requestStatus = STATUS.SERVER_ERR
+	print(headers)
+	print(result)
+	print(response_code)
 	print(_get_request_status(requestStatus))
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(json)
 
+	
+func _send_to_server(webserver_url,body_to_json_encode,function_to_do_after_request_completion):
+	$HTTPRequest.request_completed.connect(function_to_do_after_request_completion)
+	print("Requesting : "+ webserver_url)
 
+	var headers = ["Content-Type: application/json"]
+
+	var error = $HTTPRequest.request(webserver_url, headers, HTTPClient.METHOD_POST, JSON.stringify(body_to_json_encode))
+	
+	if error != OK:
+			print(_get_request_status(STATUS.FUNC_ERR))
+	else:
+		pass
+	pass
+
+
+func _on_bt_send_button_up():
+
+	_send_to_server(webserver+"classify",active_receipt,_on_request_completed)
+	pass 
+
+
+func _on_bt_status_button_up():
+
+	_send_to_server(webserver+"status",active_receipt,_on_request_completed)
+	pass
+
+func _on_bt_fakeload_button_up():
+	pass
