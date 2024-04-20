@@ -26,7 +26,12 @@ func _convert_to_base64():
 	var headers = PackedStringArray(["Content-Type", "application/json"])
 	
 	var _base_64_data = Marshalls.raw_to_base64(image_data)
-	var json = JSON.stringify(_base_64_data)
+	var object = {
+		"id" : 0000,
+		"image" : _base_64_data,
+	}
+
+	var json = JSON.stringify(object)
 
 	print(json)
 
