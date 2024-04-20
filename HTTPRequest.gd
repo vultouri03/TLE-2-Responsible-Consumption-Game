@@ -1,7 +1,7 @@
 extends Node
 
 var file_path = './Images/Banana.jpg'
-var url = GlobalVars.webserver
+var url = Globalvars.webserver
 enum STATUS {SUCCESS, CLIENT_ERR, SERVER_ERR, NONE, FUNC_ERR}
 
 var requestStatus = STATUS.NONE
