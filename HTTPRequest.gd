@@ -14,11 +14,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print('Processing')
+	if Globalvars.can_update_now:
+		print("Processing")
 
 func _convert_to_base64():
+	
 	var image = Image.new()
+
 	image.load(file_path)
+
 	var image_data = image.save_jpg_to_buffer()
 
 	print(image_data)
@@ -26,6 +30,7 @@ func _convert_to_base64():
 	var headers = PackedStringArray(["Content-Type", "application/json"])
 	
 	var _base_64_data = Marshalls.raw_to_base64(image_data)
+
 	var object = {
 		"id" : 0000,
 		"image" : _base_64_data,
@@ -53,8 +58,6 @@ func _sendToServer(headers, json):
 	else:
 		pass
 	pass
-
-
 
 func _get_request_status(status):
 	match status:

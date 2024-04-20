@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bniddt6p7lgok"]
+
+[ext_resource type="Script" path="res://HTTPRequest.gd" id="1_tk4gi"]
+
+[node name="FetchCalls" type="Node2D"]
+script = ExtResource("1_tk4gi")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
