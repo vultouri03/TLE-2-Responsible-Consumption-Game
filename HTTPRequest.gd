@@ -1,7 +1,7 @@
 extends Node
 
 var file_path = './Images/Banana.jpg'
-
+var url = Globalvars.url
 enum STATUS {SUCCESS, CLIENT_ERR, SERVER_ERR, NONE, FUNC_ERR}
 
 var requestStatus = STATUS.NONE
@@ -36,35 +36,20 @@ func _sendToServer(headers, json):
 
 	_convert_to_base64()
 
-	var url = 'https://tle-2-receipt-scan-webservice.onrender.com/'
-
 	$HTTPRequest.request_completed.connect(_handleResponse)
 
 	$HTTPRequest.request(url, headers, HTTPClient.METHOD_POST, json)
 
-func _get_request_status(status):
-	match status:
-		STATUS.NONE:
-			return "Request not yet executed";
-		STATUS.SUCCESS:
-			return "Request successful";
-		STATUS.CLIENT_ERR:
-			return "Request failed, check your connection."
-		STATUS.SERVER_ERR: 
-			return "Request failed, service is encountering problems. Please be patient."
-		STATUS.FUNC_ERR: 
-			return "There's a software issue."
 
 func _handleResponse(result, response_code, headers, body):
 	match response_code:
 		200:
-			requestStatus
+			requestStatus = STATUS.SUCCESS
 		404:
-			print('Not Found')
+			requestStatus = STATUS.CLIENT_ERR
 		500:
 			print('Internal Server Error')
 		
-	var json = JSON.parse_string(json.get_string_from_utf8())
 	
 
 	
