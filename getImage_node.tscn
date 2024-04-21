@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnrb6tatd06p1"]
 
-[ext_resource type="Script" path="res://getImageController.gd" id="1_14uy5"]
+[ext_resource type="Script" path="res://getImageController.gd" id="1_1s5vq"]
 
 [sub_resource type="Theme" id="Theme_ut6tk"]
 
 [node name="base_node" type="Node2D"]
-script = ExtResource("1_14uy5")
+script = ExtResource("1_1s5vq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_top = 768.0
