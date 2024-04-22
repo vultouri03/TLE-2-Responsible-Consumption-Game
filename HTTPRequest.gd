@@ -1,5 +1,6 @@
 extends Node
 
+@export var responseBody: Resource
 var file_path = './Images/Banana.jpg'
 var url = Globalvars.webserver
 enum STATUS {SUCCESS, CLIENT_ERR, SERVER_ERR, NONE, FUNC_ERR}
@@ -80,8 +81,10 @@ func _handleResponse(result, response_code, headers, body):
 	print(_get_request_status(requestStatus))
 
 	print(body.get_string_from_utf8())
-	var responseBody = JSON.parse_string(body.get_string_from_utf8())
 	print(responseBody)
+
+	if responseBody:
+		responseBody.categories = JSON.parse_string(body.get_string_from_utf8())
 		
 	
 
