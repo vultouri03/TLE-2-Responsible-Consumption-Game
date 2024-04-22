@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c58bo8kp413xe"]
+
+[ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://fetch_calls.tscn" id="1_jlh41"]
+[ext_resource type="PackedScene" uid="uid://dnrb6tatd06p1" path="res://status_call.tscn" id="2_6be61"]
+[ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://getImage_node.tscn" id="3_0kkc1"]
+
+[node name="main" type="Node"]
+
+[node name="FetchCalls" parent="." instance=ExtResource("1_jlh41")]
+
+[node name="base_node" parent="." instance=ExtResource("2_6be61")]
+
+[node name="base_node2" parent="." instance=ExtResource("3_0kkc1")]
+
+[node name="Send To server" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 602.0
+offset_right = 723.0
+offset_bottom = 787.0
+text = "Send to server"
+
+[connection signal="button_down" from="Send To server" to="FetchCalls" method="_on_button_button_down"]
+
+[editable path="base_node"]

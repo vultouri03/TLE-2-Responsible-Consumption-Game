@@ -9,7 +9,7 @@ var requestStatus = STATUS.NONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_convert_to_base64()
+	
 	print('Ready')
 
 
@@ -22,11 +22,14 @@ func _convert_to_base64():
 	
 	var image = Image.new()
 
-	image.load(file_path)
+	if Globalvars.imagetexture == null:
+		image.load(file_path)
+	else:
+		image.load(Globalvars.imageTexture)
 
 	var image_data = image.save_jpg_to_buffer()
 
-	print(image_data)
+	#print(image_data)
 
 	var headers = PackedStringArray(["Content-Type: application/json"])
 	
@@ -89,3 +92,7 @@ func _handleResponse(result, response_code, headers, body):
 	
 
 	
+
+
+func _on_button_button_down():
+	_convert_to_base64()

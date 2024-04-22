@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bniddt6p7lgok"]
+[gd_scene load_steps=3 format=3 uid="uid://bv4j1y5s5wfsg"]
 
 [ext_resource type="Script" path="res://HTTPRequest.gd" id="1_tk4gi"]
 [ext_resource type="Resource" uid="uid://dpns6jamqt4tl" path="res://Resources/categories.tres" id="2_p6nbu"]
