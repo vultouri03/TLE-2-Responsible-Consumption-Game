@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnrb6tatd06p1"]
+
+[ext_resource type="Script" path="res://status_update.gd" id="1_8imhb"]
+
+[node name="base_node" type="Node2D"]
+script = ExtResource("1_8imhb")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="bt_send" type="Button" parent="."]
+offset_top = 64.0
+offset_right = 215.0
+offset_bottom = 95.0
+text = "Send Reciept Image (Fake) "
+
+[node name="bt_status" type="Button" parent="."]
+offset_top = 95.0
+offset_right = 150.0
+offset_bottom = 126.0
+text = "Get Reciept Status"
+
+[node name="bt_fakeload" type="Button" parent="."]
+offset_top = 126.0
+offset_right = 172.0
+offset_bottom = 157.0
+text = "Fake slow server (off)"
+
+[connection signal="button_up" from="bt_send" to="." method="_on_bt_send_button_up"]
+[connection signal="button_up" from="bt_status" to="." method="_on_bt_status_button_up"]
+[connection signal="button_up" from="bt_fakeload" to="." method="_on_bt_status_button_up"]
+[connection signal="button_up" from="bt_fakeload" to="." method="_on_bt_fakeload_button_up"]
