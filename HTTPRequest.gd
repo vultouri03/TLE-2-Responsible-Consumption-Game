@@ -1,7 +1,7 @@
 extends Node
 
 @export var responseBody: Resource
-var file_path = './Images/Banana.jpg'
+var file_path = 'res://Images/text_image_2.png'
 var url = Globalvars.webserver
 enum STATUS {SUCCESS, CLIENT_ERR, SERVER_ERR, NONE, FUNC_ERR}
 
@@ -22,7 +22,7 @@ func _convert_to_base64():
 	
 	var image = Image.new()
 
-	if Globalvars.imagetexture == null:
+	if Globalvars.imagetexture == null :
 		image.load(file_path)
 	else:
 		image.load(Globalvars.imageTexture)
@@ -42,7 +42,7 @@ func _convert_to_base64():
 
 	var json = JSON.stringify(object)
 
-	print(json)
+	#print(json)
 
 	_sendToServer(headers, json)
 
@@ -52,7 +52,12 @@ func _sendToServer(headers, json):
 
 	$HTTPRequest.request_completed.connect(_handleResponse)
 
-	$HTTPRequest.request(endPointUrl, headers, HTTPClient.METHOD_POST, json)
+	var error = $HTTPRequest.request(endPointUrl, headers, HTTPClient.METHOD_POST, json)
+	
+	if error != OK:
+			print(_get_request_status(STATUS.FUNC_ERR))
+	else:
+		pass
 	print("Requesting : "+ endPointUrl)
 
 func _get_request_status(status):
@@ -69,6 +74,7 @@ func _get_request_status(status):
 			return "There's a software issue."
 
 func _handleResponse(result, response_code, headers, body):
+	print(response_code)
 	match response_code:
 		200:
 			requestStatus = STATUS.SUCCESS
