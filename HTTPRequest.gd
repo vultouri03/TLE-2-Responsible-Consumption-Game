@@ -27,7 +27,7 @@ func _convert_to_base64():
 
 	print(image_data)
 
-	var headers = PackedStringArray(["Content-Type", "application/json"])
+	var headers = PackedStringArray(["Content-Type: application/json"])
 	
 	var _base_64_data = Marshalls.raw_to_base64(image_data)
 
@@ -44,20 +44,12 @@ func _convert_to_base64():
 
 func _sendToServer(headers, json):
 
-	var endPointUrl = url + '/classify'
+	var endPointUrl = url + 'classify'
 
 	$HTTPRequest.request_completed.connect(_handleResponse)
 
 	$HTTPRequest.request(endPointUrl, headers, HTTPClient.METHOD_POST, json)
 	print("Requesting : "+ endPointUrl)
-
-	var error = $HTTPRequest.request(endPointUrl, headers, HTTPClient.METHOD_POST, JSON.stringify(json))
-	
-	if error != OK:
-			print(_get_request_status(STATUS.FUNC_ERR))
-	else:
-		pass
-	pass
 
 func _get_request_status(status):
 	match status:
@@ -87,6 +79,7 @@ func _handleResponse(result, response_code, headers, body):
 
 	print(_get_request_status(requestStatus))
 
+	print(body.get_string_from_utf8())
 	var responseBody = JSON.parse_string(body.get_string_from_utf8())
 	print(responseBody)
 		
