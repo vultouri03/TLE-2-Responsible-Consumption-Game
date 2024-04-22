@@ -35,5 +35,6 @@ func _set_image(dict):
 		print("Loading Image")
 		await get_tree().process_frame
 		Globalvars.setImageTexture(image)
-		$TextureRect.texture = Globalvars.imageTexture
+		var texture = ImageTexture.create_from_image(currentImage)
+		$TextureRect.texture = texture
 	pass
