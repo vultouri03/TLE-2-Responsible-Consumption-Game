@@ -95,8 +95,8 @@ func _handleResponse(result, response_code, headers, body):
 	print(responseBody)
 
 #There's an error with the server's sending of data that causes this to return a 502
-	#if responseBody:
-		#responseBody.categories = JSON.parse_string(body.get_string_from_utf8())
+	if responseBody:
+		responseBody.categories = JSON.parse_string(body.get_string_from_utf8())
 	$HTTPRequest.request_completed.disconnect(_handleResponse)	
 	
 
