@@ -29,7 +29,9 @@ func _get_gallery_selection():
 	pass # Replace with function body.
 
 func _set_image(dict):
+	print(dict)
 	for image in dict.values():
+		print(image);
 		var currentImage = Image.new()
 		currentImage.load_jpg_from_buffer(image)
 		print("Loading Image")

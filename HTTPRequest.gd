@@ -21,13 +21,14 @@ func _process(delta):
 func _convert_to_base64():
 	
 	var image = Image.new()
-
-	if Globalvars.imagetexture == null :
+	var image_data
+	if Globalvars._get_image_texture() == null :
 		image.load(file_path)
-	else:
-		image.load(Globalvars.imageTexture)
+		Globalvars.image_texture = image
 
-	var image_data = image.save_jpg_to_buffer()
+	image_data = Globalvars._get_image_texture().save_jpg_to_buffer()
+
+	
 
 	#print(image_data)
 
@@ -36,7 +37,7 @@ func _convert_to_base64():
 	var _base_64_data = Marshalls.raw_to_base64(image_data)
 
 	var object = {
-		"id" : 0000,
+		"id" : Globalvars.active_receipt.id,
 		"image" : _base_64_data,
 	}
 
@@ -83,6 +84,7 @@ func _handleResponse(result, response_code, headers, body):
 		500:
 			print('Internal Server Error')
 	
+	#Turn these prints off eventually when done debugging because they output a massive base64 log that overflows the console. 
 	print(headers)
 	print(result)
 	print(response_code)
@@ -92,9 +94,10 @@ func _handleResponse(result, response_code, headers, body):
 	print(body.get_string_from_utf8())
 	print(responseBody)
 
-	if responseBody:
-		responseBody.categories = JSON.parse_string(body.get_string_from_utf8())
-		
+#There's an error with the server's sending of data that causes this to return a 502
+	#if responseBody:
+		#responseBody.categories = JSON.parse_string(body.get_string_from_utf8())
+	$HTTPRequest.request_completed.disconnect(_handleResponse)	
 	
 
 	
