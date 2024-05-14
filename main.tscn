@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c58bo8kp413xe"]
+[gd_scene load_steps=6 format=3 uid="uid://c58bo8kp413xe"]
 
 [ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://fetch_calls.tscn" id="1_jlh41"]
 [ext_resource type="PackedScene" uid="uid://dnrb6tatd06p1" path="res://status_call.tscn" id="2_6be61"]
 [ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://getImage_node.tscn" id="3_0kkc1"]
+[ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="4_r04vp"]
+[ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="5_pfwch"]
 
 [node name="main" type="Node"]
 
@@ -18,5 +20,11 @@ text = "Send to server"
 
 [node name="Status_Call" parent="." instance=ExtResource("2_6be61")]
 position = Vector2(0, 304)
+
+[node name="Draggable" parent="." instance=ExtResource("4_r04vp")]
+position = Vector2(74, 924)
+
+[node name="Area2D" parent="." instance=ExtResource("5_pfwch")]
+position = Vector2(651, 924)
 
 [connection signal="button_down" from="Send To server" to="FetchCalls" method="_on_button_button_down"]
