@@ -2,7 +2,7 @@ extends Area2D
 class_name Drop
 var class_object_name:String
 var draggable_to_monitor:Area2D
-@export var function_to_trigger:Signal
+signal function_to_trigger
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
