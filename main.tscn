@@ -5,13 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://getImage_node.tscn" id="3_0kkc1"]
 [ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="4_r04vp"]
 [ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="5_pfwch"]
-[ext_resource type="PackedScene" path="res://Scripts/Base/item_draggable_template.tscn" id="6_hrs0j"]
+[ext_resource type="PackedScene" uid="uid://bfxslruj1hx8c" path="res://Scripts/Common/creature.tscn" id="6_olgh0"]
 
 [node name="main" type="Node"]
 
 [node name="FetchCalls" parent="." instance=ExtResource("1_jlh41")]
 
 [node name="base_node2" parent="." instance=ExtResource("3_0kkc1")]
+position = Vector2(-6, 10)
 
 [node name="Send To server" type="Button" parent="."]
 offset_top = 544.0
@@ -31,7 +32,7 @@ position = Vector2(651, 924)
 [node name="Area2D2" parent="." instance=ExtResource("5_pfwch")]
 position = Vector2(600, 944)
 
-[node name="Bread" parent="." instance=ExtResource("6_hrs0j")]
-position = Vector2(274, 807)
+[node name="Creature" parent="." instance=ExtResource("6_olgh0")]
+position = Vector2(318, 833)
 
 [connection signal="button_down" from="Send To server" to="FetchCalls" method="_on_button_button_down"]
