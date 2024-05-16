@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://bfxslruj1hx8c"]
+
+[ext_resource type="Script" path="res://Scripts/Common/creature.gd" id="1_vm3ka"]
+[ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="2_nq2xp"]
+[ext_resource type="Texture2D" uid="uid://bvm65upqwd262" path="res://Images/creature_sprites.png" id="2_t74ha"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q40ir"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(558, 0, 279, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1s8f"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(837, 0, 279, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0spcl"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(1674, 0, 279, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hb62"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(0, 0, 279, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tusc"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(1395, 0, 279, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emhdo"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(1116, 0, 279, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2ufx"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(0, 0, 279, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh02j"]
+atlas = ExtResource("2_t74ha")
+region = Rect2(279, 0, 279, 450)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3rp7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q40ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1s8f")
+}],
+"loop": false,
+"name": &"eating",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0spcl")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hb62")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tusc")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emhdo")
+}],
+"loop": true,
+"name": &"saturated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2ufx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh02j")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[node name="Creature" type="Node2D"]
+scale = Vector2(0.165, 0.165)
+script = ExtResource("1_vm3ka")
+stomache_size = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.7, 2.7)
+sprite_frames = SubResource("SpriteFrames_o3rp7")
+animation = &"idle"
+
+[node name="Droppable" parent="." instance=ExtResource("2_nq2xp")]
+position = Vector2(4.76837e-07, 96.9697)
+scale = Vector2(6.23822, 10.3455)
+metadata/_edit_group_ = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Droppable" to="." method="_on_droppable_entered"]
+[connection signal="area_exited" from="Droppable" to="." method="_on_droppable_exited"]
+[connection signal="function_to_trigger" from="Droppable" to="." method="on_drop_down"]
