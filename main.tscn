@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://getImage_node.tscn" id="3_0kkc1"]
 [ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="4_r04vp"]
 [ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="5_pfwch"]
-[ext_resource type="PackedScene" path="res://Scripts/Base/item_draggable_template.tscn" id="6_hrs0j"]
+[ext_resource type="PackedScene" uid="uid://c4wesond3cbw" path="res://Scripts/Base/item_draggable_template.tscn" id="6_hrs0j"]
 
 [node name="main" type="Node"]
 
