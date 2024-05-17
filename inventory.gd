@@ -15,4 +15,4 @@ func _process(delta):
 
 func _grab_children():
 	for category in category_rows:
-		category.get_node("Amount").text = #categories[category.get_node("amount").text]
+		#category.get_node("Amount").text = #categories[category.get_node("amount").text]
