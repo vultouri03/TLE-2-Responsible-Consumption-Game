@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhseamkofouv6"]
+[gd_scene load_steps=5 format=3 uid="uid://dhseamkofouv6"]
 
 [ext_resource type="Script" path="res://inventory.gd" id="1_ku02y"]
 [ext_resource type="Texture2D" uid="uid://5tuwkeck4apa" path="res://Images/inventory_background.png" id="1_nxfvr"]
 [ext_resource type="PackedScene" uid="uid://cbtxc4ob32p8y" path="res://Category_UI_Node.tscn" id="2_6qtqs"]
+[ext_resource type="Script" path="res://TestButton.gd" id="4_yr0of"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -10,41 +11,50 @@ anchors_preset = 0
 offset_right = 715.0
 offset_bottom = 1267.0
 script = ExtResource("1_ku02y")
-category_rows = [null, null, null, null, null, null, null]
 
 [node name="InventoryBackground" type="Sprite2D" parent="."]
 position = Vector2(359, 636)
 scale = Vector2(1.6, 2.81333)
 texture = ExtResource("1_nxfvr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Bread" parent="." instance=ExtResource("2_6qtqs")]
+position = Vector2(227, 197)
 
-[node name="Bread" parent="VBoxContainer" instance=ExtResource("2_6qtqs")]
-position = Vector2(227, 196)
-
-[node name="Meat" parent="VBoxContainer" instance=ExtResource("2_6qtqs")]
-position = Vector2(239, 310)
+[node name="Meat" parent="." instance=ExtResource("2_6qtqs")]
+position = Vector2(239, 311)
 frame = 1
 
-[node name="Drinks" parent="VBoxContainer" instance=ExtResource("2_6qtqs")]
-position = Vector2(225, 446)
+[node name="Drinks" parent="." instance=ExtResource("2_6qtqs")]
+position = Vector2(225, 447)
 frame = 2
 
-[node name="Spices" parent="VBoxContainer" instance=ExtResource("2_6qtqs")]
-position = Vector2(221, 584)
+[node name="Spices" parent="." instance=ExtResource("2_6qtqs")]
+position = Vector2(221, 585)
 frame = 3
 
-[node name="Dairy" parent="VBoxContainer" instance=ExtResource("2_6qtqs")]
-position = Vector2(209, 704)
+[node name="Dairy" parent="." instance=ExtResource("2_6qtqs")]
+position = Vector2(209, 705)
 frame = 4
 
-[node name="Vegetables" parent="VBoxContainer" instance=ExtResource("2_6qtqs")]
-position = Vector2(201, 845)
+[node name="Vegetables" parent="." instance=ExtResource("2_6qtqs")]
+position = Vector2(201, 846)
 frame = 5
 
-[node name="Sauces" parent="VBoxContainer" instance=ExtResource("2_6qtqs")]
-position = Vector2(200, 995)
+[node name="Sauces" parent="." instance=ExtResource("2_6qtqs")]
+position = Vector2(200, 996)
 frame = 6
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.989
+anchor_right = 0.5
+anchor_bottom = 0.989
+offset_left = -357.5
+offset_top = -69.063
+offset_right = 363.5
+offset_bottom = 13.937
+text = "Test"
+script = ExtResource("4_yr0of")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
