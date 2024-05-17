@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhseamkofouv6"]
+[gd_scene load_steps=6 format=3 uid="uid://dhseamkofouv6"]
 
 [ext_resource type="Script" path="res://inventory.gd" id="1_ku02y"]
 [ext_resource type="Texture2D" uid="uid://5tuwkeck4apa" path="res://Images/inventory_background.png" id="1_nxfvr"]
 [ext_resource type="PackedScene" uid="uid://cbtxc4ob32p8y" path="res://Category_UI_Node.tscn" id="2_6qtqs"]
+[ext_resource type="Resource" uid="uid://dpns6jamqt4tl" path="res://Resources/categories.tres" id="2_u66n2"]
 [ext_resource type="Script" path="res://TestButton.gd" id="4_yr0of"]
 
 [node name="Inventory" type="Control"]
@@ -11,6 +12,7 @@ anchors_preset = 0
 offset_right = 715.0
 offset_bottom = 1267.0
 script = ExtResource("1_ku02y")
+categories = ExtResource("2_u66n2")
 
 [node name="InventoryBackground" type="Sprite2D" parent="."]
 position = Vector2(359, 636)
