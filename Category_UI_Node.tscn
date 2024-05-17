@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbtxc4ob32p8y"]
+
+[ext_resource type="Texture2D" uid="uid://deveimd1lbsq2" path="res://Images/Category_items.png" id="1_kg65f"]
+
+[node name="Food_item" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(166, 211)
+scale = Vector2(0.271111, 0.266667)
+texture = ExtResource("1_kg65f")
+hframes = 7
+
+[node name="Description" type="RichTextLabel" parent="."]
+offset_left = 272.951
+offset_top = -41.2499
+offset_right = 796.951
+offset_bottom = 168.75
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "Description"
+
+[node name="Amount" type="RichTextLabel" parent="."]
+offset_left = 870.492
+offset_top = -29.9999
+offset_right = 1394.49
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "0
+"
