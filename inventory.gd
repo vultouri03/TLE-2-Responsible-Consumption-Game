@@ -1,31 +1,56 @@
 extends Control
 
 @export var categories : Resource
-var category_names = ["Bread", "Meat", "Drinks", "Spices", "Dairy", "Vegetables", "Sauces"]
+
+var dummyData = {
+	"categories": [
+		{
+			"name": "wheats",
+			"amount": 1
+		},
+		{
+			"name": "meat",
+			"amount": 1
+		},
+		{
+			"name": "drinks",
+			"amount": 3
+		},
+		{
+			"name": "spices",
+			"amount": 1
+		},
+		{
+			"name": "dairy",
+			"amount": 2
+		},
+		{
+			"name": "vegetables",
+			"amount": 5
+		},
+		{
+			"name": "sauces",
+			"amount": 2
+		}
+	
+	]
+}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
 	categories = load("res://Resources/categories.tres")
-	print(categories.categories)
 
-	for c in self.get_children():
-		for n in category_names:			
-			if c.get_name().find(n):
-				#c.get_child("Amount").text = categories[n]
-				print(c.get_name())
-			else:
-				print("Not a category")
+	#print(dummyData.categories[0]["amount"])
+	print(self.get_children())
+	for n in range(7):		
+		self.get_children()[n].get_node("Amount").text = str(dummyData.categories[n]["amount"])
+			#print(c.get_node("Amount").text)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
-func _on_button_pressed():
-	print("Button Pressed")
-	
-
-#TODO Create dummy data
 
 #TODO also a quick suggestion for after this all works. could it perhaps be a good idea to add a button to the side of the Food_items that when pressed lowers the amount and spawns a draggable version of the food item? 
