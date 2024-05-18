@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://e74i1rb7ug1c"]
+
+[ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="1_3o54e"]
+[ext_resource type="Script" path="res://Scripts/GUI/Draggable.gd" id="2_ea4le"]
+[ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="3_dcspc"]
+[ext_resource type="Texture2D" uid="uid://chb27ply6abwa" path="res://icon.svg" id="3_wwod3"]
+[ext_resource type="Script" path="res://Levels/DraggableSpawnerButton.gd" id="4_ej61w"]
+[ext_resource type="Texture2D" uid="uid://ciluhytnopxeh" path="res://Resources/Sprites/64x64_tile_counter.png" id="4_rn22v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2laaa"]
+size = Vector2(36, 36)
+
+[node name="LvlCookingTesting" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="Node2D"]
+z_index = -5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 719.0
+offset_bottom = 862.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="Node2D/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -236.0
+offset_right = 236.0
+offset_bottom = 231.0
+grow_horizontal = 2
+theme = ExtResource("1_3o54e")
+theme_override_font_sizes/font_size = 96
+text = "Cooking!"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Node2D/Control"]
+custom_minimum_size = Vector2(500, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -27.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 5.0
+
+[node name="Button" type="Button" parent="Node2D/Control"]
+layout_mode = 2
+offset_left = 548.0
+offset_top = 514.0
+offset_right = 593.0
+offset_bottom = 610.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "+"
+
+[node name="Button2" type="Button" parent="Node2D/Control"]
+layout_mode = 2
+offset_left = 110.0
+offset_top = 514.0
+offset_right = 155.0
+offset_bottom = 610.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "-"
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+texture_filter = 2
+offset_top = 1025.0
+offset_right = 719.0
+offset_bottom = 1281.0
+texture = ExtResource("4_rn22v")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_top = 1031.0
+offset_right = 719.0
+offset_bottom = 1247.0
+color = Color(0.184314, 0.184314, 0.184314, 0.733333)
+
+[node name="GridContainer" type="GridContainer" parent="Node2D/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Node2D/ColorRect/GridContainer"]
+custom_minimum_size = Vector2(162, 162)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_name = null
+button_name_localized = null
+button_icon = ExtResource("3_dcspc")
+
+[node name="FoodContainerElement" type="Node2D" parent="Node2D/ColorRect"]
+position = Vector2(-167, 50)
+
+[node name="Draggable" type="Area2D" parent="Node2D/ColorRect/FoodContainerElement" node_paths=PackedStringArray("parent")]
+show_behind_parent = true
+z_index = 200
+priority = 1
+script = ExtResource("2_ea4le")
+parent = NodePath("..")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/ColorRect/FoodContainerElement/Draggable"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_2laaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ColorRect/FoodContainerElement/Draggable"]
+position = Vector2(-64, -64)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_wwod3")
+centered = false
+offset = Vector2(15, 15)
+
+[node name="Label" type="Label" parent="Node2D/ColorRect/FoodContainerElement/Draggable"]
+z_index = 1970
+offset_top = 15.77
+offset_right = 64.0
+offset_bottom = 60.77
+theme_override_font_sizes/font_size = 32
+text = "x52"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button" to="Node2D/ColorRect/GridContainer/Button" method="_on_pressed"]
+[connection signal="body_entered" from="Node2D/ColorRect/FoodContainerElement/Draggable" to="Node2D/ColorRect/FoodContainerElement/Draggable" method="_on_body_entered"]
+[connection signal="input_event" from="Node2D/ColorRect/FoodContainerElement/Draggable" to="Node2D/ColorRect/FoodContainerElement/Draggable" method="_on_Draggable_input_event"]
