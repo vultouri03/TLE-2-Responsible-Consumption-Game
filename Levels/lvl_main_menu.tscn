@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk53fkdddvtth"]
+[gd_scene load_steps=7 format=3 uid="uid://dk53fkdddvtth"]
 
 [ext_resource type="Script" path="res://Levels/Scr_MainMenu.gd" id="1_2o3ry"]
 [ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="1_mgwjl"]
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="2_0lp8v"]
 [ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="2_ixhrg"]
+[ext_resource type="Script" path="res://getImageController.gd" id="2_wei2h"]
 [ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="3_526eh"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Root" type="Control" parent="."]
+[node name="Root" type="Control" parent="." node_paths=PackedStringArray("getImageController")]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -20,6 +21,7 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2o3ry")
+getImageController = NodePath("ImageCapture")
 
 [node name="VersionLabel" type="RichTextLabel" parent="Root"]
 layout_direction = 1
@@ -80,7 +82,7 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root"]
+[node name="VboxStart" type="VBoxContainer" parent="Root"]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 1
 anchors_preset = -1
@@ -93,17 +95,43 @@ offset_bottom = 108.0
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Start" type="Button" parent="Root/VBoxContainer"]
+[node name="Start" type="Button" parent="Root/VboxStart"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_ixhrg")
 text = "Start Game"
 
-[node name="Camera" type="Button" parent="Root/VBoxContainer"]
+[node name="VBoxSubMenu" type="VBoxContainer" parent="Root"]
+visible = false
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 0.9
+offset_left = 50.0
+offset_right = -50.0
+offset_bottom = 108.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Scan" type="Button" parent="Root/VBoxSubMenu"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_ixhrg")
-text = "Get Camera Permissions (Not Permitted)"
+text = "Scan Receipt (Camera & Gallery)"
+
+[node name="Continue" type="Button" parent="Root/VBoxSubMenu"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme = ExtResource("2_ixhrg")
+text = "Continue"
+
+[node name="Back" type="Button" parent="Root/VBoxSubMenu"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme = ExtResource("2_ixhrg")
+text = "Back"
 
 [node name="ColorRect" type="ColorRect" parent="Root"]
 z_index = -520
@@ -116,5 +144,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.384365, 0.262464, 0.269531, 1)
 
-[connection signal="pressed" from="Root/VBoxContainer/Start" to="Root" method="_on_start_pressed"]
-[connection signal="pressed" from="Root/VBoxContainer/Camera" to="Root" method="_on_camera_pressed"]
+[node name="ImageCapture" type="Node2D" parent="Root"]
+script = ExtResource("2_wei2h")
+
+[connection signal="pressed" from="Root/VboxStart/Start" to="Root" method="_on_start_pressed"]
+[connection signal="pressed" from="Root/VBoxSubMenu/Scan" to="Root" method="_on_scan_pressed"]
+[connection signal="pressed" from="Root/VBoxSubMenu/Continue" to="Root" method="_on_camera_pressed"]
+[connection signal="pressed" from="Root/VBoxSubMenu/Continue" to="Root" method="_on_continue_pressed"]
+[connection signal="pressed" from="Root/VBoxSubMenu/Back" to="Root" method="_on_back_pressed"]
