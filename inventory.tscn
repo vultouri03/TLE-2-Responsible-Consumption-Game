@@ -9,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 715.0
 offset_bottom = 1267.0
+mouse_filter = 1
 
 [node name="InventoryBackground" type="Sprite2D" parent="."]
 position = Vector2(359, 636)
