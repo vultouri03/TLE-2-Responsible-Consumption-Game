@@ -3,7 +3,7 @@ class_name Drop
 var class_object_name:String
 var draggable_to_monitor:Area2D
 @export var function_to_trigger:Signal
-
+var function_should_trigger_now = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -18,6 +18,9 @@ func _process(delta):
 			else:
 				draggable_to_monitor.queue_free()
 			function_to_trigger.emit()
+			function_should_trigger_now = true
+	else:
+		function_should_trigger_now = false
 	pass
 
 
