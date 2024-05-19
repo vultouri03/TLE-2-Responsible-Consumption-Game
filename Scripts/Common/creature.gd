@@ -21,6 +21,7 @@ func _ready():
 	sweet_spot = round(stomache_size/2)
 	hungry_level = round(sweet_spot/2)
 	print(hungry_level)
+	sprite.play("idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -61,4 +62,4 @@ func _on_droppable_exited(area):
 	if area.class_object_name != null: 
 		if area.class_object_name == "Draggable":
 			if (animating == false):
-				sprite.play("idle")
+				sprite.play("sad")

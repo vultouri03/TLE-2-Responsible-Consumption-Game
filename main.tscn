@@ -48,6 +48,6 @@ position = Vector2(632, 671)
 position = Vector2(276, 244)
 
 [node name="Creature" parent="." instance=ExtResource("6_olgh0")]
-position = Vector2(318, 833)
+position = Vector2(137, 641)
 
 [connection signal="button_down" from="Send To server" to="FetchCalls" method="_on_button_button_down"]
