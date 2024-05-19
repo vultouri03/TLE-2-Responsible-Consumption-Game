@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhseamkofouv6"]
+
+[ext_resource type="Script" path="res://inventory.gd" id="1_ku02y"]
+[ext_resource type="Texture2D" uid="uid://5tuwkeck4apa" path="res://Images/inventory_background.png" id="1_nxfvr"]
+[ext_resource type="PackedScene" uid="uid://cbtxc4ob32p8y" path="res://Category_UI_Node.tscn" id="2_6qtqs"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 715.0
+offset_bottom = 1267.0
+mouse_filter = 1
+
+[node name="InventoryBackground" type="Sprite2D" parent="."]
+position = Vector2(359, 636)
+scale = Vector2(1.6, 2.81333)
+texture = ExtResource("1_nxfvr")
+
+[node name="InventoryManager" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(-624, -317)
+script = ExtResource("1_ku02y")
+
+[node name="Wheats" parent="InventoryManager" instance=ExtResource("2_6qtqs")]
+position = Vector2(249, 191)
+
+[node name="Meat" parent="InventoryManager" instance=ExtResource("2_6qtqs")]
+position = Vector2(247, 311)
+frame = 1
+
+[node name="Drinks" parent="InventoryManager" instance=ExtResource("2_6qtqs")]
+position = Vector2(249, 449)
+frame = 2
+
+[node name="Spices" parent="InventoryManager" instance=ExtResource("2_6qtqs")]
+position = Vector2(247, 583)
+frame = 3
+
+[node name="Dairy" parent="InventoryManager" instance=ExtResource("2_6qtqs")]
+position = Vector2(249, 717)
+frame = 4
+
+[node name="Vegetables" parent="InventoryManager" instance=ExtResource("2_6qtqs")]
+position = Vector2(249, 858)
+frame = 5
+
+[node name="Sauces" parent="InventoryManager" instance=ExtResource("2_6qtqs")]
+position = Vector2(246, 998)
+frame = 6
+
+[connection signal="pressed" from="InventoryManager/Wheats/Button" to="InventoryManager" method="_on_button_pressed"]
+[connection signal="pressed" from="InventoryManager/Meat/Button" to="InventoryManager" method="_on_button_pressed"]
+
+[editable path="InventoryManager/Wheats"]
+[editable path="InventoryManager/Meat"]
+[editable path="InventoryManager/Drinks"]
+[editable path="InventoryManager/Spices"]
+[editable path="InventoryManager/Dairy"]
+[editable path="InventoryManager/Vegetables"]
+[editable path="InventoryManager/Sauces"]

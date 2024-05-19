@@ -4,11 +4,14 @@
 [ext_resource type="PackedScene" path="res://status_call.tscn" id="2_6be61"]
 [ext_resource type="PackedScene" path="res://getImage_node.tscn" id="3_0kkc1"]
 [ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="4_r04vp"]
+
+[ext_resource type="PackedScene" uid="uid://c4wesond3cbw" path="res://Scripts/Base/item_draggable_template.tscn" id="6_hrs0j"]
+[ext_resource type="PackedScene" uid="uid://dhseamkofouv6" path="res://inventory.tscn" id="7_c6t5p"]
+
 [ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="5_pfwch"]
 
 [ext_resource type="PackedScene" uid="uid://bfxslruj1hx8c" path="res://creature.tscn" id="6_olgh0"]
 [ext_resource type="PackedScene" uid="uid://c4wesond3cbw" path="res://Scripts/Base/item_draggable_template.tscn" id="7_qxd3n"]
-
 
 [node name="main" type="Node"]
 
@@ -33,6 +36,10 @@ position = Vector2(0, 304)
 [node name="Draggable" parent="." instance=ExtResource("4_r04vp")]
 position = Vector2(188, 837)
 
+
+[node name="Bread" parent="." instance=ExtResource("6_hrs0j")]
+position = Vector2(274, 807)
+
 [node name="Area2D" parent="." instance=ExtResource("5_pfwch")]
 position = Vector2(651, 924)
 
@@ -51,5 +58,8 @@ position = Vector2(276, 244)
 
 [node name="Creature" parent="." instance=ExtResource("6_olgh0")]
 position = Vector2(137, 641)
+
+
+[node name="Inventory" parent="." instance=ExtResource("7_c6t5p")]
 
 [connection signal="button_down" from="Send To server" to="FetchCalls" method="_on_button_button_down"]
