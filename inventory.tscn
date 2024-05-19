@@ -49,8 +49,6 @@ frame = 5
 position = Vector2(246, 998)
 frame = 6
 
-[node name="Area2D" type="Area2D" parent="InventoryManager"]
-
 [connection signal="pressed" from="InventoryManager/Wheats/Button" to="InventoryManager" method="_on_button_pressed"]
 [connection signal="pressed" from="InventoryManager/Meat/Button" to="InventoryManager" method="_on_button_pressed"]
 

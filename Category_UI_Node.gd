@@ -19,12 +19,13 @@ func _on_button_pressed():
 func _instantiateDraggable():
 
 	#Instantiate draggable item with the right image
-	var scene = preload("res://Scripts/GUI/Draggable.tscn")
+	var scene = preload("res://Scripts/Base/draggableItem.tscn")
 	var instance = scene.instantiate()
-	var textureToChange = instance.get_child(0).texture
+	var textureToChange = instance.get_child(1).texture
 
-	add_child(instance)
-
+	self.add_child(instance)
+	print(self.texture)
 	textureToChange = self.texture
-	textureToChange.texture.frame = self.texture.frame
+	textureToChange.texture.frame = self.get_frame()
+	
 	#This currently spawns the full image, but the image is animated and should spawn the right frame based on the one assigned on the parent
