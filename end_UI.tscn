@@ -1,0 +1,136 @@
+[gd_scene load_steps=3 format=3 uid="uid://rjl40d8v7eug"]
+
+[ext_resource type="Texture2D" uid="uid://b7pxwkp3bxrl" path="res://blank.jpg" id="1_5du67"]
+[ext_resource type="Script" path="res://end_UI.gd" id="1_x65uk"]
+
+[node name="end_UI" type="CanvasLayer"]
+script = ExtResource("1_x65uk")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5du67")
+
+[node name="Highscores" type="VBoxContainer" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Current Score" type="RichTextLabel" parent="Highscores"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]CURRENT SCORE : 100"
+
+[node name="Highscore title" type="RichTextLabel" parent="Highscores"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]HIGHESCORE"
+
+[node name="Hoghscore text 1" type="RichTextLabel" parent="Highscores"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]MJH 100"
+
+[node name="Hoghscore text 2" type="RichTextLabel" parent="Highscores"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]JCH 78"
+
+[node name="Hoghscore text 3" type="RichTextLabel" parent="Highscores"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]WJS 78"
+
+[node name="Tips" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="TextureRect" parent="Tips"]
+modulate = Color(0.47451, 1, 0.376471, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5du67")
+
+[node name="Tip Text" type="RichTextLabel" parent="Tips"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TIP: Maak een planning van wat je deze week ga eten"
+
+[node name="Tips Button" type="Button" parent="Tips"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "More tips"
+
+[node name="Retry Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 40)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_right = 200.0
+offset_bottom = -50.0
+grow_vertical = 0
+text = "RETRY"
+
+[node name="Quit Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 40)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -90.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "QUIT"
+
+[connection signal="pressed" from="Tips/Tips Button" to="." method="_on_tips_button_pressed"]
+[connection signal="pressed" from="Retry Button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Quit Button" to="." method="_on_quit_button_pressed"]
