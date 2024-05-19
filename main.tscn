@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" path="res://getImage_node.tscn" id="3_0kkc1"]
 [ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="4_r04vp"]
 [ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="5_pfwch"]
+
 [ext_resource type="PackedScene" uid="uid://bfxslruj1hx8c" path="res://creature.tscn" id="6_olgh0"]
 [ext_resource type="PackedScene" uid="uid://c4wesond3cbw" path="res://Scripts/Base/item_draggable_template.tscn" id="7_qxd3n"]
+
 
 [node name="main" type="Node"]
 

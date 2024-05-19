@@ -6,7 +6,7 @@ var item = itemDefinition.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	item._setVars(0001,"Chicken Powder Milk", 8, 1.5,GlobalVariables.unitOfMesurement.litres)
+	item._setVars(0001,"Chicken Powder Milk", 8, 1.5,Globalvars.unitOfMesurement.litres)
 	print(item.getName())
 	
 
