@@ -26,6 +26,6 @@ func _instantiateDraggable():
 	self.add_child(instance)
 	print(self.texture)
 	textureToChange = self.texture
-	textureToChange.texture.frame = self.get_frame()
+	#instance.get_child(1).animation.frame = self.get_frame()
 	
 	#This currently spawns the full image, but the image is animated and should spawn the right frame based on the one assigned on the parent
