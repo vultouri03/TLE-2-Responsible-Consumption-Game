@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cm1nhmsrndvq7"]
+
+[ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://Game_objects/Backend/fetch_calls.tscn" id="1_qqcco"]
+[ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://Game_objects/Backend/getImage_node.tscn" id="2_a87g7"]
+[ext_resource type="PackedScene" uid="uid://dnrb6tatd06p1" path="res://Game_objects/Backend/status_call.tscn" id="3_l2rm5"]
+[ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="4_8ojh6"]
+[ext_resource type="PackedScene" uid="uid://c4wesond3cbw" path="res://Scripts/Base/item_draggable_template.tscn" id="5_6u7yl"]
+[ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="6_fg7qb"]
+[ext_resource type="PackedScene" uid="uid://bfxslruj1hx8c" path="res://Game_objects/Prefabs/creature.tscn" id="7_6w1vy"]
+[ext_resource type="PackedScene" uid="uid://dhseamkofouv6" path="res://Game_objects/UI/inventory.tscn" id="8_784xm"]
+
+[node name="main" type="Node"]
+
+[node name="FetchCalls" parent="." instance=ExtResource("1_qqcco")]
+visible = false
+
+[node name="base_node2" parent="." instance=ExtResource("2_a87g7")]
+visible = false
+position = Vector2(-6, 10)
+
+[node name="Send To server" type="Button" parent="."]
+visible = false
+offset_top = 544.0
+offset_right = 720.0
+offset_bottom = 729.0
+text = "Send to server"
+
+[node name="Status_Call" parent="." instance=ExtResource("3_l2rm5")]
+visible = false
+position = Vector2(0, 304)
+
+[node name="Draggable" parent="." instance=ExtResource("4_8ojh6")]
+position = Vector2(188, 837)
+
+[node name="Bread" parent="." instance=ExtResource("5_6u7yl")]
+position = Vector2(274, 807)
+
+[node name="Area2D" parent="." instance=ExtResource("6_fg7qb")]
+position = Vector2(651, 924)
+
+[node name="Area2D2" parent="." instance=ExtResource("6_fg7qb")]
+position = Vector2(600, 944)
+
+[node name="Item" parent="." instance=ExtResource("5_6u7yl")]
+position = Vector2(238, 1054)
+scale = Vector2(0.44, 0.48)
+
+[node name="Item2" parent="." instance=ExtResource("5_6u7yl")]
+position = Vector2(632, 671)
+
+[node name="Item3" parent="." instance=ExtResource("5_6u7yl")]
+position = Vector2(276, 244)
+
+[node name="Creature" parent="." instance=ExtResource("7_6w1vy")]
+position = Vector2(137, 641)
+
+[node name="Inventory" parent="." instance=ExtResource("8_784xm")]
+
+[connection signal="button_down" from="Send To server" to="FetchCalls" method="_on_button_button_down"]

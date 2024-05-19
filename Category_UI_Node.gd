@@ -23,7 +23,7 @@ func _instantiateDraggable():
 	var root = get_tree().current_scene
 	print(root)
 	#Instantiate draggable item with the right image
-	var scene = preload("res://Scripts/Base/draggableItem.tscn")
+	var scene = preload("res://Game_objects/Prefabs/DraggableItem.tscn")
 	var instance = scene.instantiate()
 	var textureToChange = instance.get_child(1)
 	#sets the frame to the correct image
