@@ -1,5 +1,5 @@
 extends Node
-var webserver = "http://localhost:8000/"
+var webserver = "https://tle-2-receipt-scan-webservice.onrender.com/"
 var image_texture: Image
 var update_delay_tick = 2; #tick of 2 seconds
 var current_delay_tick = 0;
