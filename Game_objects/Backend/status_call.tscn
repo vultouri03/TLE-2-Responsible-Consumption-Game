@@ -25,5 +25,5 @@ text = "Fake slow server (off)"
 
 [connection signal="button_up" from="VBoxContainer/bt_send" to="." method="_on_bt_send_button_up"]
 [connection signal="button_up" from="VBoxContainer/bt_status" to="." method="_on_bt_status_button_up"]
-[connection signal="button_up" from="VBoxContainer/bt_fakeload" to="." method="_on_bt_fakeload_button_up"]
 [connection signal="button_up" from="VBoxContainer/bt_fakeload" to="." method="_on_bt_status_button_up"]
+[connection signal="button_up" from="VBoxContainer/bt_fakeload" to="." method="_on_bt_fakeload_button_up"]

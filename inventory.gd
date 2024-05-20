@@ -39,11 +39,18 @@ var dummyData = {
 func _ready():
 
 	categories = load("res://Resources/categories.tres")
-
+	
+	var responseBody = {"dairy":2,"meat":2,"drinks":3,"vegetables":5,"wheats":3,"spices":0,"sauces":0}
+	
+	
+		
+		#if (Globalvars.categories.categories[key] == responseBody[key][0]):
+			#Globalvars.categories.categories[key] == responseBody[key]
 	#print(dummyData.categories[0]["amount"])
 	print(self.get_children())
-	for n in range(7):		
-		self.get_children()[n].get_node("Amount").text = str(dummyData.categories[n]["amount"])
+	for n in range(7):	
+		if(Globalvars.categories != {}):	
+			self.get_children()[n].get_node("Amount").text = str(Globalvars.categories.categories[n]["amount"])
 			#print(c.get_node("Amount").text)
 	
 

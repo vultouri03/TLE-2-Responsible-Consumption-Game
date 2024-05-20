@@ -1,11 +1,15 @@
 extends Node
 
 @export var responseBody: Resource
-var file_path = 'res://Images/text_image_2.png'
+var file_path = 'res://Images/bonnetje.png'
 var url = Globalvars.webserver
 enum STATUS {SUCCESS, CLIENT_ERR, SERVER_ERR, NONE, FUNC_ERR}
 
 var requestStatus = STATUS.NONE
+
+var responseData = {}
+
+signal Response_Done
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -96,7 +100,13 @@ func _handleResponse(result, response_code, headers, body):
 
 #There's an error with the server's sending of data that causes this to return a 502
 	if responseBody:
-		responseBody.categories = JSON.parse_string(body.get_string_from_utf8())
+		
+		Globalvars.categories = JSON.parse_string(body.get_string_from_utf8())
+		#for key in Globalvars.categories:
+			#if (key.name == responseBody[key][0]):
+				#key.name == responseBody[key][1]
+		#print(Globalvars.categories)
+		Response_Done.emit()
 	$HTTPRequest.request_completed.disconnect(_handleResponse)	
 	
 
