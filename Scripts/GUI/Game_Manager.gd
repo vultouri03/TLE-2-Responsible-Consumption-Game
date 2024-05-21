@@ -12,7 +12,7 @@ enum States {Prep, Cooking, Feeding, Storage}
 
 @export var currentState : States 
 
-var turn : int = 0
+var turn : int = 1
 @export var gameOver : bool
 
 signal turn_switched
@@ -49,6 +49,7 @@ func _on_next_state_button_down():
 				#code to go to endScene
 				pass
 			else:
+				turn += 1
 				currentState = 0
 				load_state(prep, storage)
 			#connect this signal if you want values to change after a turn is over
