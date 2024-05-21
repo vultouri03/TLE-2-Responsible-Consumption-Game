@@ -21,7 +21,8 @@ func _ready():
 	sweet_spot = round(stomache_size/2)
 	hungry_level = round(sweet_spot/2)
 	print(hungry_level)
-	sprite.play("idle")
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,7 +31,7 @@ func _process(delta):
 func stomache_full():
 	if(times_fed == stomache_size):
 		if(droppable):
-			droppable.queue_free()
+			droppable.process_mode = Node.PROCESS_MODE_DISABLED
 		full = true
 		on_stomach_full.emit()
 		
@@ -63,3 +64,10 @@ func _on_droppable_exited(area):
 		if area.class_object_name == "Draggable":
 			if (animating == false):
 				sprite.play("sad")
+
+
+func _on_visibility_changed():
+	times_fed = 0
+	droppable.process_mode = Node.PROCESS_MODE_INHERIT
+	full = false
+	sprite.play("idle")
