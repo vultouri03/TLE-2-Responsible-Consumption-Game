@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4a1eu8t1na7m"]
 
-[ext_resource type="Texture2D" uid="uid://b7pxwkp3bxrl" path="res://blank.jpg" id="1_f6q22"]
+[ext_resource type="Texture2D" uid="uid://b7pxwkp3bxrl" path="res://Images/blank.jpg" id="1_f6q22"]
 [ext_resource type="Script" path="res://tips_ui.gd" id="1_w1utr"]
 
 [node name="tips_UI" type="CanvasLayer"]
@@ -38,14 +38,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 item_count = 1
 item_0/text = "Maak een planning van wat je deze week ga eten"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Label" type="Label" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 20.0
-offset_bottom = 72.0
+offset_bottom = 47.0
 grow_horizontal = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
-text = "[center]TIPS"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TIPS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
