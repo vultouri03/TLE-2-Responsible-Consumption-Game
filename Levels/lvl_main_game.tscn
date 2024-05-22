@@ -27,23 +27,44 @@ visible = false
 
 [node name="Inventory" parent="Prep" instance=ExtResource("2_adnww")]
 
+[node name="Wheats" parent="Prep/Inventory/InventoryManager" index="0"]
+baseExpiration = 3
+
 [node name="Description" parent="Prep/Inventory/InventoryManager/Wheats" index="0"]
 text = "Wheats"
+
+[node name="Meat" parent="Prep/Inventory/InventoryManager" index="1"]
+baseExpiration = 2
 
 [node name="Description" parent="Prep/Inventory/InventoryManager/Meat" index="0"]
 text = "Meat"
 
+[node name="Drinks" parent="Prep/Inventory/InventoryManager" index="2"]
+baseExpiration = 3
+
 [node name="Description" parent="Prep/Inventory/InventoryManager/Drinks" index="0"]
 text = "Drinks"
+
+[node name="Spices" parent="Prep/Inventory/InventoryManager" index="3"]
+baseExpiration = 4
 
 [node name="Description" parent="Prep/Inventory/InventoryManager/Spices" index="0"]
 text = "Spices"
 
+[node name="Dairy" parent="Prep/Inventory/InventoryManager" index="4"]
+baseExpiration = 2
+
 [node name="Description" parent="Prep/Inventory/InventoryManager/Dairy" index="0"]
 text = "Dairy"
 
+[node name="Vegetables" parent="Prep/Inventory/InventoryManager" index="5"]
+baseExpiration = 3
+
 [node name="Description" parent="Prep/Inventory/InventoryManager/Vegetables" index="0"]
 text = "Vegetables"
+
+[node name="Sauces" parent="Prep/Inventory/InventoryManager" index="6"]
+baseExpiration = 4
 
 [node name="Description" parent="Prep/Inventory/InventoryManager/Sauces" index="0"]
 text = "Sauces"
@@ -69,7 +90,6 @@ offset_bottom = 1172.0
 text = "Continue"
 
 [connection signal="turn_switched" from="Game_Manager" to="Prep/Inventory/InventoryManager" method="_on_game_manager_turn_switched"]
-[connection signal="button_down" from="Prep/Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Next State" to="Game_Manager" method="_on_next_state_button_down"]
 
 [editable path="Prep/Inventory"]

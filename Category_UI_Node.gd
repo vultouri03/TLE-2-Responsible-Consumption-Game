@@ -1,20 +1,23 @@
 extends Sprite2D
 
+@onready var amount = $Amount
+
+
 @export var baseExpiration : int
 var expiration = baseExpiration
 #Decrease the amount of items in the inventory
-var _amountText = self.get_node("Amount").text
-var _amount = int(_amountText)
+var _amount : int
+var _amountText : String
 
+func ready():
+	_amountText = amount.text
+	_amount = int(_amountText)
 
 func _on_button_pressed():
-	 
+
+	updateAmount()
+	
 	if _amount > 0:
-
-		var _amountString = str(_amount - 1)
-
-		self.get_node("Amount").text = _amountString
-
 		_instantiateDraggable()
 	
 
@@ -32,7 +35,15 @@ func _instantiateDraggable():
 	root.add_child(instance)
 
 
-func _on_visibility_changed():
+func updateExpiration():
 	if expiration <= 0:
 		_amount -= 1
 		expiration = baseExpiration
+		updateAmount()
+
+func updateAmount():
+	if _amount > 0:
+
+		var _amountString = str(_amount - 1)
+
+		self.get_node("Amount").text = _amountString
