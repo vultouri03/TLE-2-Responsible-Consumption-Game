@@ -61,3 +61,8 @@ func _process(delta):
 
 
 #TODO also a quick suggestion for after this all works. could it perhaps be a good idea to add a button to the side of the Food_items that when pressed lowers the amount and spawns a draggable version of the food item? 
+
+
+func _on_game_manager_turn_switched():
+	for n in range(7):	
+		self.get_children()[n].expiration -= 1

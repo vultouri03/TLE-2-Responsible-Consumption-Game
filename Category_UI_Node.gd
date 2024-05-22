@@ -1,14 +1,14 @@
 extends Sprite2D
 
-
+@export var baseExpiration : int
+var expiration = baseExpiration
+#Decrease the amount of items in the inventory
+var _amountText = self.get_node("Amount").text
+var _amount = int(_amountText)
 
 
 func _on_button_pressed():
 	 
-	#Decrease the amount of items in the inventory
-	var _amountText = self.get_node("Amount").text
-	var _amount = int(_amountText)
-
 	if _amount > 0:
 
 		var _amountString = str(_amount - 1)
@@ -30,9 +30,9 @@ func _instantiateDraggable():
 	textureToChange.frame = self.frame
 	instance.global_position = self.position
 	root.add_child(instance)
-	
-	
-	#this has now been fixed
-	#instance.get_child(1).animation.frame = self.get_frame()
-	
-	#This currently spawns the full image, but the image is animated and should spawn the right frame based on the one assigned on the parent
+
+
+func _on_visibility_changed():
+	if expiration <= 0:
+		_amount -= 1
+		expiration = baseExpiration
