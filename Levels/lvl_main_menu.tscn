@@ -149,6 +149,6 @@ script = ExtResource("2_wei2h")
 
 [connection signal="pressed" from="Root/VboxStart/Start" to="Root" method="_on_start_pressed"]
 [connection signal="pressed" from="Root/VBoxSubMenu/Scan" to="Root" method="_on_scan_pressed"]
-[connection signal="pressed" from="Root/VBoxSubMenu/Continue" to="Root" method="_on_continue_pressed"]
 [connection signal="pressed" from="Root/VBoxSubMenu/Continue" to="Root" method="_on_camera_pressed"]
+[connection signal="pressed" from="Root/VBoxSubMenu/Continue" to="Root" method="_on_continue_pressed"]
 [connection signal="pressed" from="Root/VBoxSubMenu/Back" to="Root" method="_on_back_pressed"]

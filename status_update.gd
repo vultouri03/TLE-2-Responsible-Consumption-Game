@@ -31,15 +31,17 @@ func _on_request_completed(result, response_code, headers, body):
 			requestStatus = STATUS.CLIENT_ERR
 		500:
 			requestStatus = STATUS.SERVER_ERR
-	print(headers)
-	print(result)
-	print(response_code)
+	#print(headers)
+	#print("result")
+	#print(result)
+	#
+	#print(response_code)
 	$HTTPRequest.request_completed.disconnect(completed_handle)
-	print(_get_request_status(requestStatus))
+	#print(_get_request_status(requestStatus))
 
 	var json = body.get_string_from_utf8()
-	print(json)
-
+	#print(json)
+	Globalvars.receipt_status = json
 	
 func _send_to_server(webserver_url,body_to_json_encode,function_to_do_after_request_completion):
 	completed_handle = function_to_do_after_request_completion
@@ -65,7 +67,7 @@ func _on_bt_send_button_up():
 
 
 func _on_bt_status_button_up():
-
+	print(Globalvars.user_hardware_id)
 	_send_to_server(webserver+"status",Globalvars.active_receipt,_on_request_completed)
 	pass
 
