@@ -1,7 +1,7 @@
 extends Node
 
 @export var responseBody: Resource
-var file_path = './Images/Banana.jpg'
+var file_path = 'res://Images/text_image_2.png'
 var url = Globalvars.webserver
 enum STATUS {SUCCESS, CLIENT_ERR, SERVER_ERR, NONE, FUNC_ERR}
 
@@ -21,13 +21,14 @@ func _process(delta):
 func _convert_to_base64():
 	
 	var image = Image.new()
-
-	if Globalvars.imagetexture == null:
+	var image_data
+	if Globalvars._get_image_texture() == null :
 		image.load(file_path)
-	else:
-		image.load(Globalvars.imageTexture)
+		Globalvars.image_texture = image
 
-	var image_data = image.save_jpg_to_buffer()
+	image_data = Globalvars._get_image_texture().save_jpg_to_buffer()
+
+	
 
 	#print(image_data)
 
@@ -36,13 +37,13 @@ func _convert_to_base64():
 	var _base_64_data = Marshalls.raw_to_base64(image_data)
 
 	var object = {
-		"id" : 0000,
+		"id" : Globalvars.active_receipt.id,
 		"image" : _base_64_data,
 	}
 
 	var json = JSON.stringify(object)
 
-	print(json)
+	#print(json)
 
 	_sendToServer(headers, json)
 
@@ -52,7 +53,12 @@ func _sendToServer(headers, json):
 
 	$HTTPRequest.request_completed.connect(_handleResponse)
 
-	$HTTPRequest.request(endPointUrl, headers, HTTPClient.METHOD_POST, json)
+	var error = $HTTPRequest.request(endPointUrl, headers, HTTPClient.METHOD_POST, json)
+	
+	if error != OK:
+			print(_get_request_status(STATUS.FUNC_ERR))
+	else:
+		pass
 	print("Requesting : "+ endPointUrl)
 
 func _get_request_status(status):
@@ -69,6 +75,7 @@ func _get_request_status(status):
 			return "There's a software issue."
 
 func _handleResponse(result, response_code, headers, body):
+	print(response_code)
 	match response_code:
 		200:
 			requestStatus = STATUS.SUCCESS
@@ -77,6 +84,7 @@ func _handleResponse(result, response_code, headers, body):
 		500:
 			print('Internal Server Error')
 	
+	#Turn these prints off eventually when done debugging because they output a massive base64 log that overflows the console. 
 	print(headers)
 	print(result)
 	print(response_code)
@@ -86,9 +94,10 @@ func _handleResponse(result, response_code, headers, body):
 	print(body.get_string_from_utf8())
 	print(responseBody)
 
+#There's an error with the server's sending of data that causes this to return a 502
 	if responseBody:
 		responseBody.categories = JSON.parse_string(body.get_string_from_utf8())
-		
+	$HTTPRequest.request_completed.disconnect(_handleResponse)	
 	
 
 	

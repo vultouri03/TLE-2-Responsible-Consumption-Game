@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbtxc4ob32p8y"]
+
+[ext_resource type="Texture2D" uid="uid://deveimd1lbsq2" path="res://Images/Category_items.png" id="1_kg65f"]
+[ext_resource type="Script" path="res://Category_UI_Node.gd" id="2_dt64w"]
+
+[node name="Food_item" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(353, 210)
+scale = Vector2(0.271111, 0.266667)
+texture = ExtResource("1_kg65f")
+hframes = 7
+script = ExtResource("2_dt64w")
+
+[node name="Description" type="RichTextLabel" parent="."]
+offset_left = 486.885
+offset_top = -41.25
+offset_right = 1010.89
+offset_bottom = 168.75
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "Description"
+
+[node name="Amount" type="RichTextLabel" parent="."]
+offset_left = 1220.9
+offset_top = -30.0
+offset_right = 1744.9
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "0
+"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -737.705
+offset_top = -74.9999
+offset_right = -398.705
+offset_bottom = 97.0001
+theme_override_font_sizes/font_size = 72
+text = "Get"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

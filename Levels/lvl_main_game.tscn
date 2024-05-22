@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://b426l4ig6xuvw"]
+
+[ext_resource type="Script" path="res://Levels/Scr_main_game.gd" id="1_3q607"]
+[ext_resource type="PackedScene" uid="uid://dhseamkofouv6" path="res://Game_objects/UI/inventory.tscn" id="2_adnww"]
+[ext_resource type="Script" path="res://Scripts/GUI/Game_Manager.gd" id="2_nr60u"]
+[ext_resource type="PackedScene" uid="uid://bfxslruj1hx8c" path="res://Game_objects/Prefabs/creature.tscn" id="3_b3rqk"]
+
+[node name="LvlMainGame" type="Node2D"]
+script = ExtResource("1_3q607")
+
+[node name="Game_Manager" type="Node" parent="."]
+script = ExtResource("2_nr60u")
+
+[node name="Feeding" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Creature" parent="Feeding" instance=ExtResource("3_b3rqk")]
+position = Vector2(604, 387)
+
+[node name="Creature2" parent="Feeding" instance=ExtResource("3_b3rqk")]
+position = Vector2(557, 72.0001)
+
+[node name="Prep" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Inventory" parent="Prep" instance=ExtResource("2_adnww")]
+
+[node name="Button" type="Button" parent="Prep"]
+offset_right = 137.0
+offset_bottom = 31.0
+text = "Toggle inventory"
+
+[node name="Cooking" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Storage" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Next State" type="Button" parent="."]
+offset_left = 305.0
+offset_top = 1141.0
+offset_right = 384.0
+offset_bottom = 1172.0
+text = "Continue"
+
+[connection signal="pressed" from="Prep/Inventory/InventoryManager/Wheats/Button" to="Prep/Inventory/InventoryManager" method="_on_button_pressed"]
+[connection signal="pressed" from="Prep/Inventory/InventoryManager/Meat/Button" to="Prep/Inventory/InventoryManager" method="_on_button_pressed"]
+[connection signal="button_down" from="Prep/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Next State" to="Game_Manager" method="_on_next_state_button_down"]
+
+[editable path="Prep/Inventory"]
+[editable path="Prep/Inventory/InventoryManager/Wheats"]
+[editable path="Prep/Inventory/InventoryManager/Meat"]
+[editable path="Prep/Inventory/InventoryManager/Drinks"]
+[editable path="Prep/Inventory/InventoryManager/Spices"]
+[editable path="Prep/Inventory/InventoryManager/Dairy"]
+[editable path="Prep/Inventory/InventoryManager/Vegetables"]
+[editable path="Prep/Inventory/InventoryManager/Sauces"]
