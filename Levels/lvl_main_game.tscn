@@ -47,8 +47,6 @@ offset_right = 384.0
 offset_bottom = 1172.0
 text = "Continue"
 
-[connection signal="pressed" from="Prep/Inventory/InventoryManager/Wheats/Button" to="Prep/Inventory/InventoryManager" method="_on_button_pressed"]
-[connection signal="pressed" from="Prep/Inventory/InventoryManager/Meat/Button" to="Prep/Inventory/InventoryManager" method="_on_button_pressed"]
 [connection signal="button_down" from="Prep/Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Next State" to="Game_Manager" method="_on_next_state_button_down"]
 
