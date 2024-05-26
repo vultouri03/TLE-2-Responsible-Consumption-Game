@@ -14,19 +14,30 @@ func _on_request_send():
 
 func _process(delta):
 	var status = JSON.parse_string(Globalvars.receipt_status)
-	match status:
-		"CONNECTING":
-			progress_bar.value = 0
-			text.text = "hello world"
-		"NONE":
-			progress_bar.value = 12.5
-		"PROCESSING":
-			progress_bar.value = 25
-		"CLASSIFYING":
-			progress_bar.value = 50
-		"CATEGORIZING":
-			progress_bar.value = 75
-		"SUCCESS":
-			progress_bar.value = 100
-			status_timer.stop()
-		
+	if ui.visible == false:
+		match status:
+			"CONNECTING":
+				progress_bar.value = 0
+				text.text = "[center]Connecting to the server"
+			"NONE":
+				progress_bar.value = 12.5
+				text.text = "[center]Received receipt on the server"
+			"PROCESSING":
+				progress_bar.value = 25
+				text.text = "[center]Processing receipt"
+			"CLASSIFYING":
+				progress_bar.value = 50
+				text.text = "[center]Classifying receipt text"
+			"CATEGORIZING":
+				progress_bar.value = 75
+				"[center]Categorizing items"
+			"SUCCESS":
+				progress_bar.value = 100
+				text.text = "[center]Request completed"
+				status_timer.stop()
+			
+
+
+func _on_progress_bar_value_changed(value):
+	if value == 100:
+		get_tree().change_scene_to_file("res://Levels/lvl_main_game.tscn")
