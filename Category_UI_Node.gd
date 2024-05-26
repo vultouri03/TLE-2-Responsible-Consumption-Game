@@ -21,6 +21,8 @@ func _on_button_pressed():
 	print("button pressed")
 	
 	if _amount > 0:
+		if expiration == 1:
+			expiration = baseExpiration
 		_instantiateDraggable()
 		updateAmount()
 	

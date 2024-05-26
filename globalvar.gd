@@ -7,6 +7,7 @@ var can_update_now = false;
 var user_hardware_id = OS.get_unique_id()
 var active_receipt = {"id":0,"image":""}
 enum unitOfMesurement {litres,millilitres,grams,kilograms}
+#added dummy data into here so you don't need to call the api to test
 var categories = {"categories": [
 		{
 			"name": "wheats",
@@ -38,7 +39,6 @@ var categories = {"categories": [
 		}
 	
 	]}
-var turnSwitched : bool = false
 
 func _ready():
 	active_receipt.id = user_hardware_id;

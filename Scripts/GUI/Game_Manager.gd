@@ -13,6 +13,7 @@ enum States {Prep, Cooking, Feeding, Storage}
 @export var currentState : States 
 
 var turn : int = 1
+#makes sure that the turn switch is not called on game start
 var gameStarted = false
 @export var gameOver : bool
 
@@ -56,6 +57,7 @@ func _on_next_state_button_down():
 				load_state(prep, storage)
 			#connect this signal if you want values to change after a turn is over
 			if gameStarted:
+				#actually emited the signal this time
 				turn_switched.emit()
 			else:
 				gameStarted = true

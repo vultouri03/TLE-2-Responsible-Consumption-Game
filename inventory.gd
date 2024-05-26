@@ -53,13 +53,14 @@ func _ready():
 	print(self.get_children())
 	for n in range(7):	
 		if(Globalvars.categories != {}):	
-			print(Globalvars.categories.categories[n]["amount"])
+			#changed the amount here because this gets called after _ready which prevented the amount being set in category ui node
 			self.get_children()[n]._amount = Globalvars.categories.categories[n]["amount"]
 			self.get_children()[n].get_node("Amount").text = str(Globalvars.categories.categories[n]["amount"])
 			#print(c.get_node("Amount").text)
 
 
 func _on_game_manager_turn_switched():
+	#temp print to check if the signal worked
 	print("turn has switched")
 	for n in range(7):	
 		self.get_children()[n].expiration -= 1
