@@ -53,11 +53,14 @@ func _ready():
 	print(self.get_children())
 	for n in range(7):	
 		if(Globalvars.categories != {}):	
+			print(Globalvars.categories.categories[n]["amount"])
+			self.get_children()[n]._amount = Globalvars.categories.categories[n]["amount"]
 			self.get_children()[n].get_node("Amount").text = str(Globalvars.categories.categories[n]["amount"])
 			#print(c.get_node("Amount").text)
 
 
 func _on_game_manager_turn_switched():
+	print("turn has switched")
 	for n in range(7):	
 		self.get_children()[n].expiration -= 1
 		print(self.get_children()[n].expiration)

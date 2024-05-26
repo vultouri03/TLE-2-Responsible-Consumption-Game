@@ -4,21 +4,25 @@ extends Sprite2D
 
 
 @export var baseExpiration : int
-var expiration = baseExpiration
+var expiration : int
 #Decrease the amount of items in the inventory
 var _amount : int
 var _amountText : String
 
-func ready():
+#chaneged ready to _ready to make it work on initialization
+func _ready():
 	_amountText = amount.text
 	_amount = int(_amountText)
+	expiration = baseExpiration
+	print("expiration is")
+	print(expiration)
 
 func _on_button_pressed():
-
-	updateAmount()
+	print("button pressed")
 	
 	if _amount > 0:
 		_instantiateDraggable()
+		updateAmount()
 	
 
 
@@ -36,14 +40,18 @@ func _instantiateDraggable():
 
 
 func updateExpiration():
+	
 	if expiration <= 0:
-		_amount -= 1
+		print("product expired")
+		#removed _amount -= 1 which set the amount to zero which prevented it from updating
 		expiration = baseExpiration
 		updateAmount()
+		
 
 func updateAmount():
 	if _amount > 0:
-
-		var _amountString = str(_amount - 1)
+		#added this to better update the actual amount
+		_amount -= 1
+		var _amountString = str(_amount)
 
 		self.get_node("Amount").text = _amountString
