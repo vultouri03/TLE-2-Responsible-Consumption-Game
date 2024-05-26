@@ -33,6 +33,9 @@ baseExpiration = 3
 [node name="Description" parent="Prep/Inventory/InventoryManager/Wheats" index="0"]
 text = "Wheats"
 
+[node name="Amount" parent="Prep/Inventory/InventoryManager/Wheats" index="1"]
+modulate = Color(1, 0.831373, 0, 1)
+
 [node name="Meat" parent="Prep/Inventory/InventoryManager" index="1"]
 baseExpiration = 2
 

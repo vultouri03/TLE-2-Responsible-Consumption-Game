@@ -3,19 +3,31 @@ extends Sprite2D
 @onready var amount = $Amount
 
 
+@onready var description = $Description
+
 @export var baseExpiration : int
 var expiration : int
+var category_name : String
 #Decrease the amount of items in the inventory
 var _amount : int
 var _amountText : String
 
 #chaneged ready to _ready to make it work on initialization
 func _ready():
-	_amountText = amount.text
-	_amount = int(_amountText)
+	category_name = description.text
 	expiration = baseExpiration
 	print("expiration is")
 	print(expiration)
+	
+func _process(delta):
+	if expiration == 1 and _amount > 0:
+		amount.modulate = "#ffd400"
+		description.text = "About to expire"
+	elif _amount == 0:
+		amount.modulate = ""
+	else:
+		amount.modulate = "#ffffff"
+		description.text = category_name
 
 func _on_button_pressed():
 	print("button pressed")
@@ -23,6 +35,8 @@ func _on_button_pressed():
 	if _amount > 0:
 		if expiration == 1:
 			expiration = baseExpiration
+			amount.modulate = "#ffffff"
+			description.text = category_name
 		_instantiateDraggable()
 		updateAmount()
 	
