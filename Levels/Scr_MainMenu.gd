@@ -36,7 +36,8 @@ func _on_start_pressed():
 
 func _on_camera_pressed():
 	print("Camera button pressed")
-	_getImagePermissions()
+	#_getImagePermissions()
+	
 	
 	pass # Replace with function body.
 
@@ -52,7 +53,8 @@ func _on_continue_pressed():
 
 
 func _on_scan_pressed():
-	getImageController._get_camera_image()
+	#getImageController._get_camera_image()
+	get_tree().change_scene_to_file("res://Game_objects/test.tscn")
 	pass # Replace with function body.
 
 

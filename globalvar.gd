@@ -4,9 +4,42 @@ var image_texture: Image
 var update_delay_tick = 2; #tick of 2 seconds
 var current_delay_tick = 0;
 var can_update_now = false;
+var receipt_status = JSON.stringify("CONNECTING")
 var user_hardware_id = OS.get_unique_id()
 var active_receipt = {"id":0,"image":""}
 enum unitOfMesurement {litres,millilitres,grams,kilograms}
+#added dummy data into here so you don't need to call the api to test
+var categories = {"categories": [
+		{
+			"name": "wheats",
+			"amount": 1
+		},
+		{
+			"name": "meat",
+			"amount": 1
+		},
+		{
+			"name": "drinks",
+			"amount": 3
+		},
+		{
+			"name": "spices",
+			"amount": 1
+		},
+		{
+			"name": "dairy",
+			"amount": 2
+		},
+		{
+			"name": "vegetables",
+			"amount": 5
+		},
+		{
+			"name": "sauces",
+			"amount": 2
+		}
+	
+	]}
 
 func _ready():
 	active_receipt.id = user_hardware_id;

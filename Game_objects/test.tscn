@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm1nhmsrndvq7"]
+
+[ext_resource type="Script" path="res://Game_objects/test.gd" id="1_7o1ss"]
+[ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://Game_objects/Backend/fetch_calls.tscn" id="1_phs1x"]
+[ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://Game_objects/Backend/getImage_node.tscn" id="3_8dc4g"]
+[ext_resource type="PackedScene" uid="uid://dnrb6tatd06p1" path="res://Game_objects/Backend/status_call.tscn" id="4_gheqq"]
+
+[node name="test" type="Node"]
+script = ExtResource("1_7o1ss")
+
+[node name="FetchCalls" parent="." instance=ExtResource("1_phs1x")]
+
+[node name="getImage_node" parent="." instance=ExtResource("3_8dc4g")]
+position = Vector2(-2, 242)
+
+[node name="Status_Call" parent="." instance=ExtResource("4_gheqq")]
+position = Vector2(-3, 577)
+
+[connection signal="Response_Done" from="FetchCalls" to="." method="_on_fetch_calls_response_done"]

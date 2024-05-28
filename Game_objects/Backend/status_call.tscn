@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnrb6tatd06p1"]
+[gd_scene load_steps=3 format=3 uid="uid://dnrb6tatd06p1"]
 
 [ext_resource type="Script" path="res://status_update.gd" id="1_8imhb"]
+[ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="2_c0plb"]
 
 [node name="Status_Call" type="Node2D"]
 script = ExtResource("1_8imhb")
@@ -10,14 +11,18 @@ offset_right = 712.0
 offset_bottom = 120.0
 
 [node name="bt_send" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Send Reciept Image (Fake) "
 
 [node name="bt_status" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
+theme = ExtResource("2_c0plb")
 text = "Get Reciept Status"
 
 [node name="bt_fakeload" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Fake slow server (off)"
 
