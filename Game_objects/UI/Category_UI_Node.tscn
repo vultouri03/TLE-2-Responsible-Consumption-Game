@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbtxc4ob32p8y"]
+[gd_scene load_steps=4 format=3 uid="uid://cbtxc4ob32p8y"]
 
 [ext_resource type="Texture2D" uid="uid://deveimd1lbsq2" path="res://Images/Category_items.png" id="1_kg65f"]
 [ext_resource type="Script" path="res://Category_UI_Node.gd" id="2_dt64w"]
+[ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="3_ug4h3"]
 
 [node name="Food_item" type="Sprite2D"]
 texture_filter = 1
@@ -35,7 +36,9 @@ offset_left = -737.705
 offset_top = -74.9999
 offset_right = -398.705
 offset_bottom = 97.0001
+theme = ExtResource("3_ug4h3")
 theme_override_font_sizes/font_size = 72
 text = "Get"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

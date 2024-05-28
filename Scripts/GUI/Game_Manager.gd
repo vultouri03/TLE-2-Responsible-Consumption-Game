@@ -13,7 +13,10 @@ enum States {Prep, Cooking, Feeding, Storage}
 @export var currentState : States 
 
 var turn : int = 1
+#makes sure that the turn switch is not called on game start
+var gameStarted = false
 @export var gameOver : bool
+
 
 signal turn_switched
 
@@ -24,6 +27,7 @@ func _ready():
 	else:
 		currentState = 3
 	_on_next_state_button_down()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +48,6 @@ func _on_next_state_button_down():
 			currentState = 3
 			load_state(storage, feeding)
 		States.Storage:
-			turn_switched.emit()
 			if(gameOver):
 				#code to go to endScene
 				pass
@@ -53,7 +56,11 @@ func _on_next_state_button_down():
 				currentState = 0
 				load_state(prep, storage)
 			#connect this signal if you want values to change after a turn is over
-			
+			if gameStarted:
+				#actually emited the signal this time
+				turn_switched.emit()
+			else:
+				gameStarted = true
 
 func load_state(newState : Node2D, oldState : Node2D):
 	oldState.visible = false

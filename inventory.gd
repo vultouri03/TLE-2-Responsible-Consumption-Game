@@ -2,6 +2,8 @@ extends Control
 
 @export var categories : Resource
 
+signal on_turn_changed
+
 var dummyData = {
 	"categories": [
 		{
@@ -35,6 +37,7 @@ var dummyData = {
 	
 	]
 }
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
@@ -50,14 +53,16 @@ func _ready():
 	print(self.get_children())
 	for n in range(7):	
 		if(Globalvars.categories != {}):	
+			#changed the amount here because this gets called after _ready which prevented the amount being set in category ui node
+			self.get_children()[n]._amount = Globalvars.categories.categories[n]["amount"]
 			self.get_children()[n].get_node("Amount").text = str(Globalvars.categories.categories[n]["amount"])
 			#print(c.get_node("Amount").text)
-	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-#TODO also a quick suggestion for after this all works. could it perhaps be a good idea to add a button to the side of the Food_items that when pressed lowers the amount and spawns a draggable version of the food item? 
+func _on_game_manager_turn_switched():
+	#temp print to check if the signal worked
+	print("turn has switched")
+	for n in range(7):	
+		self.get_children()[n].expiration -= 1
+		print(self.get_children()[n].expiration)
+		self.get_children()[n].updateExpiration()
