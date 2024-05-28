@@ -25,6 +25,7 @@ func _process(delta):
 		description.text = "About to expire"
 	elif _amount == 0:
 		amount.modulate = ""
+		description.text = category_name
 	else:
 		amount.modulate = "#ffffff"
 		description.text = category_name

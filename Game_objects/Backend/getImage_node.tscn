@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://grqcbshpkt7u"]
+[gd_scene load_steps=4 format=3 uid="uid://grqcbshpkt7u"]
 
 [ext_resource type="Script" path="res://getImageController.gd" id="1_1s5vq"]
+[ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="2_rjhbc"]
 
 [sub_resource type="Theme" id="Theme_ut6tk"]
 
 [node name="getImage_node" type="Node2D"]
 script = ExtResource("1_1s5vq")
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_top = 768.0
@@ -41,6 +43,7 @@ theme_override_constants/separation = 10
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_rjhbc")
 action_mode = 0
 text = "Get Picture From Gallery
 "
@@ -49,6 +52,7 @@ text = "Get Picture From Gallery
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_rjhbc")
 action_mode = 0
 text = "Take Picture from Camera
 "
