@@ -17,7 +17,7 @@ func _process(delta):
 	if ui.visible == false:
 		match status:
 			"STATUS_ERROR":
-				progress_bar.valye = 0
+				progress_bar.value = 0
 				text.text ="[center]Something went wrong with the status server, request might still go through"
 			"ERROR":
 				progress_bar.value = 0
