@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://clhn80pspsa05"]
+
+[ext_resource type="Script" path="res://Levels/lvl_http_menu.gd" id="1_dlx7u"]
+[ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://Game_objects/Backend/fetch_calls.tscn" id="1_qy7hh"]
+[ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://Game_objects/Backend/getImage_node.tscn" id="2_7cs7u"]
+[ext_resource type="Texture2D" uid="uid://df7b00u842jgw" path="res://Images/Backgrounds/bg_loading.png" id="2_fka5n"]
+[ext_resource type="PackedScene" uid="uid://dnrb6tatd06p1" path="res://Game_objects/Backend/status_call.tscn" id="4_x61de"]
+[ext_resource type="StyleBox" uid="uid://dhqkod0n2143i" path="res://Themes/BB_Style_Box_Flat.tres" id="5_ijhbm"]
+[ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="6_ejk0n"]
+[ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="6_n8gj5"]
+
+[sub_resource type="Theme" id="Theme_02l3q"]
+default_font = ExtResource("6_ejk0n")
+ProgressBar/styles/fill = ExtResource("5_ijhbm")
+
+[node name="LvlHttpMenu" type="Node2D"]
+script = ExtResource("1_dlx7u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(362.448, 641.757)
+texture = ExtResource("2_fka5n")
+
+[node name="UI" type="Node2D" parent="."]
+position = Vector2(0, 718.126)
+
+[node name="Status_Call" parent="UI" instance=ExtResource("4_x61de")]
+visible = false
+
+[node name="getImage_node" parent="UI" instance=ExtResource("2_7cs7u")]
+
+[node name="FetchCalls" parent="UI" instance=ExtResource("1_qy7hh")]
+position = Vector2(0, 367.987)
+
+[node name="TEXT" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(720, 25)
+offset_top = 463.0
+offset_right = 720.0
+offset_bottom = 499.0
+theme = ExtResource("6_n8gj5")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]Use your own receipt or send some premade data to the server"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(720, 100)
+offset_top = 525.757
+offset_right = 720.0
+offset_bottom = 625.757
+theme = SubResource("Theme_02l3q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+rounded = true
+
+[node name="Status Timer" type="Timer" parent="."]
+wait_time = 3.5
+
+[connection signal="button_up" from="UI/FetchCalls/Button" to="." method="_on_request_send"]
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]
+[connection signal="timeout" from="Status Timer" to="." method="_on_status_timer_timeout"]
+[connection signal="timeout" from="Status Timer" to="UI/Status_Call" method="_on_bt_status_button_up"]
+
+[editable path="UI/FetchCalls"]
