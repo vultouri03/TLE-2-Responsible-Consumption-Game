@@ -2,6 +2,8 @@ extends Area2D
 class_name Drop
 var class_object_name:String
 var draggable_to_monitor:Area2D
+
+var function_should_trigger_now = false
 signal function_to_trigger
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +20,9 @@ func _process(delta):
 			else:
 				draggable_to_monitor.queue_free()
 			function_to_trigger.emit()
+			function_should_trigger_now = true
+	else:
+		function_should_trigger_now = false
 	pass
 
 

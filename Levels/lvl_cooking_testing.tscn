@@ -1,0 +1,202 @@
+[gd_scene load_steps=14 format=3 uid="uid://e74i1rb7ug1c"]
+
+[ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="1_3o54e"]
+[ext_resource type="Script" path="res://Scripts/GUI/Draggable.gd" id="2_ea4le"]
+[ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="3_dcspc"]
+[ext_resource type="Texture2D" uid="uid://chb27ply6abwa" path="res://icon.svg" id="3_wwod3"]
+[ext_resource type="Script" path="res://Levels/DraggableSpawnerButton.gd" id="4_ej61w"]
+[ext_resource type="Texture2D" uid="uid://ciluhytnopxeh" path="res://Resources/Sprites/64x64_tile_counter.png" id="4_rn22v"]
+[ext_resource type="Script" path="res://Scripts/Common/milk.gd" id="6_l4kvw"]
+[ext_resource type="Script" path="res://Scripts/GUI/Drop.gd" id="7_u74d5"]
+[ext_resource type="Script" path="res://Levels/Oven.gd" id="8_4n60e"]
+[ext_resource type="Texture2D" uid="uid://cw6o8noh0h4nk" path="res://Resources/Sprites/OvenPlaceholder.png" id="8_h615c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8yf0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2laaa"]
+size = Vector2(36, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnavw"]
+
+[node name="LvlCookingTesting" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="Node2D"]
+z_index = -5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 719.0
+offset_bottom = 785.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="Node2D/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -236.0
+offset_right = 236.0
+offset_bottom = 231.0
+grow_horizontal = 2
+theme = ExtResource("1_3o54e")
+theme_override_font_sizes/font_size = 96
+text = "Cooking!"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Node2D/Control"]
+custom_minimum_size = Vector2(500, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -64.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_q8yf0")
+step = 5.0
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+texture_filter = 2
+offset_top = 1025.0
+offset_right = 719.0
+offset_bottom = 1281.0
+texture = ExtResource("4_rn22v")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_top = 1031.0
+offset_right = 719.0
+offset_bottom = 1247.0
+color = Color(0.184314, 0.184314, 0.184314, 0.733333)
+
+[node name="GridContainer" type="GridContainer" parent="Node2D/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 16
+columns = 5
+
+[node name="Button" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button2" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button3" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button4" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button5" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="FoodContainerElement" type="Node2D" parent="Node2D/ColorRect"]
+position = Vector2(-167, 50)
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+
+[node name="Draggable" type="Area2D" parent="." node_paths=PackedStringArray("parent")]
+show_behind_parent = true
+z_index = 200
+position = Vector2(-922, 1282)
+priority = 1
+script = ExtResource("2_ea4le")
+parent = NodePath(".")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_2laaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_wwod3")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="Label" type="Label" parent="Draggable"]
+z_index = 1970
+offset_top = 15.77
+offset_right = 64.0
+offset_bottom = 60.77
+theme_override_font_sizes/font_size = 32
+text = "x52"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cooking" type="Node2D" parent="." node_paths=PackedStringArray("drop", "progressBar")]
+script = ExtResource("8_4n60e")
+drop = NodePath("Oven")
+progressBar = NodePath("../Node2D/Control/ProgressBar")
+
+[node name="Oven" type="Area2D" parent="Cooking"]
+z_index = 50
+position = Vector2(360, 500)
+script = ExtResource("7_u74d5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cooking/Oven"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_hnavw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cooking/Oven"]
+position = Vector2(-0.999987, 0.500012)
+scale = Vector2(1.17969, 1.16797)
+texture = ExtResource("8_h615c")
+
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button" to="Node2D/ColorRect/GridContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button2" to="Node2D/ColorRect/GridContainer/Button2" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button3" to="Node2D/ColorRect/GridContainer/Button3" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button4" to="Node2D/ColorRect/GridContainer/Button4" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button5" to="Node2D/ColorRect/GridContainer/Button5" method="_on_pressed"]
+[connection signal="body_entered" from="Draggable" to="Draggable" method="_on_body_entered"]
+[connection signal="input_event" from="Draggable" to="Draggable" method="_on_Draggable_input_event"]
+[connection signal="area_entered" from="Cooking/Oven" to="Cooking/Oven" method="_on_area_entered"]
+[connection signal="area_exited" from="Cooking/Oven" to="Cooking/Oven" method="_on_area_exited"]
+[connection signal="body_entered" from="Cooking/Oven" to="Cooking/Oven" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Cooking/Oven" to="Cooking/Oven" method="_on_body_shape_entered"]

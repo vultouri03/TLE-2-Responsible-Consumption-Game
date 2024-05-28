@@ -29,8 +29,20 @@ func _ready():
 	if parent == null:
 		parent = self
 	pass # Replace with function body.
-
-
+func _setDragged():
+	var auto_drag  = InputEventAction.new()
+	auto_drag.action = "ui_touch"
+	auto_drag.pressed = true
+	Input.parse_input_event(auto_drag)
+	
+	#sets the draggable's stats but overrides the parent to be self to avoid duplication errors
+func _setStats(label_name,sprite_img): 
+	parent = self
+	if get_node("Label"):
+		get_node("Label").text = label_name
+	if get_node("Sprite2D"):
+		get_node("Sprite2D").texture = sprite_img
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
