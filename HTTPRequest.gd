@@ -97,6 +97,9 @@ func _handleResponse(result, response_code, headers, body):
 
 	print(body.get_string_from_utf8())
 	print(responseBody)
+	
+	if response_code != 200:
+		Globalvars.receipt_status = JSON.stringify("ERROR")
 
 #There's an error with the server's sending of data that causes this to return a 502
 	if responseBody:
@@ -108,10 +111,6 @@ func _handleResponse(result, response_code, headers, body):
 		#print(Globalvars.categories)
 		Response_Done.emit()
 	$HTTPRequest.request_completed.disconnect(_handleResponse)	
-	
-
-	
-
 
 func _on_button_button_down():
 	_convert_to_base64()

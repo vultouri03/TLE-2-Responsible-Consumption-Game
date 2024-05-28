@@ -54,6 +54,7 @@ func _send_to_server(webserver_url,body_to_json_encode,function_to_do_after_requ
 	
 	if error != OK:
 			print(_get_request_status(STATUS.FUNC_ERR))
+			Globalvars.receipt_status = JSON.stringify("STATUS_ERROR")
 	else:
 		pass
 

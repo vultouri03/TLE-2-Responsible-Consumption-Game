@@ -33,6 +33,7 @@ visible = false
 [node name="Inventory" parent="Prep" instance=ExtResource("2_adnww")]
 
 [node name="Button" type="Button" parent="Prep"]
+visible = false
 offset_right = 137.0
 offset_bottom = 31.0
 text = "Toggle inventory"

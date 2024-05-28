@@ -16,6 +16,12 @@ func _process(delta):
 	var status = JSON.parse_string(Globalvars.receipt_status)
 	if ui.visible == false:
 		match status:
+			"STATUS_ERROR":
+				progress_bar.valye = 0
+				text.text ="[center]Something went wrong with the status server, request might still go through"
+			"ERROR":
+				progress_bar.value = 0
+				text.text ="[center]There is an issue with the receipt server or the server is down for maintanance"
 			"CONNECTING":
 				progress_bar.value = 0
 				text.text = "[center]Connecting to the server"
