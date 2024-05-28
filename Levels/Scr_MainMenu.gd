@@ -54,7 +54,7 @@ func _on_continue_pressed():
 
 func _on_scan_pressed():
 	#getImageController._get_camera_image()
-	get_tree().change_scene_to_file("res://Game_objects/test.tscn")
+	get_tree().change_scene_to_file("res://Levels/lvl_http_menu.tscn")
 	pass # Replace with function body.
 
 
