@@ -51,15 +51,19 @@ func _check_for_all_draggables():
 			drag.parent.process_mode = Node.PROCESS_MODE_INHERIT
 			iterate+=1
 		positionsUpdated = true;
+		cooking_oven.process_mode = Node.PROCESS_MODE_INHERIT
 	
 
 
 func _on_visibility_changed():
+	cooking_oven.process_mode = Node.PROCESS_MODE_DISABLED
 	if positionsUpdated:
 		positionsUpdated = false;
 		var draggables = get_tree().get_nodes_in_group("Draggables")
 		for drag in draggables:
-			drag.parent.process_mode = Node.PROCESS_MODE_DISABLED;
+			drag.parent.queue_free()
+			#drag.parent.process_mode = Node.PROCESS_MODE_DISABLED;
+		
 
 	pass # Replace with function body.
 
