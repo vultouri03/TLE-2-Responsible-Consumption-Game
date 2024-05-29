@@ -8,6 +8,9 @@ var receipt_status = JSON.stringify("CONNECTING")
 var user_hardware_id = OS.get_unique_id()
 var active_receipt = {"id":0,"image":""}
 enum unitOfMesurement {litres,millilitres,grams,kilograms}
+enum States {Prep, Cooking, Feeding, Storage}
+var served_foods:Array = [];
+var GameManager:Node
 #added dummy data into here so you don't need to call the api to test
 var categories = {"categories": [
 		{
@@ -40,6 +43,12 @@ var categories = {"categories": [
 		}
 	
 	]}
+#Set the gamemanger as a globalvar value without fucking with autoload
+func _add_game_manager_to_global(manager):
+	GameManager = manager;
+#Acess the gamemanger as a globalvar value without fucking with autoload
+func _gameManager():
+	return GameManager;
 
 func _ready():
 	active_receipt.id = user_hardware_id;
@@ -54,7 +63,14 @@ func _process(delta):
 		can_update_now = true
 		print("update tick triggered")
 		current_delay_tick = 0
-	
+	if can_update_now:
+		if get_tree().get_nodes_in_group("GameManager"):
+			var gm = get_tree().get_nodes_in_group("GameManager")[0];
+			if gm!= null: 
+				if gm.currentState == States.Feeding:
+					_spawn_served_food()
+				else:
+					print("Cant Serve Food Yet!!!")
 
 func setImageTexture(texture):
 	image_texture = Image.new()
@@ -62,3 +78,16 @@ func setImageTexture(texture):
 
 func _get_image_texture():
 	return image_texture
+
+func _spawn_served_food():
+	if served_foods.size()>0:
+		#for food in served_foods: 
+		print("Served Food")
+	
+	served_foods.clear()		
+		
+
+func _add_food_to_serve(food_draggable):
+	if food_draggable!= null:
+		served_foods.append(food_draggable)
+		get_tree().root.add_child(food_draggable)

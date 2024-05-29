@@ -2,7 +2,7 @@ extends Area2D
 class_name Drop
 var class_object_name:String
 var draggable_to_monitor:Area2D
-
+@export var desired_draggable_type_ids:Array = ["Generic"]
 var function_should_trigger_now = false
 signal function_to_trigger
 
@@ -13,14 +13,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var can_process = false
 	if draggable_to_monitor != null: 
-		if(!draggable_to_monitor.is_dragging):
-			if draggable_to_monitor.parent:
-				draggable_to_monitor.parent.queue_free()
-			else:
-				draggable_to_monitor.queue_free()
-			function_to_trigger.emit()
-			function_should_trigger_now = true
+		for id in desired_draggable_type_ids:
+			if draggable_to_monitor.draggable_type_id == id:
+				can_process = true;
+				break;
+		if can_process:
+			if(!draggable_to_monitor.is_dragging):
+				if draggable_to_monitor.parent:
+					draggable_to_monitor.parent.queue_free()
+				else:
+					draggable_to_monitor.queue_free()
+				function_to_trigger.emit()
+				function_should_trigger_now = true
 	else:
 		function_should_trigger_now = false
 	pass
