@@ -141,6 +141,7 @@ offset_bottom = 1172.0
 text = "Continue"
 
 [connection signal="turn_switched" from="Game_Manager" to="Prep/Inventory/InventoryManager" method="_on_game_manager_turn_switched"]
+[connection signal="turn_switched" from="Game_Manager" to="Storage/Freezer scene" method="_on_game_manager_turn_switched"]
 [connection signal="button_up" from="Feeding/Button" to="Feeding/Button" method="_on_button_button_up"]
 [connection signal="pressed" from="Feeding/Button" to="Feeding/Button" method="_on_pressed"]
 [connection signal="button_down" from="Prep/Button" to="." method="_on_button_button_down"]
@@ -155,3 +156,4 @@ text = "Continue"
 [editable path="Prep/Inventory/InventoryManager/Dairy"]
 [editable path="Prep/Inventory/InventoryManager/Vegetables"]
 [editable path="Prep/Inventory/InventoryManager/Sauces"]
+[editable path="Cooking/LvlCookingTesting"]

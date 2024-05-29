@@ -43,5 +43,7 @@ func _function_to_execute():
 	_update_progress_bar()
 	
 func _on_lvl_cooking_testing_visibility_changed():
-	progressBar.value =0;
+	progressBar.value = Globalvars.stored_foods
+	if(Globalvars.stored_foods > 0):
+		progressBar.get("theme_override_styles/fill").bg_color = Color(0, 0, 1)  # Red color
 	pass # Replace with function body.

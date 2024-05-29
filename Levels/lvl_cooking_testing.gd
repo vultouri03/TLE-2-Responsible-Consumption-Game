@@ -8,6 +8,10 @@ extends Node2D
 @export var generic_food_item_recipe_prefab:PackedScene;
 @export var serve_button:Button;
 @export var completed_dishes_label:Label;
+
+@onready var cooking = $Cooking
+
+
 var positionsUpdated = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
