@@ -322,6 +322,7 @@ step = 5.0
 value = 20.0
 show_percentage = false
 
+[connection signal="visibility_changed" from="." to="Cooking" method="_on_lvl_cooking_testing_visibility_changed"]
 [connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button" to="Node2D/ColorRect/GridContainer/Button" method="_on_pressed"]
 [connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button2" to="Node2D/ColorRect/GridContainer/Button2" method="_on_pressed"]
 [connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button3" to="Node2D/ColorRect/GridContainer/Button3" method="_on_pressed"]

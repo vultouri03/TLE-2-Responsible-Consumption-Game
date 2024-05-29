@@ -6,6 +6,7 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	progressBar.value =0;
 	print(drop)
 	_update_progress_bar()
 	pass # Replace with function body.
@@ -22,8 +23,11 @@ func _process(delta):
 func _update_progress_bar(): 
 	var forgiveness = Globalvars._gameManager().cooking_threshold_overflow_forgiveness
 	var current_value = progressBar.value
+	var food_amount = Globalvars._gameManager().food_amount; 
+	var food_to_serve_amount =  Globalvars._gameManager().food_to_serve_for_the_day;
+	var overflow = (food_amount>food_to_serve_amount)
 	# Set the progress bar color based on the value
-	if current_value > desiredValue + forgiveness:
+	if current_value > desiredValue + forgiveness or overflow:
 		progressBar.get("theme_override_styles/fill").bg_color = Color(1, 0, 0)  # Red color
 		Globalvars._gameManager().food_amount += 1
 	elif current_value > desiredValue - (1 + forgiveness) and current_value < desiredValue + (1 + forgiveness):
@@ -35,5 +39,9 @@ func _update_progress_bar():
 		
 func _function_to_execute():
 	print("EXECUTED!!!")
-	progressBar.value += rng.randf_range(1,10);
+	progressBar.value += rng.randf_range(5,10);
 	_update_progress_bar()
+	
+func _on_lvl_cooking_testing_visibility_changed():
+	progressBar.value =0;
+	pass # Replace with function body.
