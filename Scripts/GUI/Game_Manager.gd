@@ -16,18 +16,23 @@ var turn : int = 1
 #makes sure that the turn switch is not called on game start
 var gameStarted = false
 @export var gameOver : bool
-
-
+#The food to serve 
+@export var food_to_serve_for_the_day = 4;
+#difficulty 
+@export var cooking_threshold_overflow_forgiveness = 12;
+#the amount of food
+var food_amount = 0; 
 signal turn_switched
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globalvars._add_game_manager_to_global(self)
 	if (currentState > 0):
 		currentState -= 1
 	else:
 		currentState = 3
 	_on_next_state_button_down()
-
+	add_to_group("GameManager",true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
