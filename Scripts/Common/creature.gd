@@ -62,6 +62,7 @@ func _on_droppable_entered(area):
 func _on_droppable_exited(area):
 	if area.class_object_name != null: 
 		if area.class_object_name == "Draggable":
+			print(animating)
 			if (animating == false):
 				sprite.play("sad")
 
@@ -70,4 +71,5 @@ func _on_visibility_changed():
 	times_fed = 0
 	droppable.process_mode = Node.PROCESS_MODE_INHERIT
 	full = false
+	animating = false
 	sprite.play("idle")
