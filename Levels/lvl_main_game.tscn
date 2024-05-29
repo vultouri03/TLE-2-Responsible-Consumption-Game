@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b426l4ig6xuvw"]
+[gd_scene load_steps=11 format=3 uid="uid://b426l4ig6xuvw"]
 
 [ext_resource type="Script" path="res://Levels/Scr_main_game.gd" id="1_3q607"]
 [ext_resource type="PackedScene" uid="uid://dhseamkofouv6" path="res://Game_objects/UI/inventory.tscn" id="2_adnww"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cyv2t2cbegu44" path="res://Levels/lvl_cooking_testing.tscn" id="6_pp80g"]
 [ext_resource type="PackedScene" uid="uid://cm2w2eb7yvt37" path="res://Game_objects/Prefabs/DraggableItem.tscn" id="6_q6euo"]
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="7_dt8it"]
+[ext_resource type="PackedScene" uid="uid://m6gsuxbvm7nv" path="res://Levels/lvl_freezer_scene.tscn" id="10_odhon"]
 
 [node name="LvlMainGame" type="Node2D"]
 script = ExtResource("1_3q607")
@@ -129,6 +130,8 @@ parent = NodePath("..")
 [node name="Storage" type="Node2D" parent="."]
 process_mode = 4
 visible = false
+
+[node name="Freezer scene" parent="Storage" instance=ExtResource("10_odhon")]
 
 [node name="Next State" type="Button" parent="."]
 offset_left = 305.0

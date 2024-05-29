@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://m6gsuxbvm7nv"]
+
+[ext_resource type="Script" path="res://Levels/lvl_freezer_scene.gd" id="1_jdip1"]
+
+[node name="Freezer scene" type="Node2D"]
+script = ExtResource("1_jdip1")

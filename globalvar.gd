@@ -10,6 +10,7 @@ var active_receipt = {"id":0,"image":""}
 enum unitOfMesurement {litres,millilitres,grams,kilograms}
 enum States {Prep, Cooking, Feeding, Storage}
 var served_foods:Array = [];
+var stored_foods: int = 0
 var GameManager:Node
 #added dummy data into here so you don't need to call the api to test
 var categories = {"categories": [
