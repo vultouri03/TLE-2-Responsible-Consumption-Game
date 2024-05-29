@@ -27,7 +27,7 @@ func _convert_to_base64():
 	var image = Image.new()
 	var image_data
 	if Globalvars._get_image_texture() == null :
-		image.load(file_path)
+		image = load(file_path)
 		Globalvars.image_texture = image
 
 	image_data = Globalvars._get_image_texture().save_jpg_to_buffer()
