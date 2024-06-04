@@ -2,7 +2,7 @@ extends Node
 class_name scoremanager
 
 # the current score
-var currentScore = 0
+var currentScore = 100
  
 var highscores = [0, 0, 0, 0, 0]
 
@@ -11,6 +11,13 @@ const save_path = "user://savefile.save"
 
 # load on start
 func _ready():
+	var penalty  = 0
+	penalty += Globalvars.score.points.expired
+	penalty += Globalvars.score.points.cooking_waste
+	penalty += Globalvars.score.points.feeding_waste
+	penalty += Globalvars.score.points.starving
+	penalty += Globalvars.score.points.storing_waste
+	currentScore -= penalty * 3
 	_load_score()
 
 # rcall this functie at begin of game to make sure it is 0
