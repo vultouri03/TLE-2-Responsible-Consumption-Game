@@ -23,19 +23,19 @@ func _process(delta):
 
 # restart the game button
 func _on_retry_button_pressed():
-	print('Retry');
+	print('Restart game');
 	pass
 
 # quit the game
 func _on_quit_button_pressed():
-	print('Quit');
+	print('Quit game');
 	pass
 
 
 # show tips page
 func _on_tips_button_pressed():
 	get_tree().change_scene_to_file("res://tips_ui.tscn")
-	print('Tips');
+	print('Tips pagina');
 	pass
 
 #THIS IS TO TEST SCORE

@@ -1,0 +1,27 @@
+{
+	"expired": [
+		"expired tip 1",
+		"expired tip 2",
+		"expired tip 3"
+	],
+	"cooking_waste": [
+		"cooking_waste tip 1",
+		"cooking_waste tip 2",
+		"cooking_waste tip 3"
+	],
+	"feeding_waste": [
+		"feeding_waste tip 1",
+		"feeding_waste tip 2",
+		"feeding_waste tip 3"
+	],
+	"starving": [
+		"starving tip 1",
+		"starving tip 2",
+		"starving tip 3"
+	],
+	"storing_waste": [
+		"storing_waste tip 1",
+		"storing_waste tip 2",
+		"storing_waste tip 3"
+	]
+}
