@@ -61,9 +61,16 @@ func _ready():
 
 func _on_game_manager_turn_switched():
 	#temp print to check if the signal worked
+	var total : int = 0
 	print("turn has switched")
 	print(Globalvars.score)
 	for n in range(7):	
 		self.get_children()[n].expiration -= 1
 		print(self.get_children()[n].expiration)
 		self.get_children()[n].updateExpiration()
+	for n in range(7):	
+		if(Globalvars.categories != {}):	
+			total + int(self.get_children()[n].get_node("Amount").text)
+			print("total = " + str(total))
+			 
+			#print(c.get_node("Amount").text)
