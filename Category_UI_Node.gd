@@ -60,6 +60,9 @@ func updateExpiration():
 	
 	if expiration <= 0:
 		print("product expired")
+		Globalvars.score.points.expired += 1
+		print("expired points")
+		print(Globalvars.score.points.expired)
 		#removed _amount -= 1 which set the amount to zero which prevented it from updating
 		expiration = baseExpiration
 		updateAmount()
