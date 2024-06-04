@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://8wjeg3m73h3h"]
+[gd_scene load_steps=4 format=3 uid="uid://rjl40d8v7eug"]
 
-[ext_resource type="Texture2D" path="res://Images/blank.jpg" id="1_5du67"]
+[ext_resource type="Texture2D" uid="uid://b7pxwkp3bxrl" path="res://Images/blank.jpg" id="1_5du67"]
 [ext_resource type="Script" path="res://end_UI.gd" id="1_x65uk"]
-[ext_resource type="PackedScene" uid="uid://ddi4ls24112lv" path="res://score_manager.tscn" id="3_o64vl"]
+[ext_resource type="PackedScene" uid="uid://o52rpsw2ukmr" path="res://score_manager.tscn" id="3_o64vl"]
 
 [node name="end_UI" type="CanvasLayer"]
 script = ExtResource("1_x65uk")

@@ -68,9 +68,10 @@ func _on_game_manager_turn_switched():
 		self.get_children()[n].expiration -= 1
 		print(self.get_children()[n].expiration)
 		self.get_children()[n].updateExpiration()
-	for n in range(7):	
-		if(Globalvars.categories != {}):	
-			total + int(self.get_children()[n].get_node("Amount").text)
-			print("total = " + str(total))
+	for n in range(7):
+		total += self.get_children()[n]._amount
+		print(total)
+	if total == 0:
+		get_tree().change_scene_to_file("res://end_UI.tscn")
 			 
 			#print(c.get_node("Amount").text)
