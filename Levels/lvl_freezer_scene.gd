@@ -26,6 +26,8 @@ Want to store them"
 func _on_visibility_changed():
 	if clear_freezer:
 		Globalvars.stored_foods = 0
+		for i in container.get_child_count():
+			Globalvars.score.points.storing_waste += 1
 		clear_freezer = false
 	else:
 		clear_freezer = true

@@ -108,6 +108,7 @@ position = Vector2(4.76837e-07, 96.9697)
 scale = Vector2(6.23822, 10.3455)
 metadata/_edit_group_ = true
 
+[connection signal="hidden" from="." to="." method="_on_hidden"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Droppable" to="." method="_on_droppable_entered"]

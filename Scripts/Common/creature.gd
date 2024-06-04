@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @onready var droppable = $Droppable
 @onready var sprite = $AnimatedSprite2D
 
@@ -73,3 +72,8 @@ func _on_visibility_changed():
 	full = false
 	animating = false
 	sprite.play("idle")
+
+
+func _on_hidden():
+	if times_fed < sweet_spot:
+		Globalvars.score.points.starving += 1

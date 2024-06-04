@@ -62,6 +62,7 @@ func _ready():
 func _on_game_manager_turn_switched():
 	#temp print to check if the signal worked
 	print("turn has switched")
+	print(Globalvars.score)
 	for n in range(7):	
 		self.get_children()[n].expiration -= 1
 		print(self.get_children()[n].expiration)
