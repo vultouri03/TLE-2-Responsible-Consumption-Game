@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://m6gsuxbvm7nv"]
+
+[ext_resource type="Script" path="res://Levels/lvl_freezer_scene.gd" id="1_jdip1"]
+[ext_resource type="PackedScene" uid="uid://cm2w2eb7yvt37" path="res://Game_objects/Prefabs/DraggableItem.tscn" id="2_6aj1a"]
+[ext_resource type="Texture2D" uid="uid://5tuwkeck4apa" path="res://Images/inventory_background.png" id="2_mwwa6"]
+[ext_resource type="PackedScene" uid="uid://cuytpwysh3nrk" path="res://Scripts/GUI/Drop.tscn" id="3_845st"]
+[ext_resource type="Texture2D" uid="uid://ciluhytnopxeh" path="res://Resources/Sprites/64x64_tile_counter.png" id="4_l1v32"]
+
+[node name="Freezer scene" type="Node2D"]
+script = ExtResource("1_jdip1")
+leftover_prefab = ExtResource("2_6aj1a")
+
+[node name="Freezer" type="Node2D" parent="."]
+position = Vector2(352, 784)
+scale = Vector2(1.96, 4.2)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Freezer"]
+scale = Vector2(0.263889, 0.287222)
+texture = ExtResource("2_mwwa6")
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="Freezer" instance=ExtResource("3_845st")]
+position = Vector2(0, 0)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 210.0
+offset_right = 719.0
+offset_bottom = 380.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]You have X items left over
+Want to store them"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.541176, 0.27451, 0.219608, 1)
+position = Vector2(360, 95)
+scale = Vector2(11.1875, 3.03125)
+texture = ExtResource("4_l1v32")
+
+[node name="Container" type="Container" parent="."]
+offset_right = 722.0
+offset_bottom = 194.0
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="function_to_trigger" from="Freezer/Area2D" to="." method="_on_area_2d_function_to_trigger"]

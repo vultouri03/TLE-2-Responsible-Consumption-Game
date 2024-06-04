@@ -1,0 +1,338 @@
+[gd_scene load_steps=18 format=3 uid="uid://cyv2t2cbegu44"]
+
+
+[ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="1_3o54e"]
+[ext_resource type="Script" path="res://Levels/lvl_cooking_testing.gd" id="1_6bmqv"]
+[ext_resource type="Script" path="res://Scripts/GUI/Draggable.gd" id="2_ea4le"]
+[ext_resource type="PackedScene" uid="uid://cm2w2eb7yvt37" path="res://Game_objects/Prefabs/DraggableItem.tscn" id="2_m24le"]
+[ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="3_dcspc"]
+[ext_resource type="Texture2D" uid="uid://chb27ply6abwa" path="res://icon.svg" id="3_wwod3"]
+[ext_resource type="Script" path="res://Levels/DraggableSpawnerButton.gd" id="4_ej61w"]
+[ext_resource type="Texture2D" uid="uid://ciluhytnopxeh" path="res://Resources/Sprites/64x64_tile_counter.png" id="4_rn22v"]
+[ext_resource type="Script" path="res://Scripts/Common/milk.gd" id="6_l4kvw"]
+[ext_resource type="Script" path="res://Scripts/GUI/Drop.gd" id="7_u74d5"]
+[ext_resource type="Script" path="res://Levels/Oven.gd" id="8_4n60e"]
+[ext_resource type="Texture2D" uid="uid://cw6o8noh0h4nk" path="res://Resources/Sprites/OvenPlaceholder.png" id="8_h615c"]
+[ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="11_ehwdx"]
+[ext_resource type="Texture2D" uid="uid://b2lh1wvfsctm8" path="res://Images/Backgrounds/bg_feeding.png" id="11_r4cf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2laaa"]
+size = Vector2(36, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnavw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8yf0"]
+
+[node name="LvlCookingTesting" type="Node2D" node_paths=PackedStringArray("parent", "itemStartingPositionNode", "cooking_oven", "serve_button", "completed_dishes_label")]
+script = ExtResource("1_6bmqv")
+parent = NodePath(".")
+itemYStartingPosition = 0
+itemXoffset = 128
+itemStartingPositionNode = NodePath("ItemsPosition")
+cooking_oven = NodePath("Cooking")
+generic_food_item_recipe_prefab = ExtResource("2_m24le")
+serve_button = NodePath("Cooking/Oven/ServeButton")
+completed_dishes_label = NodePath("CookingDock/Control/Label")
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+visible = false
+texture_filter = 2
+offset_top = 1025.0
+offset_right = 719.0
+offset_bottom = 1281.0
+texture = ExtResource("4_rn22v")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+visible = false
+offset_top = 1031.0
+offset_right = 719.0
+offset_bottom = 1247.0
+color = Color(0.184314, 0.184314, 0.184314, 0.733333)
+
+[node name="GridContainer" type="GridContainer" parent="Node2D/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 16
+columns = 5
+
+[node name="Button" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button2" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button3" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button4" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="Button5" type="Button" parent="Node2D/ColorRect/GridContainer" node_paths=PackedStringArray("draggable_reference")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_wwod3")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_ej61w")
+button_icon = ExtResource("3_dcspc")
+food_item = ExtResource("6_l4kvw")
+draggable_reference = NodePath("../../../../Draggable")
+
+[node name="FoodContainerElement" type="Node2D" parent="Node2D/ColorRect"]
+position = Vector2(-167, 50)
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+visible = false
+
+[node name="Draggable" type="Area2D" parent="." node_paths=PackedStringArray("parent")]
+visible = false
+show_behind_parent = true
+z_index = 200
+position = Vector2(-922, 1282)
+priority = 1
+script = ExtResource("2_ea4le")
+parent = NodePath(".")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_2laaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_wwod3")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="Label" type="Label" parent="Draggable"]
+z_index = 1970
+offset_top = 15.77
+offset_right = 64.0
+offset_bottom = 60.77
+theme_override_font_sizes/font_size = 32
+text = "x52"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cooking" type="Node2D" parent="." node_paths=PackedStringArray("drop", "progressBar")]
+script = ExtResource("8_4n60e")
+drop = NodePath("Oven")
+progressBar = NodePath("../CookingBar/Control/ProgressBar")
+
+[node name="Oven" type="Area2D" parent="Cooking"]
+z_index = -5
+position = Vector2(360, 290)
+script = ExtResource("7_u74d5")
+desired_draggable_type_ids = ["Food"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cooking/Oven"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_hnavw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cooking/Oven"]
+z_index = -10
+position = Vector2(-0.999987, 0.500012)
+scale = Vector2(1.17969, 1.16797)
+texture = ExtResource("8_h615c")
+
+[node name="ServeButton" type="Button" parent="Cooking/Oven"]
+visible = false
+offset_left = -56.0
+offset_top = 88.0
+offset_right = 53.0
+offset_bottom = 152.0
+theme = ExtResource("11_ehwdx")
+text = "SERVE"
+
+[node name="ItemsPosition" type="Node2D" parent="."]
+position = Vector2(64, 900)
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_group_ = true
+
+[node name="BgFeeding" type="Sprite2D" parent="Background"]
+z_index = -4096
+texture = ExtResource("11_r4cf7")
+centered = false
+
+[node name="CookingDock" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Control" type="Control" parent="CookingDock"]
+z_index = -5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 719.0
+offset_bottom = 128.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="CookingDock/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.5
+offset_right = 236.5
+offset_bottom = 64.0
+grow_horizontal = 2
+theme = ExtResource("1_3o54e")
+theme_override_font_sizes/font_size = 48
+text = "Prepared Food"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CookingDock/Control"]
+visible = false
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+z_index = -200
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -64.0
+offset_right = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_rn22v")
+stretch_mode = 1
+
+[node name="FoodItemCounter" type="Node2D" parent="."]
+position = Vector2(0, 720)
+metadata/_edit_group_ = true
+
+[node name="Control" type="Control" parent="FoodItemCounter"]
+z_index = -5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 719.0
+offset_bottom = 560.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="FoodItemCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.5
+offset_right = 236.5
+offset_bottom = 64.0
+grow_horizontal = 2
+theme = ExtResource("1_3o54e")
+theme_override_font_sizes/font_size = 48
+text = "Food Items"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="FoodItemCounter/Control"]
+modulate = Color(0.568627, 0.337255, 0.298039, 1)
+z_index = -200
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.26
+anchor_right = 1.0
+anchor_bottom = 0.95
+offset_left = 32.0
+offset_top = -64.0
+offset_right = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_rn22v")
+stretch_mode = 1
+
+[node name="CookingBar" type="Node2D" parent="."]
+position = Vector2(0, 536)
+metadata/_edit_group_ = true
+
+[node name="Control" type="Control" parent="CookingBar"]
+z_index = -5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 719.0
+offset_bottom = 128.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="CookingBar/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.5
+offset_right = 236.5
+offset_bottom = 64.0
+grow_horizontal = 2
+theme = ExtResource("1_3o54e")
+theme_override_font_sizes/font_size = 48
+text = "Recipe Completion"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CookingBar/Control"]
+custom_minimum_size = Vector2(500, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -64.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_q8yf0")
+step = 5.0
+value = 20.0
+show_percentage = false
+
+[connection signal="visibility_changed" from="." to="Cooking" method="_on_lvl_cooking_testing_visibility_changed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button" to="Node2D/ColorRect/GridContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button2" to="Node2D/ColorRect/GridContainer/Button2" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button3" to="Node2D/ColorRect/GridContainer/Button3" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button4" to="Node2D/ColorRect/GridContainer/Button4" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button5" to="Node2D/ColorRect/GridContainer/Button5" method="_on_pressed"]
+[connection signal="body_entered" from="Draggable" to="Draggable" method="_on_body_entered"]
+[connection signal="input_event" from="Draggable" to="Draggable" method="_on_Draggable_input_event"]
+[connection signal="area_entered" from="Cooking/Oven" to="Cooking/Oven" method="_on_area_entered"]
+[connection signal="area_exited" from="Cooking/Oven" to="Cooking/Oven" method="_on_area_exited"]
+[connection signal="body_entered" from="Cooking/Oven" to="Cooking/Oven" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Cooking/Oven" to="Cooking/Oven" method="_on_body_shape_entered"]
+[connection signal="button_up" from="Cooking/Oven/ServeButton" to="." method="_on_serve_button_button_up"]
