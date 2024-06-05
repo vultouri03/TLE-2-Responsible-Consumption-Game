@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://roxfmyi8tvj"]
+
+[ext_resource type="Texture2D" uid="uid://l2ylohaosilc" path="res://Images/campfire sprite.png" id="1_o6mv3"]
+[ext_resource type="Texture2D" uid="uid://iyk8h3f0f7a8" path="res://Images/pan.png" id="2_n6gdn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50d1j"]
+atlas = ExtResource("1_o6mv3")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6uhh"]
+atlas = ExtResource("1_o6mv3")
+region = Rect2(900, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pykoe"]
+atlas = ExtResource("1_o6mv3")
+region = Rect2(1800, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k3ig"]
+atlas = ExtResource("1_o6mv3")
+region = Rect2(2700, 0, 900, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t802"]
+animations = [{
+"frames": [{
+"duration": 1.6,
+"texture": SubResource("AtlasTexture_50d1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6uhh")
+}, {
+"duration": 1.6,
+"texture": SubResource("AtlasTexture_pykoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k3ig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3t802")
+frame_progress = 0.279183
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -432)
+texture = ExtResource("2_n6gdn")
