@@ -13,7 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TutorialNode" parent="." instance=ExtResource("1_68e1l")]
-visible = false
 layout_mode = 1
 script = ExtResource("2_ctqgp")
 

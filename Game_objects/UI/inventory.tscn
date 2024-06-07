@@ -55,17 +55,20 @@ frame = 6
 [node name="Tutorial" parent="." instance=ExtResource("4_ejscv")]
 layout_mode = 1
 
-[node name="TutorialNode" parent="Tutorial" index="0"]
-visible = true
-
 [node name="Sprite2D" parent="Tutorial/TutorialNode/ColorRect" index="0"]
 position = Vector2(348, 353)
 scale = Vector2(1, 0.517459)
 texture = ExtResource("5_hv3l3")
 
 [node name="RichTextLabel" parent="Tutorial/TutorialNode/ColorRect" index="1"]
-layout_mode = 0
-offset_bottom = 978.0
+anchor_left = 0.046
+anchor_top = 0.506
+anchor_right = 0.046
+anchor_bottom = 0.506
+offset_left = -0.0740013
+offset_top = -0.258057
+offset_right = 647.926
+offset_bottom = 977.742
 text = "Press on the get buttons to grab as many food items as you think you need for the cooking phase. You will be notified when food is about to expire and you should consider not wasting too much food by letting them expire"
 
 [connection signal="pressed" from="InventoryManager/Wheats/Button" to="InventoryManager" method="_on_button_pressed"]
