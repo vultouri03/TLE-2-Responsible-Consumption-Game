@@ -114,6 +114,11 @@ baseExpiration = 4
 [node name="Description" parent="Prep/Inventory/InventoryManager/Sauces" index="0"]
 text = "Sauces"
 
+[node name="RichTextLabel" parent="Prep/Inventory/Tutorial/TutorialNode/ColorRect" index="1"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 648.0
+
 [node name="Button" type="Button" parent="Prep"]
 visible = false
 offset_right = 137.0
@@ -156,4 +161,6 @@ text = "Continue"
 [editable path="Prep/Inventory/InventoryManager/Dairy"]
 [editable path="Prep/Inventory/InventoryManager/Vegetables"]
 [editable path="Prep/Inventory/InventoryManager/Sauces"]
+[editable path="Prep/Inventory/Tutorial"]
+[editable path="Prep/Inventory/Tutorial/TutorialNode"]
 [editable path="Cooking/LvlCookingTesting"]

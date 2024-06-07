@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch0madqbcsuya"]
+[gd_scene load_steps=11 format=3 uid="uid://ch0madqbcsuya"]
 
 [ext_resource type="Script" path="res://Levels/lvl_http_menu.gd" id="1_dlx7u"]
 [ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://Game_objects/Backend/fetch_calls.tscn" id="1_qy7hh"]
@@ -8,6 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://dhqkod0n2143i" path="res://Themes/BB_Style_Box_Flat.tres" id="5_ijhbm"]
 [ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="6_ejk0n"]
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="6_n8gj5"]
+[ext_resource type="PackedScene" uid="uid://bngo785paayec" path="res://Game_objects/UI/Tutorial.tscn" id="9_j2l88"]
 
 [sub_resource type="Theme" id="Theme_02l3q"]
 default_font = ExtResource("6_ejk0n")
@@ -53,6 +54,8 @@ rounded = true
 
 [node name="Status Timer" type="Timer" parent="."]
 wait_time = 3.5
+
+[node name="Tutorial" parent="." instance=ExtResource("9_j2l88")]
 
 [connection signal="button_up" from="UI/FetchCalls/Button" to="." method="_on_request_send"]
 [connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]

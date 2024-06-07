@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq834lw2vir04"
-path="res://.godot/imported/bonnetje.png-034f41dc2bdb0a5457cf2dea7c75a6a0.ctex"
+uid="uid://dt3l7tgmcwxtl"
+path="res://.godot/imported/XIcon.png-0cb92cb06af7f3dad6f865b2a1ced5d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/bonnetje.png"
-dest_files=["res://.godot/imported/bonnetje.png-034f41dc2bdb0a5457cf2dea7c75a6a0.ctex"]
+source_file="res://Images/XIcon.png"
+dest_files=["res://.godot/imported/XIcon.png-0cb92cb06af7f3dad6f865b2a1ced5d5.ctex"]
 
 [params]
 
