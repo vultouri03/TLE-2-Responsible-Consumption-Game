@@ -80,7 +80,6 @@ script = ExtResource("9_0iin6")
 [node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
 position = Vector2(19.8069, -16.2533)
 rotation = -0.0223995
-scale = Vector2(1, 1)
 
 [connection signal="button_up" from="ParallaxBackground/ParallaxLayer2/UI/FetchCalls/Button" to="." method="_on_request_send"]
 [connection signal="value_changed" from="ParallaxBackground/ParallaxLayer2/ProgressBar" to="." method="_on_progress_bar_value_changed"]
