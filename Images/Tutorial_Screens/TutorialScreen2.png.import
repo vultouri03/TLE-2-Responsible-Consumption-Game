@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq834lw2vir04"
-path="res://.godot/imported/bonnetje.png-034f41dc2bdb0a5457cf2dea7c75a6a0.ctex"
+uid="uid://bnp5lu4g3rqsl"
+path="res://.godot/imported/TutorialScreen2.png-48dd3ddf1ecd3c20c396943de06b4cd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/bonnetje.png"
-dest_files=["res://.godot/imported/bonnetje.png-034f41dc2bdb0a5457cf2dea7c75a6a0.ctex"]
+source_file="res://Images/Tutorial_Screens/TutorialScreen2.png"
+dest_files=["res://.godot/imported/TutorialScreen2.png-48dd3ddf1ecd3c20c396943de06b4cd0.ctex"]
 
 [params]
 

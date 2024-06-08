@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://syedsd66ikfk"]
 
-[ext_resource type="Texture2D" uid="uid://cq834lw2vir04" path="res://Images/bonnetje.png" id="1_xoefw"]
+[ext_resource type="Texture2D" uid="uid://cq834lw2vir04" path="res://Images/Tutorial_Screens/bonnetje.png" id="1_2edw7"]
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="2_drb1o"]
 
 [node name="TutorialNode" type="Control"]
@@ -19,7 +19,7 @@ color = Color(0.937255, 0.972549, 0.909804, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
 position = Vector2(362, 297)
-texture = ExtResource("1_xoefw")
+texture = ExtResource("1_2edw7")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 1

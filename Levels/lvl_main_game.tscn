@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b426l4ig6xuvw"]
+[gd_scene load_steps=13 format=3 uid="uid://b426l4ig6xuvw"]
 
 [ext_resource type="Script" path="res://Levels/Scr_main_game.gd" id="1_3q607"]
 [ext_resource type="PackedScene" uid="uid://dhseamkofouv6" path="res://Game_objects/UI/inventory.tscn" id="2_adnww"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="7_dt8it"]
 [ext_resource type="PackedScene" uid="uid://bngo785paayec" path="res://Game_objects/UI/Tutorial.tscn" id="8_kapum"]
 [ext_resource type="PackedScene" uid="uid://m6gsuxbvm7nv" path="res://Levels/lvl_freezer_scene.tscn" id="10_odhon"]
+[ext_resource type="Texture2D" uid="uid://dtiuxarufjqqr" path="res://Images/Tutorial_Screens/TutorialScreen3.png" id="11_5yobi"]
 
 [node name="LvlMainGame" type="Node2D"]
 script = ExtResource("1_3q607")
@@ -65,6 +66,9 @@ text = "There's no more food."
 horizontal_alignment = 1
 
 [node name="Tutorial" parent="Feeding" instance=ExtResource("8_kapum")]
+
+[node name="RichTextLabel" parent="Feeding/Tutorial/TutorialNode/ColorRect" index="1"]
+text = "Drag the food from the top towards the Responsibits. They must be hungry! Once you think you have fed them enough food, it's time to move on to the storage phase."
 
 [node name="Prep" type="Node2D" parent="."]
 process_mode = 4
@@ -135,11 +139,29 @@ visible = false
 [node name="LvlCookingTesting" parent="Cooking" node_paths=PackedStringArray("parent") instance=ExtResource("6_pp80g")]
 parent = NodePath("..")
 
+[node name="Tutorial" parent="Cooking/LvlCookingTesting" instance=ExtResource("8_kapum")]
+visibility_layer = 0
+
+[node name="Sprite2D" parent="Cooking/LvlCookingTesting/Tutorial/TutorialNode/ColorRect" index="0"]
+position = Vector2(360, 349)
+scale = Vector2(1, 0.523256)
+texture = ExtResource("11_5yobi")
+
+[node name="RichTextLabel" parent="Cooking/LvlCookingTesting/Tutorial/TutorialNode/ColorRect" index="1"]
+offset_top = -85.577
+offset_bottom = 192.423
+text = "Fill the bar with food by dragging the items onto the pan. Once you think you have enough prepared dishes go ahead to the next screen."
+
 [node name="Storage" type="Node2D" parent="."]
 process_mode = 4
 visible = false
 
 [node name="Freezer scene" parent="Storage" instance=ExtResource("10_odhon")]
+
+[node name="Tutorial" parent="Storage" instance=ExtResource("8_kapum")]
+
+[node name="RichTextLabel" parent="Storage/Tutorial/TutorialNode/ColorRect" index="1"]
+text = "If you have any food left over, you can save them in the freezer for the next day. By dragging them from the top. Make sure to use it soon to not waste any food!"
 
 [node name="Next State" type="Button" parent="."]
 offset_left = 305.0
@@ -171,3 +193,7 @@ text = "Continue"
 [editable path="Prep/Inventory/Tutorial"]
 [editable path="Prep/Inventory/Tutorial/TutorialNode"]
 [editable path="Cooking/LvlCookingTesting"]
+[editable path="Cooking/LvlCookingTesting/Tutorial"]
+[editable path="Cooking/LvlCookingTesting/Tutorial/TutorialNode"]
+[editable path="Storage/Tutorial"]
+[editable path="Storage/Tutorial/TutorialNode"]
