@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch0madqbcsuya"]
+[gd_scene load_steps=13 format=3 uid="uid://ch0madqbcsuya"]
 
 [ext_resource type="Script" path="res://Levels/lvl_http_menu.gd" id="1_dlx7u"]
 [ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://Game_objects/Backend/fetch_calls.tscn" id="1_qy7hh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://Game_objects/Backend/getImage_node.tscn" id="2_7cs7u"]
 [ext_resource type="PackedScene" uid="uid://dnrb6tatd06p1" path="res://Game_objects/Backend/status_call.tscn" id="4_x61de"]
 [ext_resource type="StyleBox" uid="uid://dhqkod0n2143i" path="res://Themes/BB_Style_Box_Flat.tres" id="5_ijhbm"]
+[ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="6_8fmg6"]
 [ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="6_ejk0n"]
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="6_n8gj5"]
 [ext_resource type="Script" path="res://Levels/camera_follow.gd" id="9_0iin6"]
@@ -46,6 +47,15 @@ visible = false
 [node name="FetchCalls" parent="ParallaxBackground/ParallaxLayer2/UI" instance=ExtResource("1_qy7hh")]
 position = Vector2(0, 367.987)
 
+[node name="Button2" type="Button" parent="ParallaxBackground/ParallaxLayer2/UI/FetchCalls"]
+custom_minimum_size = Vector2(720, 0)
+offset_left = 1.68179
+offset_top = 85.2245
+offset_right = 289.682
+offset_bottom = 149.224
+theme = ExtResource("6_8fmg6")
+text = "Back to Main menu"
+
 [node name="TEXT" type="RichTextLabel" parent="ParallaxBackground/ParallaxLayer2"]
 custom_minimum_size = Vector2(720, 25)
 offset_top = 463.0
@@ -78,10 +88,11 @@ progress = 1261.25
 script = ExtResource("9_0iin6")
 
 [node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
-position = Vector2(19.8069, -16.2533)
+position = Vector2(-908.904, -42.4619)
 rotation = -0.0223995
 
 [connection signal="button_up" from="ParallaxBackground/ParallaxLayer2/UI/FetchCalls/Button" to="." method="_on_request_send"]
+[connection signal="button_down" from="ParallaxBackground/ParallaxLayer2/UI/FetchCalls/Button2" to="ParallaxBackground/ParallaxLayer2/UI/FetchCalls" method="_on_button_2_button_down"]
 [connection signal="value_changed" from="ParallaxBackground/ParallaxLayer2/ProgressBar" to="." method="_on_progress_bar_value_changed"]
 [connection signal="timeout" from="Status Timer" to="." method="_on_status_timer_timeout"]
 [connection signal="timeout" from="Status Timer" to="ParallaxBackground/ParallaxLayer2/UI/Status_Call" method="_on_bt_status_button_up"]

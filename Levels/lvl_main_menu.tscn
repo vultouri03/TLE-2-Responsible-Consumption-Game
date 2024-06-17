@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk53fkdddvtth"]
+[gd_scene load_steps=13 format=3 uid="uid://dk53fkdddvtth"]
 
 [ext_resource type="Script" path="res://Levels/Scr_MainMenu.gd" id="1_2o3ry"]
 [ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="1_mgwjl"]
@@ -6,10 +6,47 @@
 [ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="2_ixhrg"]
 [ext_resource type="Script" path="res://getImageController.gd" id="2_wei2h"]
 [ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="3_526eh"]
+[ext_resource type="Texture2D" uid="uid://8dc58c6hbwol" path="res://Images/main-menu-creature-1.png" id="3_y7ivc"]
+[ext_resource type="Texture2D" uid="uid://ddlgtke17vb6y" path="res://Images/main-menu-creature-2.png" id="4_h6r43"]
+[ext_resource type="Texture2D" uid="uid://c7vi0qq0ftrx7" path="res://Images/Backgrounds/bg_start.jpg" id="7_gybqu"]
+[ext_resource type="Script" path="res://Levels/camera_follow.gd" id="8_cpkpw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sv58n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y7ivc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h6r43")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_2dn1h"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0.0078125, 702.563, 0, 0, 0, 0, 2119.61, 703)
+}
+point_count = 2
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Root" type="Control" parent="." node_paths=PackedStringArray("getImageController")]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(1999, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-280, 638)
+texture = ExtResource("7_gybqu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Root" type="Control" parent="ParallaxBackground/ParallaxLayer2" node_paths=PackedStringArray("getImageController")]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -23,7 +60,7 @@ grow_vertical = 2
 script = ExtResource("1_2o3ry")
 getImageController = NodePath("ImageCapture")
 
-[node name="VersionLabel" type="RichTextLabel" parent="Root"]
+[node name="VersionLabel" type="RichTextLabel" parent="ParallaxBackground/ParallaxLayer2/Root"]
 layout_direction = 1
 layout_mode = 1
 anchors_preset = -1
@@ -42,11 +79,19 @@ text = "Version 0.005"
 scroll_active = false
 tab_size = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Root"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2/Root"]
+position = Vector2(363, 824)
+scale = Vector2(0.553766, 0.47228)
+sprite_frames = SubResource("SpriteFrames_sv58n")
+autoplay = "default"
+frame_progress = 0.395183
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/Root"]
+visible = false
 position = Vector2(374, 610)
 texture = ExtResource("1_mgwjl")
 
-[node name="Control" type="Control" parent="Root"]
+[node name="Control" type="Control" parent="ParallaxBackground/ParallaxLayer2/Root"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -57,7 +102,7 @@ offset_right = 20.0
 offset_bottom = 136.0
 grow_horizontal = 2
 
-[node name="TitleLabel" type="RichTextLabel" parent="Root/Control"]
+[node name="TitleLabel" type="RichTextLabel" parent="ParallaxBackground/ParallaxLayer2/Root/Control"]
 layout_direction = 1
 layout_mode = 1
 anchors_preset = -1
@@ -82,7 +127,7 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 0
 
-[node name="VboxStart" type="VBoxContainer" parent="Root"]
+[node name="VboxStart" type="VBoxContainer" parent="ParallaxBackground/ParallaxLayer2/Root"]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 1
 anchors_preset = -1
@@ -95,13 +140,13 @@ offset_bottom = 108.0
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Start" type="Button" parent="Root/VboxStart"]
+[node name="Start" type="Button" parent="ParallaxBackground/ParallaxLayer2/Root/VboxStart"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_ixhrg")
 text = "Start Game"
 
-[node name="VBoxSubMenu" type="VBoxContainer" parent="Root"]
+[node name="VBoxSubMenu" type="VBoxContainer" parent="ParallaxBackground/ParallaxLayer2/Root"]
 visible = false
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 1
@@ -112,28 +157,30 @@ anchor_bottom = 0.9
 offset_left = 50.0
 offset_right = -50.0
 offset_bottom = 108.0
+focus_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Scan" type="Button" parent="Root/VBoxSubMenu"]
+[node name="Scan" type="Button" parent="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_ixhrg")
 text = "Scan Receipt (Camera & Gallery)"
 
-[node name="Continue" type="Button" parent="Root/VBoxSubMenu"]
+[node name="Continue" type="Button" parent="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_ixhrg")
 text = "Continue"
 
-[node name="Back" type="Button" parent="Root/VBoxSubMenu"]
+[node name="Back" type="Button" parent="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_ixhrg")
 text = "Back"
 
-[node name="ColorRect" type="ColorRect" parent="Root"]
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer2/Root"]
+visible = false
 z_index = -520
 layout_mode = 1
 anchors_preset = 15
@@ -144,11 +191,26 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.384365, 0.262464, 0.269531, 1)
 
-[node name="ImageCapture" type="Node2D" parent="Root"]
+[node name="ImageCapture" type="Node2D" parent="ParallaxBackground/ParallaxLayer2/Root"]
 script = ExtResource("2_wei2h")
 
-[connection signal="pressed" from="Root/VboxStart/Start" to="Root" method="_on_start_pressed"]
-[connection signal="pressed" from="Root/VBoxSubMenu/Scan" to="Root" method="_on_scan_pressed"]
-[connection signal="pressed" from="Root/VBoxSubMenu/Continue" to="Root" method="_on_camera_pressed"]
-[connection signal="pressed" from="Root/VBoxSubMenu/Continue" to="Root" method="_on_continue_pressed"]
-[connection signal="pressed" from="Root/VBoxSubMenu/Back" to="Root" method="_on_back_pressed"]
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-1270.01, 0)
+scale = Vector2(1.88195, 1)
+curve = SubResource("Curve2D_2dn1h")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1261.26, 702.823)
+rotation = 0.000206176
+progress = 1261.25
+script = ExtResource("8_cpkpw")
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-908.904, -42.4619)
+rotation = -0.0223995
+
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VboxStart/Start" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_start_pressed"]
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Scan" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_scan_pressed"]
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Continue" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_camera_pressed"]
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Continue" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_continue_pressed"]
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Back" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_back_pressed"]
