@@ -84,7 +84,7 @@ position = Vector2(363, 824)
 scale = Vector2(0.553766, 0.47228)
 sprite_frames = SubResource("SpriteFrames_sv58n")
 autoplay = "default"
-frame_progress = 0.395183
+frame_progress = 0.0213841
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/Root"]
 visible = false
