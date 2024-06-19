@@ -1,5 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cyv2t2cbegu44"]
-
+[gd_scene load_steps=18 format=3 uid="uid://cyv2t2cbegu44"]
 
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="1_3o54e"]
 [ext_resource type="Script" path="res://Levels/lvl_cooking_testing.gd" id="1_6bmqv"]
@@ -15,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://cw6o8noh0h4nk" path="res://Resources/Sprites/OvenPlaceholder.png" id="8_h615c"]
 [ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="11_ehwdx"]
 [ext_resource type="Texture2D" uid="uid://b2lh1wvfsctm8" path="res://Images/Backgrounds/bg_feeding.png" id="11_r4cf7"]
-[ext_resource type="PackedScene" uid="uid://roxfmyi8tvj" path="res://pan_sprites_template.tscn" id="13_6unqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2laaa"]
 size = Vector2(36, 36)
@@ -36,7 +34,6 @@ serve_button = NodePath("Cooking/Oven/ServeButton")
 completed_dishes_label = NodePath("CookingDock/Control/Label")
 
 [node name="Node2D" type="Node2D" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Node2D"]
 visible = false
@@ -44,6 +41,7 @@ texture_filter = 2
 offset_top = 1025.0
 offset_right = 719.0
 offset_bottom = 1281.0
+mouse_filter = 2
 texture = ExtResource("4_rn22v")
 stretch_mode = 1
 
@@ -52,6 +50,7 @@ visible = false
 offset_top = 1031.0
 offset_right = 719.0
 offset_bottom = 1247.0
+mouse_filter = 2
 color = Color(0.184314, 0.184314, 0.184314, 0.733333)
 
 [node name="GridContainer" type="GridContainer" parent="Node2D/ColorRect"]
@@ -158,17 +157,15 @@ progressBar = NodePath("../CookingBar/Control/ProgressBar")
 
 [node name="Oven" type="Area2D" parent="Cooking"]
 z_index = -5
-position = Vector2(359, 390)
+position = Vector2(200, 290)
 script = ExtResource("7_u74d5")
 desired_draggable_type_ids = ["Food"]
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cooking/Oven"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_hnavw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cooking/Oven"]
-visible = false
 z_index = -10
 position = Vector2(-0.999987, 0.500012)
 scale = Vector2(1.17969, 1.16797)
@@ -182,10 +179,6 @@ offset_right = 53.0
 offset_bottom = 152.0
 theme = ExtResource("11_ehwdx")
 text = "SERVE"
-
-[node name="AnimatedSprite2D" parent="Cooking/Oven" instance=ExtResource("13_6unqy")]
-position = Vector2(0, 37)
-scale = Vector2(0.245, 0.245)
 
 [node name="ItemsPosition" type="Node2D" parent="."]
 position = Vector2(64, 900)

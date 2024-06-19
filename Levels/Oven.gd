@@ -3,6 +3,7 @@ extends Node2D
 @export var drop:Node2D
 @export var progressBar:ProgressBar
 @export var desiredValue:float = 50
+var last_item_category:String
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +34,8 @@ func _update_progress_bar():
 		Globalvars._gameManager().food_amount += 1
 		Globalvars.score.points.cooking_waste += 1
 	elif current_value > desiredValue - (1 + forgiveness) and current_value < desiredValue + (1 + forgiveness):
-		progressBar.get("theme_override_styles/fill").bg_color = Color(0, 1, 0)  # Green color
+		if Globalvars._recipe_system().check_recipe_complete(Globalvars._recipe_system().ingredients):
+			progressBar.get("theme_override_styles/fill").bg_color = Color(0, 1, 0)  # Green color
 		Globalvars._gameManager().food_amount += 1
 	elif current_value < desiredValue:
 			progressBar.get("theme_override_styles/fill").bg_color = Color(0.4, 0, 0.4)  # Purple color
@@ -41,7 +43,13 @@ func _update_progress_bar():
 		
 func _function_to_execute():
 	print("EXECUTED!!!")
-	progressBar.value += rng.randf_range(5,10);
+	var recipeSys = Globalvars.RecipeSystem;
+	recipeSys.add_ingredient(drop.last_category_id)
+	print(drop.last_category_id)
+	if recipeSys.is_item_desired(drop.last_category_id):
+		progressBar.value += 150
+	else:
+		progressBar.value += rng.randf_range(5,10);
 	_update_progress_bar()
 	
 func _on_lvl_cooking_testing_visibility_changed():

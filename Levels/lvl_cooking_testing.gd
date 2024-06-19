@@ -51,7 +51,8 @@ func _check_for_all_draggables():
 				yOffset += 1;
 			drag.parent.position = itemStartingPositionNode.position+ Vector2((itemXoffset*iterate),itemYStartingPosition+(yOffset*(offset*2)))
 			drag.draggable_type_id = cooking_oven.drop.desired_draggable_type_ids[0];
-			add_child(drag.parent);
+			drag.parent.reparent(self)
+			#add_child(drag.parent);
 			drag.parent.process_mode = Node.PROCESS_MODE_INHERIT
 			iterate+=1
 		positionsUpdated = true;

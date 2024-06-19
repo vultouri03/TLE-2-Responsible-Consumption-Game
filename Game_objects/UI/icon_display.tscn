@@ -4,17 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://deveimd1lbsq2" path="res://Images/Category_items.png" id="2_l6eaa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_be7yc"]
+resource_local_to_scene = true
 atlas = ExtResource("2_l6eaa")
 region = Rect2(60, 30, 330, 390)
 
-[node name="IconDisplay" type="Control" node_paths=PackedStringArray("PanelNode", "LabelNode", "SpriteNode")]
+[node name="IconDisplay" type="Control"]
 custom_minimum_size = Vector2(256, 96)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dmcvi")
-PanelNode = NodePath("")
-LabelNode = NodePath("")
-SpriteNode = NodePath("")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

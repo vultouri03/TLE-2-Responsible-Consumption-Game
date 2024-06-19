@@ -4,6 +4,7 @@ var class_object_name:String
 var draggable_to_monitor:Area2D
 @export var desired_draggable_type_ids:Array = ["Generic"]
 var function_should_trigger_now = false
+var last_category_id
 signal function_to_trigger
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +22,7 @@ func _process(delta):
 				break;
 		if can_process:
 			if(!draggable_to_monitor.is_dragging):
+				last_category_id = draggable_to_monitor.category_id.to_lower()
 				if draggable_to_monitor.parent:
 					draggable_to_monitor.parent.queue_free()
 				else:
