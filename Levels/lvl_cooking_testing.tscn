@@ -1,5 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://cyv2t2cbegu44"]
 
+
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="1_3o54e"]
 [ext_resource type="Script" path="res://Levels/lvl_cooking_testing.gd" id="1_6bmqv"]
 [ext_resource type="Script" path="res://Scripts/GUI/Draggable.gd" id="2_ea4le"]

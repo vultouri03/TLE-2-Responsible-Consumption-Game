@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhseamkofouv6"]
+[gd_scene load_steps=6 format=3 uid="uid://dhseamkofouv6"]
 
 [ext_resource type="Script" path="res://inventory.gd" id="1_ku02y"]
 [ext_resource type="Texture2D" uid="uid://5tuwkeck4apa" path="res://Images/inventory_background.png" id="1_nxfvr"]
 [ext_resource type="PackedScene" uid="uid://cbtxc4ob32p8y" path="res://Game_objects/UI/Category_UI_Node.tscn" id="2_6qtqs"]
+[ext_resource type="PackedScene" uid="uid://bngo785paayec" path="res://Game_objects/UI/Tutorial.tscn" id="4_ejscv"]
+[ext_resource type="Texture2D" uid="uid://bnp5lu4g3rqsl" path="res://Images/Tutorial_Screens/TutorialScreen2.png" id="5_hv3l3"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -50,6 +52,25 @@ frame = 5
 position = Vector2(246, 998)
 frame = 6
 
+[node name="Tutorial" parent="." instance=ExtResource("4_ejscv")]
+layout_mode = 1
+
+[node name="Sprite2D" parent="Tutorial/TutorialNode/ColorRect" index="0"]
+position = Vector2(348, 353)
+scale = Vector2(1, 0.517459)
+texture = ExtResource("5_hv3l3")
+
+[node name="RichTextLabel" parent="Tutorial/TutorialNode/ColorRect" index="1"]
+anchor_left = 0.046
+anchor_top = 0.506
+anchor_right = 0.046
+anchor_bottom = 0.506
+offset_left = -0.0740013
+offset_top = -0.258057
+offset_right = 647.926
+offset_bottom = 977.742
+text = "Press on the get buttons to grab as many food items as you think you need for the cooking phase. You will be notified when food is about to expire and you should consider not wasting too much food by letting them expire"
+
 [connection signal="pressed" from="InventoryManager/Wheats/Button" to="InventoryManager" method="_on_button_pressed"]
 [connection signal="pressed" from="InventoryManager/Meat/Button" to="InventoryManager" method="_on_button_pressed"]
 
@@ -60,3 +81,5 @@ frame = 6
 [editable path="InventoryManager/Dairy"]
 [editable path="InventoryManager/Vegetables"]
 [editable path="InventoryManager/Sauces"]
+[editable path="Tutorial"]
+[editable path="Tutorial/TutorialNode"]

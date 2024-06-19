@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://syedsd66ikfk"]
+
+[ext_resource type="Texture2D" uid="uid://cq834lw2vir04" path="res://Images/Tutorial_Screens/bonnetje.png" id="1_2edw7"]
+[ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="2_drb1o"]
+
+[node name="TutorialNode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 719.0
+offset_bottom = 1293.0
+color = Color(0.937255, 0.972549, 0.909804, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
+position = Vector2(362, 297)
+texture = ExtResource("1_2edw7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.589
+anchor_right = 0.5
+anchor_bottom = 0.589
+offset_left = -322.5
+offset_top = -139.577
+offset_right = 325.5
+offset_bottom = 138.423
+theme = ExtResource("2_drb1o")
+theme_override_font_sizes/normal_font_size = 48
+text = "Make sure that the picture is well lit and the text nice and big as can be seen in the above image. This allows our ai to translate the text directly into the game assets without using any of the other data"
