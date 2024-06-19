@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4wesond3cbw"]
+
+[ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="1_d7746"]
+[ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="2_ilgbd"]
+
+[node name="Item" type="Node2D"]
+
+[node name="Draggable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("1_d7746")]
+parent = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ilgbd")

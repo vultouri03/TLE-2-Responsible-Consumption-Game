@@ -1,2 +1,18 @@
 # Godot 4+ specific ignores
 .godot/
+android/build
+!android/build/AndroidManifest.xml
+addons/godot-git-plugin/win64/~libgit_plugin.windows.editor.x86_64.dll
+game.zip
+exportest.apk
+android/build/gradlew.bat
+android/build/gradle.properties
+android/build/assets/status_update.gd
+android/build/assets/status_call.tscn.remap
+android/build/assets/main.tscn.remap
+android/build/assets/HTTPRequest.gd
+android/build/assets/globalvar.gd
+android/build/assets/getImage_node.tscn.remap
+android/build/assets/fetch_calls.tscn.remap
+android/build/assets/categories.gd
+addons/godot-git-plugin/win64/~libgit_plugin.windows.editor.x86_64.dll~RFa7d433f.TMP

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm2w2eb7yvt37"]
+
+[ext_resource type="PackedScene" uid="uid://bh8xqaro84t22" path="res://Scripts/GUI/Draggable.tscn" id="1_bp1sj"]
+[ext_resource type="Texture2D" uid="uid://deveimd1lbsq2" path="res://Images/Category_items.png" id="2_xokkh"]
+
+[node name="Item" type="Node2D"]
+scale = Vector2(0.375, 0.375)
+metadata/_edit_group_ = true
+
+[node name="Draggable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("1_bp1sj")]
+scale = Vector2(2.72871, 3.50736)
+parent = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xokkh")
+hframes = 7
+
+[connection signal="area_entered" from="Draggable" to="Draggable" method="_on_area_entered"]

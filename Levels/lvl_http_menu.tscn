@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch0madqbcsuya"]
+
+[ext_resource type="Script" path="res://Levels/lvl_http_menu.gd" id="1_dlx7u"]
+[ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://Game_objects/Backend/fetch_calls.tscn" id="1_qy7hh"]
+[ext_resource type="Texture2D" uid="uid://s038ewpsld3g" path="res://Images/Backgrounds/bg_loading.jpg" id="2_1mcoa"]
+[ext_resource type="PackedScene" uid="uid://grqcbshpkt7u" path="res://Game_objects/Backend/getImage_node.tscn" id="2_7cs7u"]
+[ext_resource type="PackedScene" uid="uid://dnrb6tatd06p1" path="res://Game_objects/Backend/status_call.tscn" id="4_x61de"]
+[ext_resource type="StyleBox" uid="uid://dhqkod0n2143i" path="res://Themes/BB_Style_Box_Flat.tres" id="5_ijhbm"]
+[ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="6_8fmg6"]
+[ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="6_ejk0n"]
+[ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="6_n8gj5"]
+[ext_resource type="Script" path="res://Levels/camera_follow.gd" id="9_0iin6"]
+
+[sub_resource type="Theme" id="Theme_02l3q"]
+default_font = ExtResource("6_ejk0n")
+ProgressBar/styles/fill = ExtResource("5_ijhbm")
+
+[sub_resource type="Curve2D" id="Curve2D_p4og4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0.0078125, 702.563, 0, 0, 0, 0, 1440, 702.555)
+}
+point_count = 2
+
+[node name="LvlHttpMenu" type="Node2D"]
+script = ExtResource("1_dlx7u")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_1mcoa")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="UI" type="Node2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 718.126)
+
+[node name="Status_Call" parent="ParallaxBackground/ParallaxLayer2/UI" instance=ExtResource("4_x61de")]
+visible = false
+
+[node name="getImage_node" parent="ParallaxBackground/ParallaxLayer2/UI" instance=ExtResource("2_7cs7u")]
+
+[node name="FetchCalls" parent="ParallaxBackground/ParallaxLayer2/UI" instance=ExtResource("1_qy7hh")]
+position = Vector2(0, 367.987)
+
+[node name="Button2" type="Button" parent="ParallaxBackground/ParallaxLayer2/UI/FetchCalls"]
+custom_minimum_size = Vector2(720, 0)
+offset_left = 1.68179
+offset_top = 85.2245
+offset_right = 289.682
+offset_bottom = 149.224
+theme = ExtResource("6_8fmg6")
+text = "Back to Main menu"
+
+[node name="TEXT" type="RichTextLabel" parent="ParallaxBackground/ParallaxLayer2"]
+custom_minimum_size = Vector2(720, 25)
+offset_top = 463.0
+offset_right = 720.0
+offset_bottom = 499.0
+theme = ExtResource("6_n8gj5")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]Use your own receipt or send some premade data to the server"
+
+[node name="ProgressBar" type="ProgressBar" parent="ParallaxBackground/ParallaxLayer2"]
+custom_minimum_size = Vector2(720, 100)
+offset_top = 525.757
+offset_right = 720.0
+offset_bottom = 625.757
+theme = SubResource("Theme_02l3q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+rounded = true
+
+[node name="Status Timer" type="Timer" parent="."]
+wait_time = 3.5
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_p4og4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1261.26, 702.556)
+progress = 1261.25
+script = ExtResource("9_0iin6")
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-908.904, -42.4619)
+rotation = -0.0223995
+
+[connection signal="button_up" from="ParallaxBackground/ParallaxLayer2/UI/FetchCalls/Button" to="." method="_on_request_send"]
+[connection signal="button_down" from="ParallaxBackground/ParallaxLayer2/UI/FetchCalls/Button2" to="ParallaxBackground/ParallaxLayer2/UI/FetchCalls" method="_on_button_2_button_down"]
+[connection signal="value_changed" from="ParallaxBackground/ParallaxLayer2/ProgressBar" to="." method="_on_progress_bar_value_changed"]
+[connection signal="timeout" from="Status Timer" to="." method="_on_status_timer_timeout"]
+[connection signal="timeout" from="Status Timer" to="ParallaxBackground/ParallaxLayer2/UI/Status_Call" method="_on_bt_status_button_up"]
+
+[editable path="ParallaxBackground/ParallaxLayer2/UI/FetchCalls"]

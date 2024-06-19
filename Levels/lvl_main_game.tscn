@@ -1,0 +1,174 @@
+[gd_scene load_steps=12 format=3 uid="uid://b426l4ig6xuvw"]
+
+[ext_resource type="Script" path="res://Levels/Scr_main_game.gd" id="1_3q607"]
+[ext_resource type="PackedScene" uid="uid://dhseamkofouv6" path="res://Game_objects/UI/inventory.tscn" id="2_adnww"]
+[ext_resource type="Script" path="res://Scripts/GUI/Game_Manager.gd" id="2_nr60u"]
+[ext_resource type="PackedScene" uid="uid://bfxslruj1hx8c" path="res://Game_objects/Prefabs/creature.tscn" id="3_b3rqk"]
+[ext_resource type="Texture2D" uid="uid://b2lh1wvfsctm8" path="res://Images/Backgrounds/bg_feeding.png" id="3_hdmj6"]
+[ext_resource type="Script" path="res://Levels/Scr_FeederButtonScript.gd" id="5_1n6fd"]
+[ext_resource type="PackedScene" uid="uid://cyv2t2cbegu44" path="res://Levels/lvl_cooking_testing.tscn" id="6_pp80g"]
+[ext_resource type="PackedScene" uid="uid://cm2w2eb7yvt37" path="res://Game_objects/Prefabs/DraggableItem.tscn" id="6_q6euo"]
+[ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="7_dt8it"]
+[ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="8_6dxun"]
+[ext_resource type="PackedScene" uid="uid://m6gsuxbvm7nv" path="res://Levels/lvl_freezer_scene.tscn" id="10_odhon"]
+
+[node name="LvlMainGame" type="Node2D"]
+script = ExtResource("1_3q607")
+
+[node name="Game_Manager" type="Node" parent="."]
+script = ExtResource("2_nr60u")
+
+[node name="Feeding" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Feeding"]
+position = Vector2(360, 639)
+texture = ExtResource("3_hdmj6")
+
+[node name="Creature" parent="Feeding" instance=ExtResource("3_b3rqk")]
+position = Vector2(119, 810)
+
+[node name="Creature2" parent="Feeding" instance=ExtResource("3_b3rqk")]
+position = Vector2(560, 785)
+
+[node name="Button" type="Button" parent="Feeding" node_paths=PackedStringArray("progress_bar", "food_state_label")]
+self_modulate = Color(0, 1, 0, 0.0470588)
+offset_right = 720.0
+offset_bottom = 73.0
+script = ExtResource("5_1n6fd")
+progress_bar = NodePath("FoodStateProgressBar")
+draggable_prefab = ExtResource("6_q6euo")
+food_state_label = NodePath("FoodStateLabel")
+
+[node name="FoodStateProgressBar" type="ProgressBar" parent="Feeding/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+value = 50.0
+show_percentage = false
+
+[node name="FoodStateLabel" type="Label" parent="Feeding/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_dt8it")
+theme_override_font_sizes/font_size = 48
+text = "There's no more food."
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Feeding/Button"]
+layout_mode = 0
+offset_left = 204.288
+offset_top = 72.96
+offset_right = 517.288
+offset_bottom = 136.96
+theme = ExtResource("8_6dxun")
+text = "Press to spawn Food"
+
+[node name="Prep" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Inventory" parent="Prep" instance=ExtResource("2_adnww")]
+
+[node name="Wheats" parent="Prep/Inventory/InventoryManager" index="0"]
+baseExpiration = 3
+
+[node name="Description" parent="Prep/Inventory/InventoryManager/Wheats" index="0"]
+text = "Wheats"
+
+[node name="Amount" parent="Prep/Inventory/InventoryManager/Wheats" index="1"]
+modulate = Color(1, 0.831373, 0, 1)
+
+[node name="Meat" parent="Prep/Inventory/InventoryManager" index="1"]
+baseExpiration = 2
+
+[node name="Description" parent="Prep/Inventory/InventoryManager/Meat" index="0"]
+text = "Meat"
+
+[node name="Drinks" parent="Prep/Inventory/InventoryManager" index="2"]
+baseExpiration = 3
+
+[node name="Description" parent="Prep/Inventory/InventoryManager/Drinks" index="0"]
+text = "Drinks"
+
+[node name="Spices" parent="Prep/Inventory/InventoryManager" index="3"]
+baseExpiration = 4
+
+[node name="Description" parent="Prep/Inventory/InventoryManager/Spices" index="0"]
+text = "Spices"
+
+[node name="Dairy" parent="Prep/Inventory/InventoryManager" index="4"]
+baseExpiration = 2
+
+[node name="Description" parent="Prep/Inventory/InventoryManager/Dairy" index="0"]
+text = "Dairy"
+
+[node name="Vegetables" parent="Prep/Inventory/InventoryManager" index="5"]
+baseExpiration = 3
+
+[node name="Description" parent="Prep/Inventory/InventoryManager/Vegetables" index="0"]
+text = "Vegetables"
+
+[node name="Sauces" parent="Prep/Inventory/InventoryManager" index="6"]
+baseExpiration = 4
+
+[node name="Description" parent="Prep/Inventory/InventoryManager/Sauces" index="0"]
+text = "Sauces"
+
+[node name="Button" type="Button" parent="Prep"]
+visible = false
+offset_right = 137.0
+offset_bottom = 31.0
+text = "Toggle inventory"
+
+[node name="Cooking" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="LvlCookingTesting" parent="Cooking" node_paths=PackedStringArray("parent") instance=ExtResource("6_pp80g")]
+parent = NodePath("..")
+
+[node name="Storage" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Freezer scene" parent="Storage" instance=ExtResource("10_odhon")]
+
+[node name="Next State" type="Button" parent="."]
+offset_left = 248.0
+offset_top = 1184.0
+offset_right = 491.0
+offset_bottom = 1248.0
+theme = ExtResource("8_6dxun")
+text = "Continue"
+
+[connection signal="turn_switched" from="Game_Manager" to="Prep/Inventory/InventoryManager" method="_on_game_manager_turn_switched"]
+[connection signal="turn_switched" from="Game_Manager" to="Storage/Freezer scene" method="_on_game_manager_turn_switched"]
+[connection signal="button_up" from="Feeding/Button" to="Feeding/Button" method="_on_button_button_up"]
+[connection signal="pressed" from="Feeding/Button" to="Feeding/Button" method="_on_pressed"]
+[connection signal="visibility_changed" from="Feeding/Button" to="Feeding/Button" method="_on_visibility_changed"]
+[connection signal="button_up" from="Feeding/Button/Button" to="Feeding/Button" method="_on_button_button_up"]
+[connection signal="pressed" from="Prep/Inventory/InventoryManager/Wheats/Button" to="Prep/Inventory/InventoryManager" method="_on_button_pressed"]
+[connection signal="pressed" from="Prep/Inventory/InventoryManager/Meat/Button" to="Prep/Inventory/InventoryManager" method="_on_button_pressed"]
+[connection signal="button_down" from="Prep/Button" to="." method="_on_button_button_down"]
+[connection signal="visibility_changed" from="Cooking/LvlCookingTesting" to="Cooking/LvlCookingTesting" method="_on_visibility_changed"]
+[connection signal="button_down" from="Next State" to="Game_Manager" method="_on_next_state_button_down"]
+
+[editable path="Prep/Inventory"]
+[editable path="Prep/Inventory/InventoryManager/Wheats"]
+[editable path="Prep/Inventory/InventoryManager/Meat"]
+[editable path="Prep/Inventory/InventoryManager/Drinks"]
+[editable path="Prep/Inventory/InventoryManager/Spices"]
+[editable path="Prep/Inventory/InventoryManager/Dairy"]
+[editable path="Prep/Inventory/InventoryManager/Vegetables"]
+[editable path="Prep/Inventory/InventoryManager/Sauces"]
+[editable path="Cooking/LvlCookingTesting"]

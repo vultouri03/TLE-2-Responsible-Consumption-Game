@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TLE-2-Responisble-consumption-game"
-run/main_scene="res://Levels/base_node.tscn"
+run/main_scene="res://Levels/lvl_main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Images/icon.svg"
 
@@ -45,6 +45,6 @@ testing={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
+renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

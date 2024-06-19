@@ -1,0 +1,45 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dvkh57vkbpolq"]
+
+[ext_resource type="FontFile" uid="uid://delpel31bcab" path="res://Resources/Fonts/Economica-Regular.ttf" id="1_41kun"]
+[ext_resource type="StyleBox" uid="uid://dhqkod0n2143i" path="res://Themes/BB_Style_Box_Flat.tres" id="2_7rr1b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xenrh"]
+bg_color = Color(0.847059, 0.631373, 0.435294, 1)
+skew = Vector2(0.25, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.847059, 0.631373, 0.435294, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r8jq"]
+bg_color = Color(0.784314, 0.956863, 0.85098, 1)
+skew = Vector2(0.25, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.847059, 0.631373, 0.435294, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 1
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(0.0666667, 0.121569, 0.0196078, 1)
+Button/colors/font_focus_color = Color(0.0901961, 0.109804, 0.0745098, 1)
+Button/colors/font_pressed_color = Color(0.141176, 0.858824, 0.596078, 1)
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_41kun")
+Button/styles/focus = ExtResource("2_7rr1b")
+Button/styles/hover = SubResource("StyleBoxFlat_xenrh")
+Button/styles/normal = ExtResource("2_7rr1b")
+Button/styles/pressed = SubResource("StyleBoxFlat_7r8jq")

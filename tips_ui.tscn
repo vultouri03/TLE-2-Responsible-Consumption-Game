@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4a1eu8t1na7m"]
 
-[ext_resource type="Texture2D" uid="uid://b7pxwkp3bxrl" path="res://Images/blank.jpg" id="1_f6q22"]
+[ext_resource type="Texture2D" path="res://Images/blank.jpg" id="1_f6q22"]
 [ext_resource type="Script" path="res://tips_ui.gd" id="1_w1utr"]
 [ext_resource type="PackedScene" uid="uid://gfqxdp8u5yqc" path="res://tip_manager.tscn" id="3_gc2jr"]
 
