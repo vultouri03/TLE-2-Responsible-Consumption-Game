@@ -1,27 +1,29 @@
 {
 	"expired": [
-		"expired tip 1",
-		"expired tip 2",
-		"expired tip 3"
+		"Controleer regelmatig de houdbaarheidsdata van producten en plaats de items met de kortste houdbaarheidsdatum vooraan in je kast.",
+		"Koop alleen wat je nodig hebt en maak een boodschappenlijstje om impulsaankopen te voorkomen die je niet op tijd kunt opmaken.",
+		"Gebruik je zintuigen om te bepalen of voedsel nog goed is; vaak zijn producten na de houdbaarheidsdatum nog veilig te eten.",
+		"Maak een boodschappenlijstje en – belangrijk - hou je eraan! Geef niet toe aan impulsaankopen, bv. omdat iets in reclame is of omdat het er lekker uitziet."
 	],
 	"cooking_waste": [
-		"cooking_waste tip 1",
-		"cooking_waste tip 2",
-		"cooking_waste tip 3"
+		"Gebruik restjes groenten en vlees om bouillon of soep te maken in plaats van ze weg te gooien.",
+		"Wees creatief met restjes; een overschot aan gekookte aardappelen kan bijvoorbeeld worden omgezet in aardappelpuree of gebakken aardappelen.",
+		"Meet ingrediënten nauwkeurig af om verspilling tijdens het koken te verminderen."
 	],
 	"feeding_waste": [
-		"feeding_waste tip 1",
-		"feeding_waste tip 2",
-		"feeding_waste tip 3"
+		"Serveer kleinere porties om voedselverspilling door restjes op het bord te verminderen; mensen kunnen altijd meer opscheppen als ze nog honger hebben.",
+		"Gebruik restjes van maaltijden in nieuwe gerechten, zoals een restjes-pizza of een omelet.",
+		"Verdeel grote hoeveelheden voedsel direct in porties en vries ze in voor later gebruik."
 	],
 	"starving": [
-		"starving tip 1",
-		"starving tip 2",
-		"starving tip 3"
+		"Doneren aan voedselbanken of liefdadigheidsinstellingen die voedsel verstrekken aan mensen in nood.",
+		"Start of steun lokale initiatieven zoals community gardens of voedselcoöperaties om voedsel toegankelijker te maken voor iedereen.",
+		"Ondersteun campagnes en beleid die voedselverspilling bestrijden en herverdeling naar behoeftigen bevorderen."
 	],
 	"storing_waste": [
-		"storing_waste tip 1",
-		"storing_waste tip 2",
-		"storing_waste tip 3"
+		"Bewaar voedsel op de juiste temperatuur; gebruik de koelkast voor bederfelijke producten en de vriezer voor langer bewaren.",
+		"Gebruik luchtdichte containers om voedsel langer vers te houden en te beschermen tegen vocht en bacteriën.",
+		"Label en dateer bevroren voedsel zodat je weet wat je hebt en wanneer het moet worden gebruikt.",
+		"Check wat je in huis hebt voor je boodschappen gaat doen",
 	]
 }

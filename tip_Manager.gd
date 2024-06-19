@@ -39,15 +39,13 @@ func _get_all_tips():
 		for category in json_data.keys():
 			if typeof(json_data[category]) == TYPE_ARRAY and json_data[category].size() > 0:
 				print("Tips found in the category:", category)
-				for tip in json_data[category]:
-					print(tip)
 			else:
 				print("ERROR: No tips found in the category:", category)
 	else:
 		print("ERROR: Invalid JSON format. Expected a dictionary.")
 	pass
 
-	# set all tips op the tips page
+# set all tips op the tips page
 func _set_all_tips():
 	tips_list = $"../TipList"
 	if(tips_list):
@@ -76,7 +74,7 @@ func _reset_tip_score():
 	scoreList["storing_waste"] = 0
 	pass
 
-	# get the eind tip
+# get the eind tip
 func _get_tip():
 	var highestKey = ""
 	var highestValue = -1
@@ -92,7 +90,7 @@ func _get_tip():
 		print('eind tip ' + json_data[highestKey][my_random_number])
 	else:
 		print('ERROR: get eind tip')
-		
+	
 	tip_eind = $"../Tips/TipText"
 	if(tip_eind):
 		tip_eind.text = 'TIP: ' + json_data[highestKey][my_random_number]
