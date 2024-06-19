@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Globalvars.GameManager.currentState == 0 || Globalvars.GameManager.currentState == 1:
+	if Globalvars.GameManager.currentState == 0:
 		if recipeSystem.recipe_object.check_if_draggables_meet_recipe_count():
 			text = "Continue"
 			disabled = false;
@@ -16,6 +16,14 @@ func _process(delta):
 			text ="Check your ingredients!"
 			disabled = true;
 	else:
+		if Globalvars.GameManager.currentState == 1:
+			if recipeSystem.recipe_object.check_if_own_recipes_complete():
+				text = "Continue"
+				disabled = false;
+			else:
+				text ="Check your ingredients!"
+				disabled = true;
+		else:
 			text = "Continue"
 			disabled = false;
 	pass

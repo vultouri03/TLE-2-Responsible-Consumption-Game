@@ -60,10 +60,11 @@ class Ingredient:
 		self.name = name
 		self.sprite_atlas_offset = offset
 
-
+func check_if_own_recipes_complete():
+	return check_recipe_complete(ingredients)
 func check_recipe_complete(provided_ingredients: Array) -> bool:
 		# Define the required ingredients for the recipe
-
+	print(provided_ingredients)
 	
 	# Create dictionaries to count occurrences of each ingredient
 	var provided_counter = {}

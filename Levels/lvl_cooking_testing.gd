@@ -38,6 +38,7 @@ func _process(delta):
 
 func _check_for_all_draggables():
 	if positionsUpdated == false: 
+		Globalvars._recipe_system().ingredients = []
 		var draggables = get_tree().get_nodes_in_group("Draggables")
 		var iterate = 0
 		var offset = 96
