@@ -1,5 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch0madqbcsuya"]
-
+[gd_scene load_steps=14 format=3 uid="uid://ch0madqbcsuya"]
 
 [ext_resource type="Script" path="res://Levels/lvl_http_menu.gd" id="1_dlx7u"]
 [ext_resource type="PackedScene" uid="uid://bv4j1y5s5wfsg" path="res://Game_objects/Backend/fetch_calls.tscn" id="1_qy7hh"]
@@ -10,11 +9,8 @@
 [ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="6_8fmg6"]
 [ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="6_ejk0n"]
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="6_n8gj5"]
-
-[ext_resource type="PackedScene" uid="uid://bngo785paayec" path="res://Game_objects/UI/Tutorial.tscn" id="9_j2l88"]
-
 [ext_resource type="Script" path="res://Levels/camera_follow.gd" id="9_0iin6"]
-
+[ext_resource type="PackedScene" path="res://Game_objects/UI/Tutorial.tscn" id="9_j2l88"]
 
 [sub_resource type="Theme" id="Theme_02l3q"]
 default_font = ExtResource("6_ejk0n")
@@ -81,14 +77,10 @@ theme = SubResource("Theme_02l3q")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 rounded = true
 
+[node name="Tutorial" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource("9_j2l88")]
+
 [node name="Status Timer" type="Timer" parent="."]
 wait_time = 3.5
-
-
-[node name="Tutorial" parent="." instance=ExtResource("9_j2l88")]
-
-[connection signal="button_up" from="UI/FetchCalls/Button" to="." method="_on_request_send"]
-[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_p4og4")
@@ -105,7 +97,6 @@ rotation = -0.0223995
 [connection signal="button_up" from="ParallaxBackground/ParallaxLayer2/UI/FetchCalls/Button" to="." method="_on_request_send"]
 [connection signal="button_down" from="ParallaxBackground/ParallaxLayer2/UI/FetchCalls/Button2" to="ParallaxBackground/ParallaxLayer2/UI/FetchCalls" method="_on_button_2_button_down"]
 [connection signal="value_changed" from="ParallaxBackground/ParallaxLayer2/ProgressBar" to="." method="_on_progress_bar_value_changed"]
-
 [connection signal="timeout" from="Status Timer" to="." method="_on_status_timer_timeout"]
 [connection signal="timeout" from="Status Timer" to="ParallaxBackground/ParallaxLayer2/UI/Status_Call" method="_on_bt_status_button_up"]
 
