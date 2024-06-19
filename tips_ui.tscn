@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb22jfm0gx7wr"]
+[gd_scene load_steps=4 format=3 uid="uid://d4a1eu8t1na7m"]
 
 [ext_resource type="Texture2D" path="res://Images/blank.jpg" id="1_f6q22"]
 [ext_resource type="Script" path="res://tips_ui.gd" id="1_w1utr"]
+[ext_resource type="PackedScene" uid="uid://gfqxdp8u5yqc" path="res://tip_manager.tscn" id="3_gc2jr"]
 
 [node name="tips_UI" type="CanvasLayer"]
 script = ExtResource("1_w1utr")
@@ -24,7 +25,7 @@ grow_vertical = 0
 size_flags_vertical = 8
 text = "Back"
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="TipList" type="ItemList" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,9 +35,9 @@ offset_right = -50.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-item_count = 1
-item_0/text = "Maak een planning van wat je deze week ga eten"
+allow_search = false
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 10
@@ -47,5 +48,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "TIPS"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="tip_manager" parent="." instance=ExtResource("3_gc2jr")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
