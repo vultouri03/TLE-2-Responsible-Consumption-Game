@@ -206,7 +206,7 @@ progress = 1261.25
 script = ExtResource("8_cpkpw")
 
 [node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
-position = Vector2(-908.904, -42.4619)
+position = Vector2(-908.972, -65.6356)
 rotation = -0.0223995
 
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VboxStart/Start" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_start_pressed"]
