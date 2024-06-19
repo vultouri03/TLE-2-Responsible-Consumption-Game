@@ -1,12 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyv2t2cbegu44"]
-
+[gd_scene load_steps=22 format=3 uid="uid://cyv2t2cbegu44"]
 
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="1_3o54e"]
 [ext_resource type="Script" path="res://Levels/lvl_cooking_testing.gd" id="1_6bmqv"]
 [ext_resource type="Script" path="res://Scripts/GUI/Draggable.gd" id="2_ea4le"]
 [ext_resource type="PackedScene" uid="uid://cm2w2eb7yvt37" path="res://Game_objects/Prefabs/DraggableItem.tscn" id="2_m24le"]
 [ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="3_dcspc"]
-[ext_resource type="Texture2D" uid="uid://chb27ply6abwa" path="res://icon.svg" id="3_wwod3"]
+[ext_resource type="Texture2D" uid="uid://chb27ply6abwa" path="res://Images/icon.svg" id="3_wwod3"]
 [ext_resource type="Script" path="res://Levels/DraggableSpawnerButton.gd" id="4_ej61w"]
 [ext_resource type="Texture2D" uid="uid://ciluhytnopxeh" path="res://Resources/Sprites/64x64_tile_counter.png" id="4_rn22v"]
 [ext_resource type="Script" path="res://Scripts/Common/milk.gd" id="6_l4kvw"]
@@ -15,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://cw6o8noh0h4nk" path="res://Resources/Sprites/OvenPlaceholder.png" id="8_h615c"]
 [ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="11_ehwdx"]
 [ext_resource type="Texture2D" uid="uid://b2lh1wvfsctm8" path="res://Images/Backgrounds/bg_feeding.png" id="11_r4cf7"]
+[ext_resource type="Script" path="res://Scripts/Common/Scr_Recipe.gd" id="15_a06vj"]
+[ext_resource type="Texture2D" uid="uid://deveimd1lbsq2" path="res://Images/Category_items.png" id="15_ko4td"]
+[ext_resource type="Script" path="res://Scripts/GUI/Scr_IconDisplay.gd" id="16_3oldq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2laaa"]
 size = Vector2(36, 36)
@@ -22,6 +24,10 @@ size = Vector2(36, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnavw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8yf0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be7yc"]
+atlas = ExtResource("15_ko4td")
+region = Rect2(60, 30, 330, 390)
 
 [node name="LvlCookingTesting" type="Node2D" node_paths=PackedStringArray("parent", "itemStartingPositionNode", "cooking_oven", "serve_button", "completed_dishes_label")]
 script = ExtResource("1_6bmqv")
@@ -151,6 +157,7 @@ text = "x52"
 metadata/_edit_use_anchors_ = true
 
 [node name="Cooking" type="Node2D" parent="." node_paths=PackedStringArray("drop", "progressBar")]
+visible = false
 script = ExtResource("8_4n60e")
 drop = NodePath("Oven")
 progressBar = NodePath("../CookingBar/Control/ProgressBar")
@@ -181,9 +188,11 @@ theme = ExtResource("11_ehwdx")
 text = "SERVE"
 
 [node name="ItemsPosition" type="Node2D" parent="."]
+visible = false
 position = Vector2(64, 900)
 
 [node name="Background" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -196,6 +205,7 @@ texture = ExtResource("11_r4cf7")
 centered = false
 
 [node name="CookingDock" type="Node2D" parent="."]
+visible = false
 metadata/_edit_group_ = true
 
 [node name="Control" type="Control" parent="CookingDock"]
@@ -238,6 +248,7 @@ texture = ExtResource("4_rn22v")
 stretch_mode = 1
 
 [node name="FoodItemCounter" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 720)
 metadata/_edit_group_ = true
 
@@ -280,6 +291,7 @@ texture = ExtResource("4_rn22v")
 stretch_mode = 1
 
 [node name="CookingBar" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 536)
 metadata/_edit_group_ = true
 
@@ -322,6 +334,111 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_q8yf0")
 step = 5.0
 value = 20.0
 show_percentage = false
+
+[node name="RecipeInfo" type="Panel" parent="."]
+offset_left = 12.0
+offset_top = 65.0
+offset_right = 706.0
+offset_bottom = 664.0
+metadata/_edit_group_ = true
+
+[node name="Title" type="Label" parent="RecipeInfo"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 38
+text = "Recipe : Roasted Lemons with Chicken Sauce"
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="RecipeInfo"]
+visible = false
+texture = ExtResource("15_ko4td")
+hframes = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipeInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
+anchor_bottom = 1.0
+offset_top = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RecipeInfo/VBoxContainer"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+script = ExtResource("16_3oldq")
+
+[node name="Panel" type="Panel" parent="RecipeInfo/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="List" type="Label" parent="RecipeInfo/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.398
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "X5"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="RecipeInfo/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -48.0
+offset_right = 394.0
+offset_bottom = 342.0
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_be7yc")
+
+[node name="Recipe" type="Node2D" parent="."]
+script = ExtResource("15_a06vj")
+requiredIngredients = ["wheat", "wheat", "meat", "meat"]
+ingredientAtlas = [{
+"name": "wheats",
+"x": 55,
+"y": 32
+}, {
+"name": "meat",
+"x": 0,
+"y": 0
+}, {
+"name": "drinks",
+"x": 0,
+"y": 0
+}, {
+"name": "spices",
+"x": 0,
+"y": 0
+}, {
+"name": "dairy",
+"x": 0,
+"y": 0
+}, {
+"name": "vegetables",
+"x": 0,
+"y": 0
+}, {
+"name": "sauces",
+"x": 0,
+"y": 0
+}]
 
 [connection signal="visibility_changed" from="." to="Cooking" method="_on_lvl_cooking_testing_visibility_changed"]
 [connection signal="pressed" from="Node2D/ColorRect/GridContainer/Button" to="Node2D/ColorRect/GridContainer/Button" method="_on_pressed"]
