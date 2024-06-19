@@ -1,9 +1,9 @@
 extends Node2D
 
 @onready var status_timer = $"Status Timer"
-@onready var progress_bar = $ProgressBar
-@onready var ui = $UI
-@onready var text = $TEXT
+@onready var progress_bar = $ParallaxBackground/ParallaxLayer2/ProgressBar
+@onready var ui = $ParallaxBackground/ParallaxLayer2/UI
+@onready var text = $ParallaxBackground/ParallaxLayer2/TEXT
 
 
 

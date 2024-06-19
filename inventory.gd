@@ -61,8 +61,17 @@ func _ready():
 
 func _on_game_manager_turn_switched():
 	#temp print to check if the signal worked
+	var total : int = 0
 	print("turn has switched")
+	print(Globalvars.score)
 	for n in range(7):	
 		self.get_children()[n].expiration -= 1
 		print(self.get_children()[n].expiration)
 		self.get_children()[n].updateExpiration()
+	for n in range(7):
+		total += self.get_children()[n]._amount
+		print(total)
+	if total == 0:
+		get_tree().change_scene_to_file("res://end_UI.tscn")
+			 
+			#print(c.get_node("Amount").text)

@@ -2,6 +2,8 @@ extends Button
 @export var progress_bar:ProgressBar;
 @export var draggable_prefab:PackedScene;
 @export var food_state_label:Label;
+
+var spawned_items: Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -32,6 +34,16 @@ func _on_button_button_up():
 		var instance = draggable_prefab.instantiate();
 		instance.position = Vector2(360, position.y+200); 
 		add_child(instance);
+		
 	else:
 		print("Theres no Food!!!")
 		pass # Replace with function body.
+
+
+func _on_visibility_changed():
+	for i in get_child_count():
+			if i > 1:
+				spawned_items.push_back(get_child(i))
+	for i in spawned_items.size():
+		Globalvars.score.points.feeding_waste += 1
+		print(Globalvars.score.points)

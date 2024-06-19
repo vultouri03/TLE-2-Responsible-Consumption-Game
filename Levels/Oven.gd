@@ -17,6 +17,7 @@ func get_current_progress():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if drop.function_should_trigger_now == true:
+		print("drop triggered")
 		_function_to_execute()
 	
 	pass
@@ -30,6 +31,7 @@ func _update_progress_bar():
 	if current_value > desiredValue + forgiveness or overflow:
 		progressBar.get("theme_override_styles/fill").bg_color = Color(1, 0, 0)  # Red color
 		Globalvars._gameManager().food_amount += 1
+		Globalvars.score.points.cooking_waste += 1
 	elif current_value > desiredValue - (1 + forgiveness) and current_value < desiredValue + (1 + forgiveness):
 		progressBar.get("theme_override_styles/fill").bg_color = Color(0, 1, 0)  # Green color
 		Globalvars._gameManager().food_amount += 1
@@ -45,5 +47,7 @@ func _function_to_execute():
 func _on_lvl_cooking_testing_visibility_changed():
 	progressBar.value = Globalvars.stored_foods
 	if(Globalvars.stored_foods > 0):
-		progressBar.get("theme_override_styles/fill").bg_color = Color(0, 0, 1)  # Red color
+		progressBar.get("theme_override_styles/fill").bg_color = Color(0, 0, 1)  # Blue color
+		if progressBar.value > desiredValue:
+			Globalvars.GameManager.food_amount += 1
 	pass # Replace with function body.

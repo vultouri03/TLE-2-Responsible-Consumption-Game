@@ -8,11 +8,11 @@ var leftovers: int = 0
 
 @export var leftover_prefab: PackedScene
 var instance
-var clear_freezer = true
+var clear_freezer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	clear_freezer = true
 	
 	
 		
@@ -26,6 +26,8 @@ Want to store them"
 func _on_visibility_changed():
 	if clear_freezer:
 		Globalvars.stored_foods = 0
+		for i in container.get_child_count():
+			Globalvars.score.points.storing_waste += 1
 		clear_freezer = false
 	else:
 		clear_freezer = true
