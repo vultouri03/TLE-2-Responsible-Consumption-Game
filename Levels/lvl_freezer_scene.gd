@@ -8,11 +8,11 @@ var leftovers: int = 0
 
 @export var leftover_prefab: PackedScene
 var instance
-var clear_freezer = true
+var clear_freezer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	clear_freezer = true
 	
 	
 		
