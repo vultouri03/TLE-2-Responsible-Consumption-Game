@@ -5,6 +5,7 @@ var class_object_name:String
 var previous_mouse_position = Vector2()
 var is_dragging = false
 var current_scale = Vector2(1,1)
+@export var category_id = "wheats"
 @export var parent:Node2D
 func _on_Draggable_input_event(viewport,event,shape_id):
 	if event.is_action_pressed("ui_touch"):

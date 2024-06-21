@@ -7,6 +7,7 @@ var can_update_now = false;
 var receipt_status = JSON.stringify("CONNECTING")
 var user_hardware_id = OS.get_unique_id()
 var active_receipt = {"id":0,"image":""}
+var RecipeSystem:Node2D
 enum unitOfMesurement {litres,millilitres,grams,kilograms}
 enum States {Prep, Cooking, Feeding, Storage}
 var served_foods:Array = [];
@@ -59,7 +60,8 @@ func _add_game_manager_to_global(manager):
 #Acess the gamemanger as a globalvar value without fucking with autoload
 func _gameManager():
 	return GameManager;
-
+func _recipe_system(): 
+	return RecipeSystem
 func _ready():
 	active_receipt.id = user_hardware_id;
 	active_receipt.image = image_texture;

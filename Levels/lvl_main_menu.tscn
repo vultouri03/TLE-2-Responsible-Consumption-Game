@@ -211,6 +211,6 @@ rotation = -0.0223995
 
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VboxStart/Start" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_start_pressed"]
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Scan" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_scan_pressed"]
-[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Continue" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_camera_pressed"]
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Continue" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_continue_pressed"]
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Continue" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_camera_pressed"]
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Back" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_back_pressed"]

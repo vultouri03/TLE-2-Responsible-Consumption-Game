@@ -54,6 +54,7 @@ func _instantiateDraggable():
 	textureToChange.frame = self.frame
 	instance.global_position = self.position
 	root.add_child(instance)
+	instance.get_child(0).category_id = category_name;
 
 
 func updateExpiration():
