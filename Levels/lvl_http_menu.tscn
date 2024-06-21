@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://socbqlmixnrq" path="res://Resources/Fonts/Economica-Bold.ttf" id="6_ejk0n"]
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="6_n8gj5"]
 [ext_resource type="Script" path="res://Levels/camera_follow.gd" id="9_0iin6"]
-[ext_resource type="PackedScene" path="res://Game_objects/UI/Tutorial.tscn" id="9_j2l88"]
+[ext_resource type="PackedScene" uid="uid://bngo785paayec" path="res://Game_objects/UI/Tutorial.tscn" id="9_j2l88"]
 
 [sub_resource type="Theme" id="Theme_02l3q"]
 default_font = ExtResource("6_ejk0n")

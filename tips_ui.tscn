@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4a1eu8t1na7m"]
 
-[ext_resource type="Texture2D" uid="uid://b7pxwkp3bxrl" path="res://Images/blank.jpg" id="1_f6q22"]
 [ext_resource type="Script" path="res://tips_ui.gd" id="1_w1utr"]
+[ext_resource type="Texture2D" uid="uid://s038ewpsld3g" path="res://Images/Backgrounds/bg_loading.jpg" id="2_scra5"]
 [ext_resource type="PackedScene" uid="uid://gfqxdp8u5yqc" path="res://tip_manager.tscn" id="3_gc2jr"]
 
 [node name="tips_UI" type="CanvasLayer"]
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_f6q22")
+texture = ExtResource("2_scra5")
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 2
@@ -23,6 +23,7 @@ offset_top = -50.0
 offset_right = 100.0
 grow_vertical = 0
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 21
 text = "Back"
 
 [node name="TipList" type="ItemList" parent="."]
@@ -32,12 +33,17 @@ anchor_bottom = 1.0
 offset_left = 50.0
 offset_top = 100.0
 offset_right = -50.0
-offset_bottom = -100.0
+offset_bottom = -85.655
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 allow_search = false
+max_text_lines = 6
+text_overrun_behavior = 2
+max_columns = 17
+fixed_column_width = 590
+icon_mode = 0
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 10

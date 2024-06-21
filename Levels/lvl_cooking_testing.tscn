@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyv2t2cbegu44"]
+[gd_scene load_steps=19 format=3 uid="uid://cyv2t2cbegu44"]
 
 [ext_resource type="Theme" uid="uid://b6earivca5qa1" path="res://Themes/Title_Theme.tres" id="1_3o54e"]
 [ext_resource type="Script" path="res://Levels/lvl_cooking_testing.gd" id="1_6bmqv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/GUI/Drop.gd" id="7_u74d5"]
 [ext_resource type="Script" path="res://Levels/Oven.gd" id="8_4n60e"]
 [ext_resource type="Texture2D" uid="uid://cw6o8noh0h4nk" path="res://Resources/Sprites/OvenPlaceholder.png" id="8_h615c"]
+[ext_resource type="PackedScene" uid="uid://roxfmyi8tvj" path="res://pan_sprites_template.tscn" id="11_d055a"]
 [ext_resource type="Theme" uid="uid://dvkh57vkbpolq" path="res://Themes/BasicButton.tres" id="11_ehwdx"]
 [ext_resource type="Texture2D" uid="uid://b2lh1wvfsctm8" path="res://Images/Backgrounds/bg_feeding.png" id="11_r4cf7"]
 
@@ -165,7 +166,12 @@ desired_draggable_type_ids = ["Food"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_hnavw")
 
+[node name="AnimatedSprite2D" parent="Cooking/Oven" instance=ExtResource("11_d055a")]
+position = Vector2(0, 24)
+scale = Vector2(0.275, 0.275)
+
 [node name="Sprite2D" type="Sprite2D" parent="Cooking/Oven"]
+visible = false
 z_index = -10
 position = Vector2(-0.999987, 0.500012)
 scale = Vector2(1.17969, 1.16797)

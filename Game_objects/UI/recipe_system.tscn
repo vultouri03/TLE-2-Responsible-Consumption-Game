@@ -33,6 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Next" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 562.0
 offset_top = 500.0
 offset_right = 700.0
@@ -41,6 +42,7 @@ theme = ExtResource("6_45kv1")
 text = "Next"
 
 [node name="Previous" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 318.0
 offset_top = 500.0
 offset_right = 456.0

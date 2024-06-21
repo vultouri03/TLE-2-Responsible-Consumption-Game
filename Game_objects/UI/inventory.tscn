@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://inventory.gd" id="1_ku02y"]
 [ext_resource type="Texture2D" uid="uid://5tuwkeck4apa" path="res://Images/inventory_background.png" id="1_nxfvr"]
 [ext_resource type="PackedScene" uid="uid://cbtxc4ob32p8y" path="res://Game_objects/UI/Category_UI_Node.tscn" id="2_6qtqs"]
-[ext_resource type="PackedScene" path="res://Game_objects/UI/Tutorial.tscn" id="4_ejscv"]
+[ext_resource type="PackedScene" uid="uid://bngo785paayec" path="res://Game_objects/UI/Tutorial.tscn" id="4_ejscv"]
 [ext_resource type="Texture2D" uid="uid://bnp5lu4g3rqsl" path="res://Images/Tutorial_Screens/TutorialScreen2.png" id="5_hv3l3"]
 
 [node name="Inventory" type="Control"]
