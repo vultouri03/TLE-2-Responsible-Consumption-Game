@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://76a2uhp3goyj"]
+[gd_scene load_steps=3 format=3 uid="uid://76a2uhp3goyj"]
+
+[ext_resource type="Script" path="res://background_music.gd" id="1_lyfg8"]
+[ext_resource type="AudioStream" uid="uid://rnx45md3m63b" path="res://Audio/Dreams of Mystica.mp3" id="1_psbsl"]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_psbsl")
+autoplay = true
+max_distance = 1e+06
+attenuation = 1e-05
+script = ExtResource("1_lyfg8")

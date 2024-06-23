@@ -34,32 +34,38 @@ func _on_quit_button_pressed():
 
 # show tips page
 func _on_tips_button_pressed():
+	SelectSFX.play()
 	get_tree().change_scene_to_file("res://tips_ui.tscn")
 	print('Tips pagina');
 	pass
 
 #THIS IS TO TEST SCORE
 func _on_add_button_pressed():
+	SelectSFX.play()
 	$score_Manager._add_score(1)
 	$"ParallaxBackground/ParallaxLayer2/TESTSCORE/Current Score".text = str($score_Manager.currentScore)
 	pass # Replace with function body.
 
 func _on_remove_button_pressed():
+	SelectSFX.play()
 	$score_Manager._remove_score(1)
 	$"ParallaxBackground/ParallaxLayer2/TESTSCORE/Current Score".text = str($score_Manager.currentScore)
 	pass # Replace with function body.
 
 func _on_save_button_pressed():
+	SelectSFX.play()
 	$score_Manager._endgame()
 	$"ParallaxBackground/ParallaxLayer2/TESTSCORE/Current Score".text = str($score_Manager.currentScore)
 	pass # Replace with function body.
 
 func _on_load_button_pressed():
+	SelectSFX.play()
 	$score_Manager._load_score()
 	_settext()
 	$"ParallaxBackground/ParallaxLayer2/TESTSCORE/Current Score".text = str($score_Manager.currentScore)
 	pass # Replace with function body.
 
 func _on_delete_button_pressed():
+	SelectSFX.play()
 	$score_Manager._delete_score()
 	pass # Replace with function body.
