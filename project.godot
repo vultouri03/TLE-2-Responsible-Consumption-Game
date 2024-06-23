@@ -18,6 +18,8 @@ config/icon="res://Images/icon.svg"
 [autoload]
 
 Globalvars="*res://globalvar.gd"
+BackgroundMusic="*res://background_music.tscn"
+SelectSFX="*res://select_sfx.tscn"
 
 [display]
 

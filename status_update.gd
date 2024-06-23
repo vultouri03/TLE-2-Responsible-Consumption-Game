@@ -62,15 +62,17 @@ func _send_to_server(webserver_url,body_to_json_encode,function_to_do_after_requ
 
 
 func _on_bt_send_button_up():
-
+	SelectSFX.play()
 	_send_to_server(webserver+"classify",Globalvars.active_receipt,_on_request_completed)
 	pass 
 
 
 func _on_bt_status_button_up():
+	SelectSFX.play()
 	print(Globalvars.user_hardware_id)
 	_send_to_server(webserver+"status",Globalvars.active_receipt,_on_request_completed)
 	pass
 
 func _on_bt_fakeload_button_up():
+	SelectSFX.play()
 	pass

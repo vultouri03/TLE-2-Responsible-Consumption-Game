@@ -15,6 +15,7 @@ func _process(delta):
 	pass
 
 func _get_camera_image():
+	SelectSFX.play()
 	if imagePlugin:
 		imagePlugin.getCameraImage()
 	else: 
@@ -22,6 +23,7 @@ func _get_camera_image():
 	pass # Replace with function body.
 
 func _get_gallery_selection():
+	SelectSFX.play()
 	if imagePlugin:
 		imagePlugin.getGalleryImage()
 	else: 

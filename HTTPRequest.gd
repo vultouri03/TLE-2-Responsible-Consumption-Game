@@ -113,6 +113,7 @@ func _handleResponse(result, response_code, headers, body):
 	$HTTPRequest.request_completed.disconnect(_handleResponse)	
 
 func _on_button_button_down():
+	SelectSFX.play()
 	_convert_to_base64()
 
 
@@ -120,4 +121,5 @@ func _on_button_button_down():
 
 
 func _on_button_2_button_down():
+	SelectSFX.play()
 	get_tree().change_scene_to_file("res://Levels/lvl_main_menu.tscn")

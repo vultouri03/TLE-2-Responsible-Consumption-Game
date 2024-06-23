@@ -15,6 +15,7 @@ func _process(delta):
 
 
 func _on_button_button_down():
+	SelectSFX.play()
 	if inventory.visible == true:
 		creatures.process_mode = Node.PROCESS_MODE_ALWAYS
 		inventory.visible = false

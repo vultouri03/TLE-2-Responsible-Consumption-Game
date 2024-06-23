@@ -13,21 +13,25 @@ func _process(delta):
 
 
 func _on_texture_button_pressed():
+	SelectSFX.play()
 	recipe_info_panel.visible = !recipe_info_panel.visible
 	pass # Replace with function body.
 
 
 func _on_button_pressed():
+	SelectSFX.play()
 	recipe_info_panel.visible = !recipe_info_panel.visible
 	recipe_modal.visible = recipe_info_panel.visible
 	pass # Replace with function body.
 
 
 func _on_next_pressed():
+	SelectSFX.play()
 	recipe_object.next_recipe()
 	pass # Replace with function body.
 
 
 func _on_previous_pressed():
+	SelectSFX.play()
 	recipe_object.previous_recipe()
 	pass # Replace with function body.

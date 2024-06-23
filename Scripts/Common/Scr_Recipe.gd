@@ -64,7 +64,7 @@ func check_if_own_recipes_complete():
 	return check_recipe_complete(ingredients)
 func check_recipe_complete(provided_ingredients: Array) -> bool:
 		# Define the required ingredients for the recipe
-	print(provided_ingredients)
+	#print(provided_ingredients)
 	
 	# Create dictionaries to count occurrences of each ingredient
 	var provided_counter = {}
@@ -180,7 +180,7 @@ func check_if_draggables_meet_recipe_count():
 	for draggable in draggables:
 		if draggable.visible:
 			send_check.append(draggable.category_id.to_lower())
-			print(draggable.category_id.to_lower())
+			#print(draggable.category_id.to_lower())
 	ingredients = send_check
 	return check_recipe_complete(send_check)
 	pass

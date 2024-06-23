@@ -41,6 +41,7 @@ func _process(delta):
 
 
 func _on_next_state_button_down():
+	SelectSFX.play()
 	print(currentState)
 	match currentState:
 		States.Prep:

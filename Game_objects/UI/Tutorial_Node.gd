@@ -3,7 +3,7 @@ extends Control
 #toggle visibilty and toggle icon to icon name
 func _on_button_pressed():
 	self.visible = !self.visible
-	
+	SelectSFX.play()
 	var connectedButton = get_node("../TutorialButton")
 	if self.visible:
 		connectedButton.icon = load("res://images/XIcon.png")

@@ -19,6 +19,7 @@ func _process(delta):
 
 
 func _on_pressed():
+	SelectSFX.play()
 	print(button_name_localized)
 	_spawn_food_draggable()
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk53fkdddvtth"]
+[gd_scene load_steps=17 format=3 uid="uid://dk53fkdddvtth"]
 
 [ext_resource type="Script" path="res://Levels/Scr_MainMenu.gd" id="1_2o3ry"]
 [ext_resource type="Texture2D" uid="uid://brr4gy7nryru" path="res://Images/Banana.jpg" id="1_mgwjl"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://ddlgtke17vb6y" path="res://Images/main-menu-creature-2.png" id="4_h6r43"]
 [ext_resource type="Texture2D" uid="uid://c7vi0qq0ftrx7" path="res://Images/Backgrounds/bg_start.jpg" id="7_gybqu"]
 [ext_resource type="Script" path="res://Levels/camera_follow.gd" id="8_cpkpw"]
+[ext_resource type="PackedScene" uid="uid://76a2uhp3goyj" path="res://background_music.tscn" id="11_5ypla"]
+[ext_resource type="AudioStream" uid="uid://rnx45md3m63b" path="res://Audio/Dreams of Mystica.mp3" id="12_p8usr"]
+[ext_resource type="Script" path="res://background_music.gd" id="13_6tdcp"]
+[ext_resource type="PackedScene" uid="uid://mpatcj57cq85" path="res://select_sfx.tscn" id="13_iqd4p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sv58n"]
 animations = [{
@@ -46,7 +50,7 @@ texture = ExtResource("7_gybqu")
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
 
-[node name="Root" type="Control" parent="ParallaxBackground/ParallaxLayer2" node_paths=PackedStringArray("getImageController")]
+[node name="Root" type="Control" parent="ParallaxBackground/ParallaxLayer2"]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -58,7 +62,8 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2o3ry")
-getImageController = NodePath("ImageCapture")
+getImageController = Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":ExtResource("2_wei2h"))
+
 
 [node name="VersionLabel" type="RichTextLabel" parent="ParallaxBackground/ParallaxLayer2/Root"]
 layout_direction = 1
@@ -208,6 +213,13 @@ script = ExtResource("8_cpkpw")
 [node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
 position = Vector2(-908.972, -65.6356)
 rotation = -0.0223995
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("11_5ypla")]
+stream = ExtResource("12_p8usr")
+autoplay = true
+script = ExtResource("13_6tdcp")
+
+[node name="SelectSFX" parent="." instance=ExtResource("13_iqd4p")]
 
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VboxStart/Start" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_start_pressed"]
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/Root/VBoxSubMenu/Scan" to="ParallaxBackground/ParallaxLayer2/Root" method="_on_scan_pressed"]

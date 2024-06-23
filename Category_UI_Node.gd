@@ -32,7 +32,7 @@ func _process(delta):
 
 func _on_button_pressed():
 	print("button pressed")
-	
+	SelectSFX.play()
 	if _amount > 0:
 		if expiration == 1:
 			expiration = baseExpiration

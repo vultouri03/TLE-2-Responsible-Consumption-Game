@@ -29,6 +29,7 @@ func _on_pressed():
 
 func _on_button_button_up():
 	if food_amount>0: 
+		SelectSFX.play()
 		print("Spawning Food!")
 		Globalvars._gameManager().food_amount+= -1;
 		var instance = draggable_prefab.instantiate();

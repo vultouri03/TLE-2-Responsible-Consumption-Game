@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mpatcj57cq85"]
+
+[ext_resource type="AudioStream" uid="uid://xsqxosuttyfb" path="res://Audio/Bleep.wav" id="1_x3uue"]
+
+[node name="SelectSFX" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_x3uue")
