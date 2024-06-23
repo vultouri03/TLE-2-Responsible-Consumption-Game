@@ -79,6 +79,9 @@ rounded = true
 
 [node name="Tutorial" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource("9_j2l88")]
 
+[node name="RichTextLabel" parent="ParallaxBackground/ParallaxLayer2/Tutorial/TutorialNode/ColorRect" index="1"]
+text = "Make sure that the picture is well lit and the text nice and big as can be seen in the above image. This allows our ai to translate the text directly into the game assets without using any of the other data. Then just click on send to server!"
+
 [node name="Status Timer" type="Timer" parent="."]
 wait_time = 3.5
 
@@ -101,3 +104,5 @@ rotation = -0.0223995
 [connection signal="timeout" from="Status Timer" to="ParallaxBackground/ParallaxLayer2/UI/Status_Call" method="_on_bt_status_button_up"]
 
 [editable path="ParallaxBackground/ParallaxLayer2/UI/FetchCalls"]
+[editable path="ParallaxBackground/ParallaxLayer2/Tutorial"]
+[editable path="ParallaxBackground/ParallaxLayer2/Tutorial/TutorialNode"]
