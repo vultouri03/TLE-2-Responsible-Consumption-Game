@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Food for Thought"
-config/version="1.0"
+config/version="1.0.1"
 run/main_scene="res://Levels/lvl_main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
@@ -38,7 +38,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/GodotGetImage/plugin.cfg")
 
 [input]
 
