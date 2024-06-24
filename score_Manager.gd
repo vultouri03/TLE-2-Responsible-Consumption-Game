@@ -18,6 +18,8 @@ func _ready():
 	penalty += Globalvars.score.points.starving
 	penalty += Globalvars.score.points.storing_waste
 	currentScore -= penalty * 3
+	if currentScore < 0 :
+		currentScore = 0
 	_load_score()
 
 # rcall this functie at begin of game to make sure it is 0

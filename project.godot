@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="TLE-2-Responisble-consumption-game"
+config/name="Food for Thought"
+config/version="1.0"
 run/main_scene="res://Levels/lvl_main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://Images/icon.svg"
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/image="res://Images/Logos/team 5 logo.png"
+config/icon="res://Images/Logos/Screenshot 2024-06-24 161451.png"
 
 [autoload]
 
