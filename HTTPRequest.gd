@@ -1,7 +1,7 @@
 extends Node
 
 @export var responseBody: Resource
-var file_path = 'res://Images/bonnetje.png'
+var file_path = 'res://Images/Tutorial_Screens/bonnetjeData.png'
 var url = Globalvars.webserver
 enum STATUS {SUCCESS, CLIENT_ERR, SERVER_ERR, NONE, FUNC_ERR}
 
